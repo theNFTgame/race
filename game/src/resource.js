@@ -1,7 +1,7 @@
 var s_HelloWorld = "HelloWorld.jpg";
 var s_CloseNormal = "CloseNormal.png";
 var s_CloseSelected = "CloseSelected.png";
-var s_BackGround = "background.png";
+var s_BackGround = "background2.jpg";
 
 var g_resources = [
     //image

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">  
+    <meta name="description" content="Racing Game" />
+    <title>Racing Game</title>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="css/game.css" media="screen" type="text/css" />
+    <script type="text/javascript">
+
+    </script>
+  </head>
+  <body>
+    <div class="horizontal">
+      <div class="content">
+        请保持屏幕竖直<br />
+        建议锁定屏幕继续游戏
+        <img src="img/s_bg_logo.png" width="0" height="0" style="margin: 0; padding:0;" />
+      </div>
+    </div>
+    <div id="pagebody">  
+      <section id="intro" class="clearfix frame homepage">
+<!--         <div class="subframe introbox">
+          <p>intro</p>
+          <a class="navlink linklevel" href="#/level">start game</a>
+        </div> -->
+        <div class="subframe levelbox">
+          <div class="levelnav">
+            <a class="navlink linkshake level01 notext intro" href="#/energy"><span>level 1</span></a>
+            <img src="img/maps/maps2.jpg" width="0" height="0" />
+          </div>
+        </div>
+      </section> 
+      <section id="energy" class="clearfix frame energybox">
+        <div class="subframe introbox">
+          <a class=" start" href="#/run" target="_self"></a>
+        </div>
+      </section>
+      <section id="run" class="clearfix frame runbox">
+        <div class="runningbox">
+          <div class="map">
+            <div id="mapCanvas" width="320" height="504" style=""></div>
+            <div id="myCanvas" width="320" height="504" style=""></div>
+            <div class="skiingnote"><span></span></div>
+          </div>
+        </div> 
+      </section>
+      <section id="comefromshare" class="clearfix mask comefrombox">
+        <div class="gameinfo">
+          <div class="mi"></div>
+          <div class="px"></div>
+        </div>
+        <ul>
+          <li><a class="navlink start" href="#/energy"></a></li>
+        </ul>
+      </section>
+      <section id="share" class="clearfix mask recordbox">
+        <div class="gameinfo">
+          <div class="mi"></div>
+          <div class="px"></div>
+        </div>
+        <ul>
+          <li><a class="navlink replay notext" href="#/replay"><span></span></a></li>
+          <li><a class="navlink getcoupon notext" href="#/nocoupon"><span></span></a></li>
+          <li><a class="navlink getmore notext" href="#" target="_blank"><span></span></a></li>
+        </ul>
+      </section>
+      <section id="coupon" class="clearfix mask couponbox">
+        <div class="gameinfo">
+          <div class="cp"></div>
+        </div>
+        <ul>
+          <li><a class="navlink replay notext" href="#/replay"><span></span></a></li>
+          <li><a class="navlink getmore notext" href="#" target="_blank"><span></span></a></li>
+        </ul>
+      </section>
+      <section id="nocoupon" class="clearfix mask nocouponbox">
+        <div class="gameinfo">
+        </div>
+        <ul>
+          <li><a class="navlink replay notext" href="#/replay"><span></span></a></li>
+          <li><a class="navlink getmore notext" href="#" target="_blank"><span></span></a></li>
+        </ul>
+      </section>
+      <div class="maskbg"></div>
+      <div class="logo"></div>
+    </div>
+
+    <script type="text/javascript" src="script/lib/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="script/lib/underscore-min.js"></script>
+    <script type="text/javascript" src="script/lib/backbone-min.js"></script>
+    <script type="text/javascript" src="script/lib/hammer.min.js"></script>
+    <script type="text/javascript" src="script/state-machine.js"></script>
+    <script type="text/javascript" src="script/single.js"></script>
+    <script>
+
+
+    </script>
+  </body>
+</html>  

@@ -50,7 +50,6 @@ var cocos2dApp = cc.Application.extend({
         cc.FileUtils.getInstance().setSearchPaths(searchPaths);
 
         var platform = cc.Application.getInstance().getTargetPlatform();
-        // console.log(cc.TARGET_PLATFORM.MOBILE_BROWSER);
         if (platform == cc.TARGET_PLATFORM.MOBILE_BROWSER) {
             resDirOrders.push("HD");
         }

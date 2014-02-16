@@ -24,7 +24,7 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-var MyLayer = cc.Layer.extend({
+var Helloworld = cc.Layer.extend({
     isMouseDown:false,
     helloImg:null,
     helloLabel:null,
@@ -32,7 +32,6 @@ var MyLayer = cc.Layer.extend({
     sprite:null,
 
     init:function () {
-
         //////////////////////////////
         // 1. super init first
         this._super();
@@ -45,15 +44,15 @@ var MyLayer = cc.Layer.extend({
 
         // add a "close" icon to exit the progress. it's an autorelease object
         var closeItem = cc.MenuItemImage.create(
-            s_CloseNormal,
-            s_CloseSelected,
+            "res/CloseNormal.png",
+            "res/CloseSelected.png",
             function () {
-                cc.log("close");
+                history.go(-1);
             },this);
         closeItem.setAnchorPoint(0.5, 0.5);
 
         var menu = cc.Menu.create(closeItem);
-        menu.setPosition(0, 0);
+        menu.setPosition(0,0);
         this.addChild(menu, 1);
         closeItem.setPosition(size.width - 20, 20);
 
@@ -61,28 +60,60 @@ var MyLayer = cc.Layer.extend({
         // 3. add your codes below...
         // add a label shows "Hello World"
         // create and initialize a label
-        this.helloLabel = cc.LabelTTF.create("Hello World", "Impact", 38);
+        this.helloLabel = cc.LabelTTF.create("Racing Game", "Arial", 22);
         // position the label on the center of the screen
-        this.helloLabel.setPosition(size.width / 2, size.height - 20);
+        this.helloLabel.setPosition(size.width / 2, 0);
         // add the label as a child to this layer
         this.addChild(this.helloLabel, 5);
 
-        // add "Helloworld" splash screen"
-        this.sprite = cc.Sprite.create(s_BackGround);
-        this.sprite.setAnchorPoint(0, 1);
+        var lazyLayer = cc.Layer.create();
+        this.addChild(lazyLayer);
+
+        // add "HelloWorld" splash screen"
+        this.sprite = cc.Sprite.create("res/background2.jpg");
         this.sprite.setPosition(size.width / 2, size.height / 2);
-        console.log.apply('size.height:' + size.height + ', this.sprite.getContentSize().height:' + this.sprite.getContentSize().height);
-        console.log.apply(this.sprite.getContentSize());
-        this.sprite.setScale(size.height/this.sprite.getContentSize().height);
-        this.addChild(this.sprite, 0);
+        this.sprite.setScale(0.5);
+        this.sprite.setRotation(180);
+
+        lazyLayer.addChild(this.sprite, 0);
+
+        var rotateToA = cc.RotateTo.create(2, 0);
+        var scaleToA = cc.ScaleTo.create(1, 0.5, 0.5);
+
+        this.sprite.runAction(cc.Sequence.create(rotateToA, scaleToA));
+        this.helloLabel.runAction(cc.Spawn.create(cc.MoveBy.create(2.5, cc.p(0, size.height - 40)),cc.TintTo.create(2.5,255,125,0)));
+
+        this.setTouchEnabled(true);
+        return true;
+    },
+    // a selector callback
+    menuCloseCallback:function (sender) {
+        cc.Director.getInstance().end();
+    },
+    onTouchesBegan:function (touches, event) {
+        this.isMouseDown = true;
+    },
+    onTouchesMoved:function (touches, event) {
+        if (this.isMouseDown) {
+            if (touches) {
+                this.circle.setPosition(touches[0].getLocation().x, touches[0].getLocation().y);
+            }
+        }
+    },
+    onTouchesEnded:function (touches, event) {
+        this.isMouseDown = false;
+    },
+    onTouchesCancelled:function (touches, event) {
+        console.log("onTouchesCancelled");
     }
 });
 
-var MyScene = cc.Scene.extend({
+var HelloWorldScene = cc.Scene.extend({
     onEnter:function () {
         this._super();
-        var layer = new MyLayer();
-        this.addChild(layer);
+        var layer = new Helloworld();
         layer.init();
+        this.addChild(layer);
     }
 });
+
