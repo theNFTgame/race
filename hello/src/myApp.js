@@ -115,22 +115,26 @@ var Helloworld = cc.Layer.extend({
         this.sprite.runAction(cc.Sequence.create(rotateToA, scaleToA));
         this.helloLabel.runAction(cc.Spawn.create(cc.MoveBy.create(2.5, cc.p(0, size.height - 40)),cc.TintTo.create(2.5,255,125,0)));
 
-        this.sprite1 = cc.Sprite.create("res/democar.png"); //这里图片名称最好写在resource.js里面  
-        this.sprite1.setPosition(cc.p(size.width / 2,size.height / 4));
-        this.sprite1.setScale(0.5);
+        
 
 
 
         this.addChild(this.sprite1);
 
-
+        // 测试 车子跟随设备位置移动
+        var size = cc.Director.getInstance().getWinSize();
+        this.sprite1 = cc.Sprite.create("res/democar.png"); //这里图片名称最好写在resource.js里面  
+        this.sprite1.setPosition(cc.p(size.width / 2,size.height / 4));
+        this.sprite1.setScale(0.5);
+        
         this.schedule(function(){
-            cc.log(MW.DeviceOrientation);
-            var temyX =  (cc.Director.getInstance().getWinSize().width / 2) - MW.DeviceOrientation.PostY,
-                tempY =  (cc.Director.getInstance().getWinSize().height / 4) + MW.DeviceOrientation.PostX / 2
+            var temyX =  (size.width / 2) - MW.DeviceOrientation.PostY + 10,
+                tempY =  (size.height / 3) + MW.DeviceOrientation.PostX * 2 ;
 
             this.sprite1.setPosition( temyX , tempY );
         });
+
+
         this.setTouchEnabled(true);
         return true;
     },
