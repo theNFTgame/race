@@ -24,6 +24,32 @@
  THE SOFTWARE.
  ****************************************************************************/
 var MW = MW || {};
+MW.DeviceOrientation = {};
+MW.DeviceOrientation.initialX = null;
+MW.DeviceOrientation.initialY = null;
+
+    function handleOrientationEvent(event) {
+        
+        var x = event.beta ? event.beta : event.y * 90;
+        var y = event.gamma ? event.gamma : event.x * 90;
+        //window.console && console.info('Raw position: x, y: ', x, y);
+        // MW.DeviceOrientation
+        if (!MW.DeviceOrientation.initialX && !MW.DeviceOrientation.initialY) {
+            MW.DeviceOrientation.initialX = x;
+            MW.DeviceOrientation.initialY = y;
+            cc.log('start DeviceOrientation!');
+        } else {
+            var positionX = MW.DeviceOrientation.initialX - x;
+            var positionY = MW.DeviceOrientation.initialY - y;
+
+            MW.DeviceOrientation.PostX = positionX;
+            MW.DeviceOrientation.PostY = positionY;
+            cc.log(MW.DeviceOrientation.initialY);
+            cc.log(event);
+        }
+    }
+    window.addEventListener("MozOrientation", handleOrientationEvent, true);
+    window.addEventListener("deviceorientation", handleOrientationEvent, true);
 
 var Helloworld = cc.Layer.extend({
     isMouseDown:false,
@@ -76,13 +102,23 @@ var Helloworld = cc.Layer.extend({
         this.sprite.setScale(0.5);
         this.sprite.setRotation(180);
 
+
+
         lazyLayer.addChild(this.sprite, 0);
+
+
+
 
         var rotateToA = cc.RotateTo.create(2, 0);
         var scaleToA = cc.ScaleTo.create(1, 0.5, 0.5);
 
         this.sprite.runAction(cc.Sequence.create(rotateToA, scaleToA));
         this.helloLabel.runAction(cc.Spawn.create(cc.MoveBy.create(2.5, cc.p(0, size.height - 40)),cc.TintTo.create(2.5,255,125,0)));
+
+        this.sprite1 = cc.Sprite.create("res/democar.png"); //这里图片名称最好写在resource.js里面  
+        this.sprite1.setPosition(cc.p(size.width / 2,size.height / 4));
+        this.sprite1.setScale(0.5);
+        this.addChild(this.sprite1);
 
         this.setTouchEnabled(true);
         return true;
@@ -93,11 +129,13 @@ var Helloworld = cc.Layer.extend({
     },
     onTouchesBegan:function (touches, event) {
         this.isMouseDown = true;
+        cc.log('onTouchesBegan');
     },
     onTouchesMoved:function (touches, event) {
         if (this.isMouseDown) {
             if (touches) {
-                this.circle.setPosition(touches[0].getLocation().x, touches[0].getLocation().y);
+                cc.log('x:' + touches[0].getLocation().x + ',y:' + touches[0].getLocation().y);
+                this.sprite1.setPosition(touches[0].getLocation().x, touches[0].getLocation().y);
             }
         }
     },
