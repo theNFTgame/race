@@ -118,8 +118,19 @@ var Helloworld = cc.Layer.extend({
         this.sprite1 = cc.Sprite.create("res/democar.png"); //这里图片名称最好写在resource.js里面  
         this.sprite1.setPosition(cc.p(size.width / 2,size.height / 4));
         this.sprite1.setScale(0.5);
+
+
+
         this.addChild(this.sprite1);
 
+
+        this.schedule(function(){
+            cc.log(MW.DeviceOrientation);
+            var temyX =  (cc.Director.getInstance().getWinSize().width / 2) - MW.DeviceOrientation.PostY,
+                tempY =  (cc.Director.getInstance().getWinSize().height / 4) + MW.DeviceOrientation.PostX / 2
+
+            this.sprite1.setPosition( temyX , tempY );
+        });
         this.setTouchEnabled(true);
         return true;
     },
@@ -134,8 +145,9 @@ var Helloworld = cc.Layer.extend({
     onTouchesMoved:function (touches, event) {
         if (this.isMouseDown) {
             if (touches) {
-                cc.log('x:' + touches[0].getLocation().x + ',y:' + touches[0].getLocation().y);
-                this.sprite1.setPosition(touches[0].getLocation().x, touches[0].getLocation().y);
+                // cc.log('x:' + touches[0].getLocation().x + ',y:' + touches[0].getLocation().y);
+                // this.sprite1.setPosition( (cc.Director.getInstance().getWinSize().width / 2) - MW.DeviceOrientation.PostY , (cc.Director.getInstance().getWinSize().height / 4) + MW.DeviceOrientation.PostX / 2 );
+                // cc.log(MW.DeviceOrientation);
             }
         }
     },
