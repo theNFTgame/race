@@ -37,9 +37,12 @@
         tag:'gameCanvas', //the dom element to run cocos2d on
         engineDir:'../cocos2d/',
         //SingleEngineFile:'',
-        appFiles:[
+        appFiles:[//add your own files in order here
             'src/resource.js',
-            'src/myApp.js' //add your own files in order here
+            'src/config/GameConfig.js',
+            'src/config/EnemyType.js',
+            'src/config/Level.js',
+            'src/myApp.js'
         ]
     };
 
