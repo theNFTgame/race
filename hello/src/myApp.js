@@ -117,7 +117,7 @@ var Helloworld = cc.Layer.extend({
 
         this.myCar = cc.Sprite.create("res/democar.png"); //这里图片名称最好写在resource.js里面  
         this.myCar.setPosition(cc.p(size.width / 2,size.height / 4));
-        this.myCar.setScale(0.5);
+        this.myCar.setScale(0.5);       
         
         
         this.addChild(this.myCar);
