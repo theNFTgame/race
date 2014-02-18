@@ -92,52 +92,64 @@ var Helloworld = cc.Layer.extend({
         this.helloLabel.setPosition(size.width / 2, 0);
         // add the label as a child to this layer
         this.addChild(this.helloLabel, 5);
-        cc.log(this.helloLabel);
+        
 
         var lazyLayer = cc.Layer.create();
         this.addChild(lazyLayer);
 
         // add "HelloWorld" splash screen"
-        this.sprite = cc.Sprite.create("res/background2.jpg");
-        this.sprite.setPosition(size.width / 2, size.height / 2);
-        this.sprite.setScale(0.5);
-        this.sprite.setRotation(180);
+        this.map1 = cc.Sprite.create("res/background2.jpg");
+        this.map1.setPosition(size.width / 2, size.height / 2);
+        this.map1.setScale(0.5);
+
+        cc.log(this.map1.getPosition().y);
+        this.map2 = cc.Sprite.create("res/background2.jpg");
+        this.map2.setPosition(size.width / 2,  3 * size.height / 2);
+        this.map2.setScale(0.5);
+
+        lazyLayer.addChild(this.map1, 0);
+        lazyLayer.addChild(this.map2, 0);
 
 
-
-        lazyLayer.addChild(this.sprite, 0);
-
-
-
-
-        var rotateToA = cc.RotateTo.create(2, 0);
-        var scaleToA = cc.ScaleTo.create(1, 0.5, 0.5);
-
-        this.sprite.runAction(cc.Sequence.create(rotateToA, scaleToA));
         this.helloLabel.runAction(cc.Spawn.create(cc.MoveBy.create(2.5, cc.p(0, size.height - 40)),cc.TintTo.create(2.5,255,125,0)));
 
-        
-
-
-
-        
-
-        // 测试 车子跟随设备位置移动
         var size = cc.Director.getInstance().getWinSize();
 
-        this.sprite1 = cc.Sprite.create("res/democar.png"); //这里图片名称最好写在resource.js里面  
-        this.sprite1.setPosition(cc.p(size.width / 2,size.height / 4));
-        this.sprite1.setScale(0.5);
+        this.myCar = cc.Sprite.create("res/democar.png"); //这里图片名称最好写在resource.js里面  
+        this.myCar.setPosition(cc.p(size.width / 2,size.height / 4));
+        this.myCar.setScale(0.5);
         
         
-        this.addChild(this.sprite1);
+        this.addChild(this.myCar);
 
+
+        // 测试 车子跟随设备位置移动
+        var iSpeed = 5;
         this.schedule(function(){
             var temyX =  (size.width / 2) - MW.DeviceOrientation.PostY + 10,
                 tempY =  (size.height / 3) + MW.DeviceOrientation.PostX * 2 ;
 
-            this.sprite1.setPosition( temyX , tempY );
-            this.helloLabel.setString("X: " + temyX);
+            this.myCar.setPosition( temyX , tempY );
+            this.helloLabel.setString("Device-X: " + temyX + '\n Y: ' + tempY );
+
+            var posY1 = this.map1.getPosition().y;
+            var posY2 = this.map2.getPosition().y;
+
+            posY1 = posY1 - iSpeed;
+            posY2 = posY2 - iSpeed;
+
+            if ( posY1 < - size.height / 2){
+                posY1 = size.height / 2;
+                posY2 = 3 * size.height / 2;
+            }
+            if ( posY2 < - size.height / 2){
+                posY2 = size.height / 2;
+                posY1 = 3 * size.height / 2;
+            }
+            cc.log('posY1:' + posY1);
+
+            this.map1.setPosition(cc.p(size.width/2,posY1));
+            this.map2.setPosition(cc.p(size.width/2,posY2));
         });
         this.setTouchEnabled(true);
         return true;
@@ -154,7 +166,7 @@ var Helloworld = cc.Layer.extend({
         if (this.isMouseDown) {
             if (touches) {
                 // cc.log('x:' + touches[0].getLocation().x + ',y:' + touches[0].getLocation().y);
-                // this.sprite1.setPosition( (cc.Director.getInstance().getWinSize().width / 2) - MW.DeviceOrientation.PostY , (cc.Director.getInstance().getWinSize().height / 4) + MW.DeviceOrientation.PostX / 2 );
+                // this.map11.setPosition( (cc.Director.getInstance().getWinSize().width / 2) - MW.DeviceOrientation.PostY , (cc.Director.getInstance().getWinSize().height / 4) + MW.DeviceOrientation.PostX / 2 );
                 // cc.log(MW.DeviceOrientation);
             }
         }
