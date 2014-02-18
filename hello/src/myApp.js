@@ -92,6 +92,7 @@ var Helloworld = cc.Layer.extend({
         this.helloLabel.setPosition(size.width / 2, 0);
         // add the label as a child to this layer
         this.addChild(this.helloLabel, 5);
+        cc.log(this.helloLabel);
 
         var lazyLayer = cc.Layer.create();
         this.addChild(lazyLayer);
@@ -119,22 +120,25 @@ var Helloworld = cc.Layer.extend({
 
 
 
-        this.addChild(this.sprite1);
+        
 
         // 测试 车子跟随设备位置移动
         var size = cc.Director.getInstance().getWinSize();
+
         this.sprite1 = cc.Sprite.create("res/democar.png"); //这里图片名称最好写在resource.js里面  
         this.sprite1.setPosition(cc.p(size.width / 2,size.height / 4));
         this.sprite1.setScale(0.5);
         
+        
+        this.addChild(this.sprite1);
+
         this.schedule(function(){
             var temyX =  (size.width / 2) - MW.DeviceOrientation.PostY + 10,
                 tempY =  (size.height / 3) + MW.DeviceOrientation.PostX * 2 ;
 
             this.sprite1.setPosition( temyX , tempY );
+            this.helloLabel.setString("X: " + temyX);
         });
-
-
         this.setTouchEnabled(true);
         return true;
     },
