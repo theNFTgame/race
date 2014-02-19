@@ -1,19 +1,8 @@
-/**
- *  Cocos2d-html5 show case : Moon Warriors
- *
- * @Licensed:
- * This showcase is licensed under GPL.
- *
- *  @Authors:
- *  Programmer: Shengxiang Chen (陈升想), Dingping Lv (吕定平), Ricardo Quesada
- *  Effects animation: Hao Wu (吴昊)
- *  Quality Assurance: Sean Lin (林顺)
- *
- *  @Links:
- *  http://www.cocos2d-x.org
- *  http://bbs.html5china.com
- *
- */
+
+
+MW.DeviceOrientation = {};
+MW.DeviceOrientation.initialX = null;
+MW.DeviceOrientation.initialY = null;
 
 //game state
 MW.GAME_STATE = {
@@ -89,19 +78,13 @@ MW.LIFEUP_SORCE = [50000, 100000, 150000, 200000, 250000, 300000];
 //container
 MW.CONTAINER = {
     ENEMIES:[],
-    ENEMY_BULLETS:[],
-    PLAYER_BULLETS:[],
     EXPLOSIONS:[],
     SPARKS:[],
-    HITS:[],
     BACKSKYS:[],
     BACKTILEMAPS:[]
 };
 
 //bullet speed
-MW.BULLET_SPEED = {
-    ENEMY:-200,
-    SHIP:900
-};
+
 // the counter of active enemies
 MW.ACTIVE_ENEMIES = 0;

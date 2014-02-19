@@ -8,7 +8,7 @@ var Ship = cc.Sprite.extend({
     canBeAttack:true,
     isThrowingBomb:false,
     zOrder:3000,
-    maxBulletPowerValue:1,
+    maxBulletPowerValue:4,
     appearPosition:cc.p(160, 60),
     _hurtColorLife:0,
     active:true,
@@ -70,15 +70,15 @@ var Ship = cc.Sprite.extend({
         }
     },
     shoot:function (dt) {
-        this.shootEffect();
-        var offset = 40;
-        var p = this.getPosition();
-        var cs = this.getContentSize();
-        var a = Bullet.getOrCreateBullet(this.bulletSpeed, "W1.png", MW.ENEMY_ATTACK_MODE.NORMAL, 3000, MW.UNIT_TAG.PLAYER_BULLET);
-        a.setPosition(p.x + offset, p.y + 3 + cs.height * 0.3);
+        //this.shootEffect();
+        // var offset = 13;
+        // var p = this.getPosition();
+        // var cs = this.getContentSize();
+        // var a = Bullet.getOrCreateBullet(this.bulletSpeed, "W1.png", MW.ENEMY_ATTACK_MODE.NORMAL, 3000, MW.UNIT_TAG.PLAYER_BULLET);
+        // a.setPosition(p.x + offset, p.y + 3 + cs.height * 0.3);
 
-        var b = Bullet.getOrCreateBullet(this.bulletSpeed, "W1.png", MW.ENEMY_ATTACK_MODE.NORMAL, 3000, MW.UNIT_TAG.PLAYER_BULLET);
-        b.setPosition(p.x - offset, p.y + 3 + cs.height * 0.3);
+        // var b = Bullet.getOrCreateBullet(this.bulletSpeed, "W1.png", MW.ENEMY_ATTACK_MODE.NORMAL, 3000, MW.UNIT_TAG.PLAYER_BULLET);
+        // b.setPosition(p.x - offset, p.y + 3 + cs.height * 0.3);
     },
     destroy:function () {
         MW.LIFE--;

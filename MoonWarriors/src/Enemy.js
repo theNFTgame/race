@@ -2,7 +2,7 @@ var Enemy = cc.Sprite.extend({
     eID:0,
     enemyType:1,
     active:true,
-    speed:400,
+    speed:200,
     bulletSpeed:MW.BULLET_SPEED.ENEMY,
     HP:1,
     bulletPowerValue:1,
@@ -10,7 +10,7 @@ var Enemy = cc.Sprite.extend({
     scoreValue:200,
     zOrder:1000,
     delayTime:1 + 1.2 * Math.random(),
-    // attackMode:MW.ENEMY_MOVE_TYPE.NORMAL,
+    attackMode:MW.ENEMY_MOVE_TYPE.NORMAL,
     _hurtColorLife:0,
     ctor:function (arg) {
         this._super();
@@ -18,7 +18,7 @@ var Enemy = cc.Sprite.extend({
         this.HP = arg.HP;
         this.moveType = arg.moveType;
         this.scoreValue = arg.scoreValue;
-        // this.attackMode = arg.attackMode;
+        this.attackMode = arg.attackMode;
         this.enemyType = arg.type;
 
         this.initWithSpriteFrameName(arg.textureName);
@@ -38,12 +38,24 @@ var Enemy = cc.Sprite.extend({
             }
         }
 
-        var p = this.getPosition();
-        if (p.x < 0 || p.x > g_sharedGameLayer.screenRect.width || p.y < 0 || p.y > g_sharedGameLayer.screenRect.height || this.HP <= 0) {
+        if ( this.HP <= 0 ){
             this.active = false;
             this.destroy();
         }
 
+        var p = this.getPosition();
+        if (p.x < 0 || p.x > g_sharedGameLayer.screenRect.width || p.y < 0 || p.y > g_sharedGameLayer.screenRect.height) {
+            this.active = false;
+            this.goaway();
+        }
+
+    },
+    goaway:function () {
+        this.setVisible(false);
+        this.active = false;
+        this.stopAllActions();
+        this.unschedule(this.shoot);
+        MW.ACTIVE_ENEMIES--;
     },
     destroy:function () {
         MW.SCORE += this.scoreValue;
@@ -84,7 +96,7 @@ Enemy.getOrCreateEnemy = function (arg) {
             selChild.active = true;
             selChild.moveType = arg.moveType;
             selChild.scoreValue = arg.scoreValue;
-            // selChild.attackMode = arg.attackMode;
+            selChild.attackMode = arg.attackMode;
             selChild._hurtColorLife = 0;
 
             selChild.schedule(selChild.shoot, selChild.delayTime);

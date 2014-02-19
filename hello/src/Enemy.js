@@ -15,9 +15,9 @@ var Enemy = cc.Sprite.extend({
         this.schedule(this.shoot, this.delayTime);
     },
     shoot:function () {
-        var p = this.getPosition();
-        var b = Bullet.getOrCreateBullet(this.bulletSpeed, "W2.png", this.attackMode, 3000, MW.UNIT_TAG.ENMEY_BULLET);
-        b.setPosition(p.x, p.y - this.getContentSize().height * 0.2);
+        // var p = this.getPosition();
+        // var b = Bullet.getOrCreateBullet(this.bulletSpeed, "W2.png", this.attackMode, 3000, MW.UNIT_TAG.ENMEY_BULLET);
+        // b.setPosition(p.x, p.y - this.getContentSize().height * 0.2);
     },
     collideRect:function (p) {
         var a = this.getContentSize();
@@ -29,20 +29,6 @@ Enemy.getOrCreateEnemy = function (arg) {
     var selChild = null;
     for (var j = 0; j < MW.CONTAINER.ENEMIES.length; j++) {
         selChild = MW.CONTAINER.ENEMIES[j];
-
-        if (selChild.active == false && selChild.enemyType == arg.type) {
-
-            selChild.active = true;
-            selChild.moveType = arg.moveType;
-            selChild.scoreValue = arg.scoreValue;
-            selChild.attackMode = arg.attackMode;
-            selChild._hurtColorLife = 0;
-
-            selChild.schedule(selChild.shoot, selChild.delayTime);
-            selChild.setVisible(true);
-            MW.ACTIVE_ENEMIES++;
-            return selChild;
-        }
     }
     selChild = Enemy.create(arg);
     MW.ACTIVE_ENEMIES++;

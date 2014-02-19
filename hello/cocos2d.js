@@ -25,9 +25,7 @@
  THE SOFTWARE.
  ****************************************************************************/
 var MW = MW || {};
-MW.DeviceOrientation = {};
-MW.DeviceOrientation.initialX = null;
-MW.DeviceOrientation.initialY = null;
+
  
 (function () {
     var d = document;
@@ -47,6 +45,12 @@ MW.DeviceOrientation.initialY = null;
             'src/config/GameConfig.js',
             'src/config/EnemyType.js',
             'src/config/Level.js',
+            'src/Effect.js',
+            'src/Enemy.js',
+            'src/Explosion.js',
+            'src/Car.js',
+            'src/Gifts.js',
+            'src/LevelManager.js',
             'src/myApp.js'
         ]
     };
