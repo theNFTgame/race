@@ -131,7 +131,7 @@ var GameLayer = cc.Layer.extend({
             SparkEffect.preSet();
             Explosion.preSet();
             BackSky.preSet();
-            BackTileMap.preSet();
+            // BackTileMap.preSet();
 
             this.initBackground();
         }
@@ -267,14 +267,14 @@ var GameLayer = cc.Layer.extend({
         this.schedule(this.moveTileMap, 5);
     },
     moveTileMap:function () {
-        var backTileMap = BackTileMap.getOrCreate();
-        var ran = Math.random();
-        backTileMap.setPosition(ran * 320, winSize.height);
-        var move = cc.MoveBy.create(ran * 2 + 10, cc.p(0, -winSize.height-240));
-        var fun =cc.CallFunc.create(function(){
-            backTileMap.destroy();
-        },this);
-        backTileMap.runAction(cc.Sequence.create(move,fun));
+        // var backTileMap = BackTileMap.getOrCreate();
+        // var ran = Math.random();
+        // backTileMap.setPosition(ran * 320, winSize.height);
+        // var move = cc.MoveBy.create(ran * 2 + 10, cc.p(0, -winSize.height-240));
+        // var fun =cc.CallFunc.create(function(){
+        //     backTileMap.destroy();
+        // },this);
+        // backTileMap.runAction(cc.Sequence.create(move,fun));
     },
 
     _movingBackground:function(dt){
