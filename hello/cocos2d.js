@@ -24,6 +24,11 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
+var MW = MW || {};
+MW.DeviceOrientation = {};
+MW.DeviceOrientation.initialX = null;
+MW.DeviceOrientation.initialY = null;
+ 
 (function () {
     var d = document;
     var c = {

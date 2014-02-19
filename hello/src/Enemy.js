@@ -3,7 +3,6 @@ var Enemy = cc.Sprite.extend({
     enemyType:1,
     active:true,
     speed:400,
-    bulletSpeed:MW.BULLET_SPEED.ENEMY,
     zOrder:1000,
     delayTime:1 + 1.2 * Math.random(),
     attackMode:MW.ENEMY_MOVE_TYPE.NORMAL,

@@ -10,7 +10,7 @@ var Enemy = cc.Sprite.extend({
     scoreValue:200,
     zOrder:1000,
     delayTime:1 + 1.2 * Math.random(),
-    attackMode:MW.ENEMY_MOVE_TYPE.NORMAL,
+    // attackMode:MW.ENEMY_MOVE_TYPE.NORMAL,
     _hurtColorLife:0,
     ctor:function (arg) {
         this._super();
@@ -18,7 +18,7 @@ var Enemy = cc.Sprite.extend({
         this.HP = arg.HP;
         this.moveType = arg.moveType;
         this.scoreValue = arg.scoreValue;
-        this.attackMode = arg.attackMode;
+        // this.attackMode = arg.attackMode;
         this.enemyType = arg.type;
 
         this.initWithSpriteFrameName(arg.textureName);
@@ -60,9 +60,9 @@ var Enemy = cc.Sprite.extend({
         MW.ACTIVE_ENEMIES--;
     },
     shoot:function () {
-        var p = this.getPosition();
-        var b = Bullet.getOrCreateBullet(this.bulletSpeed, "W2.png", this.attackMode, 3000, MW.UNIT_TAG.ENMEY_BULLET);
-        b.setPosition(p.x, p.y - this.getContentSize().height * 0.2);
+        // var p = this.getPosition();
+        // var b = Bullet.getOrCreateBullet(this.bulletSpeed, "W2.png", this.attackMode, 3000, MW.UNIT_TAG.ENMEY_BULLET);
+        // b.setPosition(p.x, p.y - this.getContentSize().height * 0.2);
     },
     hurt:function () {
         this._hurtColorLife = 2;
@@ -84,7 +84,7 @@ Enemy.getOrCreateEnemy = function (arg) {
             selChild.active = true;
             selChild.moveType = arg.moveType;
             selChild.scoreValue = arg.scoreValue;
-            selChild.attackMode = arg.attackMode;
+            // selChild.attackMode = arg.attackMode;
             selChild._hurtColorLife = 0;
 
             selChild.schedule(selChild.shoot, selChild.delayTime);

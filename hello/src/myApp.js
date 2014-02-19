@@ -23,10 +23,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-var MW = MW || {};
-MW.DeviceOrientation = {};
-MW.DeviceOrientation.initialX = null;
-MW.DeviceOrientation.initialY = null;
+
 
     function handleOrientationEvent(event) {
         
@@ -115,7 +112,7 @@ var Helloworld = cc.Layer.extend({
 
         var size = cc.Director.getInstance().getWinSize();
 
-        this.myCar = cc.Sprite.create("res/democar.png"); //这里图片名称最好写在resource.js里面  
+        this.myCar = cc.Sprite.create("res/cars.png", cc.rect(0, 0, 100, 200));
         this.myCar.setPosition(cc.p(size.width / 2,size.height / 4));
         this.myCar.setScale(0.5);       
         
@@ -146,7 +143,7 @@ var Helloworld = cc.Layer.extend({
                 posY2 = size.height / 2;
                 posY1 = 3 * size.height / 2;
             }
-            cc.log('posY1:' + posY1);
+            // cc.log('posY1:' + posY1);
 
             this.map1.setPosition(cc.p(size.width/2,posY1));
             this.map2.setPosition(cc.p(size.width/2,posY2));

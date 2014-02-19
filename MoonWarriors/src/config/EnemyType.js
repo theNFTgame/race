@@ -2,7 +2,7 @@ var EnemyType = [
     {
         type:0,
         textureName:"E0.png",
-        bulletType:"W2.png",
+        // bulletType:"W2.png",
         HP:1,
         moveType:MW.ENEMY_MOVE_TYPE.ATTACK,
         attackMode:MW.ENEMY_MOVE_TYPE.NORMAL,
