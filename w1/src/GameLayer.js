@@ -49,7 +49,7 @@ var GameLayer = cc.Layer.extend({
             MW.ACTIVE_ENEMIES = 0;
 
             MW.SCORE = 0;
-            MW.LIFE = 4;
+            MW.LIFE = 1;
             this._state = STATE_PLAYING;
 
             // OpaqueBatch
@@ -125,7 +125,7 @@ var GameLayer = cc.Layer.extend({
             g_sharedGameLayer = this;
 
             //pre set
-            Bullet.preSet();
+            // Bullet.preSet();
             Enemy.preSet();
             HitEffect.preSet();
             SparkEffect.preSet();

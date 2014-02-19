@@ -3,6 +3,7 @@ var BackSky = cc.Sprite.extend({
     ctor:function () {
         this._super();
         this.initWithSpriteFrameName("bg01.png");
+        cc.log(this);
         this.setAnchorPoint(0, 0);
     },
     destroy:function () {

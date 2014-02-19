@@ -1,5 +1,31 @@
 cc.dumpConfig();
 
+function handleOrientationEvent(event) {
+        
+        var x = event.beta ? event.beta : event.y * 90;
+        var y = event.gamma ? event.gamma : event.x * 90;
+        //window.console && console.info('Raw position: x, y: ', x, y);
+        // MW.DeviceOrientation
+        if (!MW.DeviceOrientation){
+            MW.DeviceOrientation = {};
+        }
+        if (!MW.DeviceOrientation.initialX && !MW.DeviceOrientation.initialY) {
+            MW.DeviceOrientation.initialX = x;
+            MW.DeviceOrientation.initialY = y;
+            cc.log('start DeviceOrientation!');
+        } else {
+            var positionX = MW.DeviceOrientation.initialX - x;
+            var positionY = MW.DeviceOrientation.initialY - y;
+
+            MW.DeviceOrientation.PostX = positionX;
+            MW.DeviceOrientation.PostY = positionY;
+            cc.log(MW.DeviceOrientation.initialY);
+            cc.log(event);
+        }
+    }
+    window.addEventListener("MozOrientation", handleOrientationEvent, true);
+    window.addEventListener("deviceorientation", handleOrientationEvent, true);
+
 var SysMenu = cc.Layer.extend({
     _ship:null,
 
@@ -22,13 +48,13 @@ var SysMenu = cc.Layer.extend({
             var newGameSelected = cc.Sprite.create(res.menu_png, cc.rect(0, 33, 126, 33));
             var newGameDisabled = cc.Sprite.create(res.menu_png, cc.rect(0, 33 * 2, 126, 33));
 
-            var gameSettingsNormal = cc.Sprite.create(res.menu_png, cc.rect(126, 0, 126, 33));
-            var gameSettingsSelected = cc.Sprite.create(res.menu_png, cc.rect(126, 33, 126, 33));
-            var gameSettingsDisabled = cc.Sprite.create(res.menu_png, cc.rect(126, 33 * 2, 126, 33));
+            // var gameSettingsNormal = cc.Sprite.create(res.menu_png, cc.rect(126, 0, 126, 33));
+            // var gameSettingsSelected = cc.Sprite.create(res.menu_png, cc.rect(126, 33, 126, 33));
+            // var gameSettingsDisabled = cc.Sprite.create(res.menu_png, cc.rect(126, 33 * 2, 126, 33));
 
-            var aboutNormal = cc.Sprite.create(res.menu_png, cc.rect(252, 0, 126, 33));
-            var aboutSelected = cc.Sprite.create(res.menu_png, cc.rect(252, 33, 126, 33));
-            var aboutDisabled = cc.Sprite.create(res.menu_png, cc.rect(252, 33 * 2, 126, 33));
+            // var aboutNormal = cc.Sprite.create(res.menu_png, cc.rect(252, 0, 126, 33));
+            // var aboutSelected = cc.Sprite.create(res.menu_png, cc.rect(252, 33, 126, 33));
+            // var aboutDisabled = cc.Sprite.create(res.menu_png, cc.rect(252, 33 * 2, 126, 33));
             var flare = cc.Sprite.create(res.flare_jpg);
             this.addChild(flare);
             flare.setVisible(false);
@@ -37,10 +63,10 @@ var SysMenu = cc.Layer.extend({
                 //this.onNewGame();
                 flareEffect(flare, this, this.onNewGame);
             }.bind(this));
-            var gameSettings = cc.MenuItemSprite.create(gameSettingsNormal, gameSettingsSelected, gameSettingsDisabled, this.onSettings, this);
-            var about = cc.MenuItemSprite.create(aboutNormal, aboutSelected, aboutDisabled, this.onAbout, this);
+            // var gameSettings = cc.MenuItemSprite.create(gameSettingsNormal, gameSettingsSelected, gameSettingsDisabled, this.onSettings, this);
+            // var about = cc.MenuItemSprite.create(aboutNormal, aboutSelected, aboutDisabled, this.onAbout, this);
 
-            var menu = cc.Menu.create(newGame, gameSettings, about);
+            var menu = cc.Menu.create(newGame);
             menu.alignItemsVerticallyWithPadding(10);
             this.addChild(menu, 1, 2);
             menu.setPosition(winSize.width / 2, winSize.height / 2 - 80);

@@ -22,14 +22,15 @@ var res = {
     flare_jpg : 'res/flare.jpg',
     gameOver_png : 'res/gameOver.png',
     level01_tmx : 'res/level01.tmx',
-    loading_png : 'res/loading.png',
+    loading_png : 'res/background2.jpg',
     logo_png : 'res/logo.png',
     menu_png : 'res/menu.png',
     menuTitle_png : 'res/menuTitle.png',
     textureOpaquePack_plist : 'res/textureOpaquePack.plist',
     textureOpaquePack_png : 'res/textureOpaquePack.png',
     textureTransparentPack_plist : 'res/textureTransparentPack.plist',
-    textureTransparentPack_png : 'res/textureTransparentPack.png'
+    textureTransparentPack_png : 'res/textureTransparentPack.png',
+    myCarbackground : 'res/background2.jpg'
 };
 
 var g_mainmenu = [

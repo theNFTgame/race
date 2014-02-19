@@ -18,9 +18,9 @@ var GameOver = cc.Layer.extend({
             var playAgainSelected = cc.Sprite.create(res.menu_png, cc.rect(378, 33, 126, 33));
             var playAgainDisabled = cc.Sprite.create(res.menu_png, cc.rect(378, 33 * 2, 126, 33));
 
-            var cocos2dhtml5 = cc.Sprite.create(res.cocos2d_html5_png);
-            cocos2dhtml5.setPosition(160,150);
-            this.addChild(cocos2dhtml5,10);
+            // var cocos2dhtml5 = cc.Sprite.create(res.cocos2d_html5_png);
+            // cocos2dhtml5.setPosition(160,150);
+            // this.addChild(cocos2dhtml5,10);
             var flare = cc.Sprite.create(res.flare_jpg);
             this.addChild(flare);
             flare.setVisible(false);
@@ -37,18 +37,18 @@ var GameOver = cc.Layer.extend({
             lbScore.setColor(cc.c3b(250,179,0));
             this.addChild(lbScore,10);
 
-            var b1 = cc.LabelTTF.create("Download Cocos2d-html5","Arial",14);
-            var b2 = cc.LabelTTF.create("Download This Sample","Arial",14);
-            var menu1 = cc.MenuItemLabel.create(b1,function(){
-                window.location.href = "http://www.cocos2d-x.org/projects/cocos2d-x/wiki/Cocos2d-html5";
-            });
-            var menu2 = cc.MenuItemLabel.create(b2,function(){
-                window.location.href = "https://github.com/ShengxiangChen/MoonWarriors";
-            });
-            var cocos2dMenu = cc.Menu.create(menu1,menu2);
-            cocos2dMenu.alignItemsVerticallyWithPadding(10);
-            cocos2dMenu.setPosition(160,80);
-            this.addChild(cocos2dMenu);
+            // var b1 = cc.LabelTTF.create("Download Cocos2d-html5","Arial",14);
+            // var b2 = cc.LabelTTF.create("Download This Sample","Arial",14);
+            // var menu1 = cc.MenuItemLabel.create(b1,function(){
+            //     window.location.href = "http://www.cocos2d-x.org/projects/cocos2d-x/wiki/Cocos2d-html5";
+            // });
+            // var menu2 = cc.MenuItemLabel.create(b2,function(){
+            //     window.location.href = "https://github.com/ShengxiangChen/MoonWarriors";
+            // });
+            // var cocos2dMenu = cc.Menu.create(menu1,menu2);
+            // cocos2dMenu.alignItemsVerticallyWithPadding(10);
+            // cocos2dMenu.setPosition(160,80);
+            // this.addChild(cocos2dMenu);
 
 
             if(MW.SOUND){
