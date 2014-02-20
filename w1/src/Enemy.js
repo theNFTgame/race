@@ -59,9 +59,10 @@ var Enemy = cc.Sprite.extend({
         this.stopAllActions();
         this.unschedule(this.shoot);
         MW.ACTIVE_ENEMIES--;
+        // MW.SCORE += this.scoreValue;
     },
     destroy:function () {
-        MW.SCORE += this.scoreValue;
+        // MW.SCORE += this.scoreValue;
         var a = Explosion.getOrCreateExplosion();
         a.setPosition(this.getPosition());
         SparkEffect.getOrCreateSparkEffect(this.getPosition());

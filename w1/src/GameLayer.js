@@ -7,7 +7,7 @@
 STATE_PLAYING = 0;
 STATE_GAMEOVER = 1;
 MAX_CONTAINT_WIDTH = 40;
-MAX_CONTAINT_HEIGHT = 40;
+MAX_CONTAINT_HEIGHT = 80;
 
 var g_sharedGameLayer;
 
@@ -73,19 +73,19 @@ var GameLayer = cc.Layer.extend({
             this.lbScore.setAnchorPoint(1, 0);
             this.lbScore.setAlignment(cc.TEXT_ALIGNMENT_RIGHT);
             this.addChild(this.lbScore, 1000);
-            this.lbScore.setPosition(winSize.width - 5, winSize.height - 30);
+            this.lbScore.setPosition(winSize.width - 5, winSize.height - 230);
 
-            // ship life
-            var life = cc.Sprite.createWithSpriteFrameName("ship01.png");
-            life.setScale(0.6);
-            life.setPosition(30, 460);
-            this._texTransparentBatch.addChild(life, 1, 5);
+            // // ship life
+            // var life = cc.Sprite.createWithSpriteFrameName("ship01.png");
+            // life.setScale(0.6);
+            // life.setPosition(30, 460);
+            // this._texTransparentBatch.addChild(life, 1, 5);
 
-            // ship Life count
-            this._lbLife = cc.LabelTTF.create("0", "Arial", 20);
-            this._lbLife.setPosition(60, 463);
-            this._lbLife.setColor(cc.c3b(255, 0, 0));
-            this.addChild(this._lbLife, 1000);
+            // // ship Life count
+            // this._lbLife = cc.LabelTTF.create("0", "Arial", 20);
+            // this._lbLife.setPosition(60, 463);
+            // this._lbLife.setColor(cc.c3b(255, 0, 0));
+            // this.addChild(this._lbLife, 1000);
 
             // ship
             this._ship = new Ship();
@@ -246,7 +246,7 @@ var GameLayer = cc.Layer.extend({
         if (this._tmpScore < MW.SCORE) {
             this._tmpScore += 1;
         }
-        this._lbLife.setString(MW.LIFE + '');
+        // this._lbLife.setString(MW.LIFE + '');
         this.lbScore.setString("Score: " + this._tmpScore);
     },
     collide:function (a, b) {

@@ -54,3 +54,41 @@ var EnemyType = [
         scoreValue:200
     }
 ];
+var GiftType = [
+    {
+        type:0,
+        textureName:"E0.png",
+        // bulletType:"W2.png",
+        HP:1,
+        moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
+        attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
+        scoreValue:15
+    },
+    {
+        type:0,
+        textureName:"E0.png",
+        // bulletType:"W2.png",
+        HP:1,
+        moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
+        attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
+        scoreValue:15
+    },
+    {
+        type:0,
+        textureName:"E0.png",
+        // bulletType:"W2.png",
+        HP:1,
+        moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
+        attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
+        scoreValue:15
+    },
+    {
+        type:0,
+        textureName:"E0.png",
+        // bulletType:"W2.png",
+        HP:1,
+        moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
+        attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
+        scoreValue:15
+    }
+];

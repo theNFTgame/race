@@ -74,7 +74,8 @@ MW.UNIT_TAG = {
     ENMEY_BULLET:900,
     PLAYER_BULLET:901,
     ENEMY:1000,
-    PLAYER:1000
+    PLAYER:1000,
+    GIFTS:1000
 };
 
 //attack mode
@@ -82,6 +83,14 @@ MW.ENEMY_ATTACK_MODE = {
     NORMAL:1,
     TSUIHIKIDAN:2
 };
+MW.CAR_STATE_TYPE = {
+    NORMAL:0,
+    B1:1,
+    B2:2,
+    B3:3,
+    B4:4,
+};
+MW.CAR_STATE = 0;
 
 //life up sorce
 MW.LIFEUP_SORCE = [50000, 100000, 150000, 200000, 250000, 300000];

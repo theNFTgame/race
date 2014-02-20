@@ -70,6 +70,7 @@ var Ship = cc.Sprite.extend({
                 this._hurtColorLife--;
             }
         }
+        MW.SCORE ++;
     },
     shoot:function (dt) {
         //this.shootEffect();
