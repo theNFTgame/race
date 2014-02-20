@@ -1,4 +1,4 @@
-var Enemy = cc.Sprite.extend({
+var Gift = cc.Sprite.extend({
     eID:0,
     enemyType:1,
     active:true,

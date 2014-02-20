@@ -4,6 +4,7 @@ var EnemyType = [
         textureName:"E0.png",
         // bulletType:"W2.png",
         HP:1,
+        speed:200,
         moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
         attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
         scoreValue:15
@@ -13,6 +14,7 @@ var EnemyType = [
         textureName:"E1.png",
         // bulletType:"W2.png",
         HP:1,
+        speed:300,
         moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
         attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
         scoreValue:40
@@ -22,6 +24,7 @@ var EnemyType = [
         textureName:"E2.png",
         // bulletType:"W2.png",
         HP:1,
+        speed:250,
         moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
         attackMode:MW.ENEMY_ATTACK_MODE.TSUIHIKIDAN,
         scoreValue:60
@@ -31,6 +34,7 @@ var EnemyType = [
         textureName:"E3.png",
         // bulletType:"W2.png",
         HP:1,
+        speed:350,
         moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
         attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
         scoreValue:80
@@ -40,6 +44,7 @@ var EnemyType = [
         textureName:"E4.png",
         // bulletType:"W2.png",
         HP:1,
+        speed:400,
         moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
         attackMode:MW.ENEMY_ATTACK_MODE.TSUIHIKIDAN,
         scoreValue:150
@@ -49,6 +54,7 @@ var EnemyType = [
         textureName:"E5.png",
         // bulletType:"W2.png",
         HP:1,
+        speed:500,
         moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
         attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
         scoreValue:200

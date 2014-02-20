@@ -104,7 +104,8 @@ MW.CONTAINER = {
     SPARKS:[],
     HITS:[],
     BACKSKYS:[],
-    BACKTILEMAPS:[]
+    BACKTILEMAPS:[],
+    GIFTS:[]
 };
 
 //bullet speed
@@ -114,3 +115,4 @@ MW.BULLET_SPEED = {
 };
 // the counter of active enemies
 MW.ACTIVE_ENEMIES = 0;
+MW.ACTIVE_GIFT = 0;

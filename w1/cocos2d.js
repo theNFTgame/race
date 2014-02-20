@@ -47,6 +47,7 @@ var MW = MW || {};
             'src/Effect.js',
             'src/Bullet.js',
             'src/Enemy.js',
+            'src/Gift.js',
             'src/Explosion.js',
             'src/Ship.js',
             'src/LevelManager.js',
