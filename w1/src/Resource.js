@@ -46,10 +46,8 @@ var g_mainmenu = [
     {src:res.menuTitle_png},
     {src:res.textureTransparentPack_plist},
     {src:res.textureTransparentPack_png},
-    {src:res.Cars}
-];
+    {src:res.Cars},
 
-var g_maingame = [
     //image
     {src:res.cocos2d_html5_png},
     {src:res.gameOver_png},
@@ -81,3 +79,6 @@ var g_maingame = [
     // FNT
     {src:res.arial_14_fnt}
 ];
+
+
+var g_maingame = [];

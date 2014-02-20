@@ -89,12 +89,12 @@ var SysMenu = cc.Layer.extend({
     },
     onNewGame:function (pSender) {
         //load resources
-        cc.LoaderScene.preload(g_maingame, function () {
+        // cc.LoaderScene.preload(g_maingame, function () {
             var scene = cc.Scene.create();
             scene.addChild(GameLayer.create());
             scene.addChild(GameControlMenu.create());
             cc.Director.getInstance().replaceScene(cc.TransitionFade.create(1.2, scene));
-        }, this);
+        // }, this);
     },
     onSettings:function (pSender) {
         this.onButtonEffect();
