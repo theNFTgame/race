@@ -5,7 +5,7 @@ var EnemyType = [
         // bulletType:"W2.png",
         HP:1,
         moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
-        attackMode:MW.ENEMY_MOVE_TYPE.NORMAL,
+        attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
         scoreValue:15
     },
     {
@@ -14,7 +14,7 @@ var EnemyType = [
         // bulletType:"W2.png",
         HP:1,
         moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
-        attackMode:MW.ENEMY_MOVE_TYPE.NORMAL,
+        attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
         scoreValue:40
     },
     {
@@ -32,7 +32,7 @@ var EnemyType = [
         // bulletType:"W2.png",
         HP:1,
         moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
-        attackMode:MW.ENEMY_MOVE_TYPE.NORMAL,
+        attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
         scoreValue:80
     },
     {
@@ -50,7 +50,7 @@ var EnemyType = [
         // bulletType:"W2.png",
         HP:1,
         moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
-        attackMode:MW.ENEMY_MOVE_TYPE.NORMAL,
+        attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
         scoreValue:200
     }
 ];

@@ -1,5 +1,5 @@
 var Level1 = {
-    enemyMax:6,
+    enemyMax:8,
     enemies:[
         {
             ShowType:"Repeate",

@@ -47,7 +47,7 @@ var Enemy = cc.Sprite.extend({
         }
 
         var p = this.getPosition();
-        if (p.x < 0 || p.x > g_sharedGameLayer.screenRect.width || p.y < 0 || p.y > g_sharedGameLayer.screenRect.height) {
+        if (p.x < 0 || p.x > g_sharedGameLayer.screenRect.width || p.y < 0 || p.y > g_sharedGameLayer.screenRect.height + 180) {
             this.active = false;
             this.goaway();
         }
