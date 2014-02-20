@@ -61,7 +61,7 @@ var LevelManager = cc.Class.extend({
 
         // 这里要改成只在某些赛道里出现
         // Math.max(80, 180 * Math.random())
-        var enemypos = cc.p( 80 + (winSize.width - 160) * Math.random(), winSize.height + Math.max(60, 180 * Math.random()));
+        var enemypos = cc.p( 100 + (winSize.width - 140) * Math.random(), winSize.height + Math.max(60, 180 * Math.random()));
         var enemycs =  addEnemy.getContentSize();
         addEnemy.setPosition( enemypos );
 
