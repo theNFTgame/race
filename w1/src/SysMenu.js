@@ -72,11 +72,13 @@ var SysMenu = cc.Layer.extend({
             menu.setPosition(winSize.width / 2, winSize.height / 2 - 80);
             this.schedule(this.update, 0.1);
 
-            this._ship = cc.Sprite.createWithSpriteFrameName("ship01.png");
+            // this._ship = cc.Sprite.createWithSpriteFrameName("ship01.png");
+            this._ship = cc.Sprite.create(res.Cars, cc.rect(0, 0, 100, 200));
+            this._ship.setScale(0.5);
             this.addChild(this._ship, 0, 4);
-            var pos = cc.p(Math.random() * winSize.width, 0);
+            var pos = cc.p(80 + (winSize.width - 160) * Math.random(), 0);
             this._ship.setPosition( pos );
-            this._ship.runAction(cc.MoveBy.create(2, cc.p(Math.random() * winSize.width, pos.y + winSize.height + 100)));
+            this._ship.runAction(cc.MoveTo.create(2, cc.p(80 + (winSize.width - 160) * Math.random(), pos.y + winSize.height + 100)));
 
             if (MW.SOUND) {
                 cc.AudioEngine.getInstance().setMusicVolume(0.7);
@@ -110,11 +112,11 @@ var SysMenu = cc.Layer.extend({
     },
     update:function () {
         if (this._ship.getPosition().y > 480) {
-            var pos = cc.p(Math.random() * winSize.width, 10);
+            var pos = cc.p(80 + (winSize.width - 160) * Math.random(), 10);
             this._ship.setPosition( pos );
-            this._ship.runAction( cc.MoveBy.create(
+            this._ship.runAction( cc.MoveTo.create(
                 parseInt(5 * Math.random(), 10),
-                cc.p(Math.random() * winSize.width, pos.y + 480)));
+                cc.p(80 + (winSize.width - 160) * Math.random(), pos.y + 480)));
         }
     },
     onButtonEffect:function(){
