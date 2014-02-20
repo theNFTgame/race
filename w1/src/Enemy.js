@@ -21,7 +21,10 @@ var Enemy = cc.Sprite.extend({
         this.attackMode = arg.attackMode;
         this.enemyType = arg.type;
 
-        this.initWithSpriteFrameName(arg.textureName);
+        // this.initWithSpriteFrameName(arg.textureName);
+        cc.log(arg);
+        this.initWithFile(res.Cars, cc.rect(0, 0, 100, 200));
+        this.setScale(0.5);
         this.schedule(this.shoot, this.delayTime);
     },
     _timeTick:0,

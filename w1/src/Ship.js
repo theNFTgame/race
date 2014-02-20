@@ -17,23 +17,25 @@ var Ship = cc.Sprite.extend({
         this._super();
 
         //init life
-        this.initWithSpriteFrameName("ship01.png");
+        // this.initWithSpriteFrameName("ship01.png");
+        this.initWithFile(res.Cars, cc.rect(0, 0, 100, 200));
         this.setTag(this.zOrder);
         this.setPosition(this.appearPosition);
+        this.setScale(0.5);
 
-        // set frame
-        var frame0 = cc.SpriteFrameCache.getInstance().getSpriteFrame("ship01.png");
-        var frame1 = cc.SpriteFrameCache.getInstance().getSpriteFrame("ship02.png");
+        // // set frame
+        // var frame0 = cc.SpriteFrameCache.getInstance().getSpriteFrame("ship01.png");
+        // var frame1 = cc.SpriteFrameCache.getInstance().getSpriteFrame("ship02.png");
 
-        var animFrames = [];
-        animFrames.push(frame0);
-        animFrames.push(frame1);
+        // var animFrames = [];
+        // animFrames.push(frame0);
+        // animFrames.push(frame1);
 
-        // ship animate
-        var animation = cc.Animation.create(animFrames, 0.1);
-        var animate = cc.Animate.create(animation);
-        this.runAction(cc.RepeatForever.create(animate));
-        this.schedule(this.shoot, 1 / 6);
+        // // ship animate
+        // var animation = cc.Animation.create(animFrames, 0.1);
+        // var animate = cc.Animate.create(animation);
+        // this.runAction(cc.RepeatForever.create(animate));
+        // this.schedule(this.shoot, 1 / 6);
 
         this.initBornSprite();
         this.born();

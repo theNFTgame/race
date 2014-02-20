@@ -30,7 +30,8 @@ var res = {
     textureOpaquePack_png : 'res/textureOpaquePack.png',
     textureTransparentPack_plist : 'res/textureTransparentPack.plist',
     textureTransparentPack_png : 'res/textureTransparentPack.png',
-    myCarbackground : 'res/background2.jpg'
+    myCarbackground : 'res/background2.jpg',
+    Cars : 'res/cars.png'
 };
 
 var g_mainmenu = [
@@ -44,7 +45,8 @@ var g_mainmenu = [
     {src:res.mainMainMusic_ogg},
     {src:res.menuTitle_png},
     {src:res.textureTransparentPack_plist},
-    {src:res.textureTransparentPack_png}
+    {src:res.textureTransparentPack_png},
+    {src:res.Cars}
 ];
 
 var g_maingame = [
