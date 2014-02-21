@@ -25,7 +25,7 @@ var EnemyType = [
         // bulletType:"W2.png",
         HP:1,
         speed:250,
-        moveType:MW.ENEMY_MOVE_TYPE.VERTICAL2,
+        moveType:MW.ENEMY_MOVE_TYPE.ATTACK,
         attackMode:MW.ENEMY_ATTACK_MODE.TSUIHIKIDAN,
         scoreValue:60
     },
@@ -35,7 +35,7 @@ var EnemyType = [
         // bulletType:"W2.png",
         HP:1,
         speed:350,
-        moveType:MW.ENEMY_MOVE_TYPE.ATTACK,
+        moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
         attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
         scoreValue:80
     },
@@ -55,7 +55,7 @@ var EnemyType = [
         // bulletType:"W2.png",
         HP:1,
         speed:500,
-        moveType:MW.ENEMY_MOVE_TYPE.ATTACK,
+        moveType:MW.ENEMY_MOVE_TYPE.VERTICAL3,
         attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
         scoreValue:200
     }

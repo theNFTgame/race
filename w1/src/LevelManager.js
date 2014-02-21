@@ -76,9 +76,13 @@ var LevelManager = cc.Class.extend({
                 break;
             case MW.ENEMY_MOVE_TYPE.VERTICAL:
                 offset = cc.p(0, -winSize.height - enemycs.height);
-                tmpAction = cc.MoveBy.create(2, offset);
+                tmpAction = cc.MoveBy.create(3, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.VERTICAL2:
+                offset = cc.p(0, -winSize.height - enemycs.height);
+                tmpAction = cc.MoveBy.create(2, offset);
+                break;
+            case MW.ENEMY_MOVE_TYPE.VERTICAL3:
                 offset = cc.p(0, -winSize.height - enemycs.height);
                 tmpAction = cc.MoveBy.create(1, offset);
                 break;
