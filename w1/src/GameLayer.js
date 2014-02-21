@@ -283,7 +283,7 @@ var GameLayer = cc.Layer.extend({
     },
 
     _movingBackground:function(dt){
-        var movingDist = 16 * dt;       // background's moving rate is 16 pixel per second
+        var movingDist = 360 * dt;       // background's moving rate is 16 pixel per second
 
         var locSkyHeight = this._backSkyHeight, locBackSky = this._backSky;
         var currPosY = locBackSky.getPositionY() - movingDist;
