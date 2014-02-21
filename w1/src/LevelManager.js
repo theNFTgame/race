@@ -70,7 +70,7 @@ var LevelManager = cc.Class.extend({
         // 这里要改成只在某些赛道里出现
         // Math.max(80, 180 * Math.random())
         var fromX = fRandomBy( 0, 3) * 35 ;
-        var enemypos = cc.p( 110 + fromX , winSize.height + Math.max(70, 180 * Math.random()));
+        var enemypos = cc.p( 110 + fromX , winSize.height + Math.max(90, 180 * Math.random()));
         var enemycs =  addEnemy.getContentSize();
         addEnemy.setPosition( enemypos );
 

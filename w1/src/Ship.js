@@ -44,19 +44,28 @@ var Ship = cc.Sprite.extend({
         // Keys are only enabled on the browser
         if (sys.platform == 'browser') {
             var pos = this.getPosition();
+            // cc.log('1, x:'+ pos.x + ', y:' + pos.y );
             if ((MW.KEYS[cc.KEY.w] || MW.KEYS[cc.KEY.up]) && pos.y <= winSize.height) {
                 pos.y += dt * this.speed;
             }
             if ((MW.KEYS[cc.KEY.s] || MW.KEYS[cc.KEY.down]) && pos.y >= 0) {
                 pos.y -= dt * this.speed;
             }
+            // if ((MW.KEYS[cc.KEY.a] || MW.KEYS[cc.KEY.left]) && pos.x >= 110) {
             if ((MW.KEYS[cc.KEY.a] || MW.KEYS[cc.KEY.left]) && pos.x >= 0) {
                 pos.x -= dt * this.speed;
             }
             if ((MW.KEYS[cc.KEY.d] || MW.KEYS[cc.KEY.right]) && pos.x <= winSize.width) {
+            // if ((MW.KEYS[cc.KEY.d] || MW.KEYS[cc.KEY.right]) && pos.x <= 210) {
                 pos.x += dt * this.speed;
             }
+
+            
+            // pos.x = Math.min( pos.x , 210);
+            pos.x = 110;
             this.setPosition(pos);
+            // cc.log('2, x:'+ pos.x + ', y:' + pos.y );
+            // cc.log(this.getPosition());
         }
 
         if (this.HP <= 0) {

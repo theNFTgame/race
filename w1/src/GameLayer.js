@@ -115,7 +115,7 @@ var GameLayer = cc.Layer.extend({
                 this.setTouchEnabled(true);
 
 
-            // cc.log(sys.capabilities);
+            cc.log(sys.capabilities);
             // schedule
             this.scheduleUpdate();
             this.schedule(this.scoreCounter, 1);
@@ -164,6 +164,8 @@ var GameLayer = cc.Layer.extend({
             var curPos = this._ship.getPosition();
             curPos = cc.pAdd(curPos, delta);
             curPos = cc.pClamp(curPos, cc.POINT_ZERO, cc.p(winSize.width, winSize.height));
+            // cc.log(curPos);
+            curPos.x = Math.max( 110 , Math.min( curPos.x , 210) );
             this._ship.setPosition(curPos);
         }
     },
@@ -283,6 +285,9 @@ var GameLayer = cc.Layer.extend({
     },
 
     _movingBackground:function(dt){
+
+        // 这里改速度。
+
         var movingDist = 360 * dt;       // background's moving rate is 16 pixel per second
 
         var locSkyHeight = this._backSkyHeight, locBackSky = this._backSky;
