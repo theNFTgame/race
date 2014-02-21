@@ -104,23 +104,23 @@ var Ship = cc.Sprite.extend({
         return cc.rect(p.x - a.width / 2, p.y - a.height / 2, a.width, a.height / 2);
     },
     initBornSprite:function () {
-        this.bornSprite = cc.Sprite.createWithSpriteFrameName("ship03.png");
-        this.bornSprite.setBlendFunc(gl.SRC_ALPHA, gl.ONE);
-        this.bornSprite.setPosition(this.getContentSize().width / 2, 12);
-        this.bornSprite.setVisible(false);
-        this.addChild(this.bornSprite, 3000, 99999);
+        // this.bornSprite = cc.Sprite.createWithSpriteFrameName("ship03.png");
+        // this.bornSprite.setBlendFunc(gl.SRC_ALPHA, gl.ONE);
+        // this.bornSprite.setPosition(this.getContentSize().width / 2, 12);
+        // this.bornSprite.setVisible(false);
+        // this.addChild(this.bornSprite, 3000, 99999);
     },
     born:function () {
         //revive effect
         this.canBeAttack = false;
-        this.bornSprite.setScale(8);
-        this.bornSprite.runAction(cc.ScaleTo.create(0.5, 1, 1));
-        this.bornSprite.setVisible(true);
+        // this.bornSprite.setScale(8);
+        // this.bornSprite.runAction(cc.ScaleTo.create(0.5, 1, 1));
+        // this.bornSprite.setVisible(false);
         var blinks = cc.Blink.create(3, 9);
         var makeBeAttack = cc.CallFunc.create(function (t) {
             t.canBeAttack = true;
             t.setVisible(true);
-            t.bornSprite.setVisible(false);
+            // t.bornSprite.setVisible(false);
         }.bind(this));
         this.runAction(cc.Sequence.create(cc.DelayTime.create(0.5), blinks, makeBeAttack));
 
