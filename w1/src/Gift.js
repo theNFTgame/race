@@ -1,25 +1,22 @@
 var Gift = cc.Sprite.extend({
     eID:0,
-    enemyType:1,
+    giftType:1,
     active:true,
     speed:200,
-    bulletSpeed:MW.BULLET_SPEED.ENEMY,
+    bulletSpeed:MW.BULLET_SPEED.Gift,
     HP:1,
     bulletPowerValue:1,
     moveType:null,
     scoreValue:200,
     zOrder:1000,
     delayTime:1 + 1.2 * Math.random(),
-    attackMode:MW.ENEMY_MOVE_TYPE.NORMAL,
     _hurtColorLife:0,
     ctor:function (arg) {
         this._super();
 
         this.HP = arg.HP;
         this.moveType = arg.moveType;
-        this.scoreValue = arg.scoreValue;
-        this.attackMode = arg.attackMode;
-        this.enemyType = arg.type;
+        this.giftType = arg.type;
         this.speed = arg.speed;
 
         // this.initWithSpriteFrameName(arg.textureName);
@@ -59,7 +56,7 @@ var Gift = cc.Sprite.extend({
         this.active = false;
         this.stopAllActions();
         this.unschedule(this.shoot);
-        MW.ACTIVE_ENEMIES--;
+        MW.ACTIVE_GIFTS--;
         // MW.SCORE += this.scoreValue;
     },
     destroy:function () {
@@ -74,7 +71,7 @@ var Gift = cc.Sprite.extend({
         this.active = false;
         this.stopAllActions();
         this.unschedule(this.shoot);
-        MW.ACTIVE_ENEMIES--;
+        MW.ACTIVE_GIFTS--;
     },
     shoot:function () {
         // var p = this.getPosition();
@@ -91,12 +88,12 @@ var Gift = cc.Sprite.extend({
     }
 });
 
-Enemy.getOrCreateEnemy = function (arg) {
+Gift.getOrCreateGift = function (arg) {
     var selChild = null;
-    for (var j = 0; j < MW.CONTAINER.ENEMIES.length; j++) {
-        selChild = MW.CONTAINER.ENEMIES[j];
+    for (var j = 0; j < MW.CONTAINER.GIFTS.length; j++) {
+        selChild = MW.CONTAINER.GIFTS[j];
 
-        if (selChild.active == false && selChild.enemyType == arg.type) {
+        if (selChild.active == false && selChild.giftType == arg.type) {
             selChild.HP = arg.HP;
             selChild.active = true;
             selChild.moveType = arg.moveType;
@@ -106,31 +103,31 @@ Enemy.getOrCreateEnemy = function (arg) {
 
             selChild.schedule(selChild.shoot, selChild.delayTime);
             selChild.setVisible(true);
-            MW.ACTIVE_ENEMIES++;
+            MW.ACTIVE_GIFTS++;
             return selChild;
         }
     }
-    selChild = Enemy.create(arg);
-    MW.ACTIVE_ENEMIES++;
+    selChild = Gift.create(arg);
+    MW.ACTIVE_GIFTS++;
     return selChild;
 };
 
-Enemy.create = function (arg) {
-    var enemy = new Enemy(arg);
-    g_sharedGameLayer.addEnemy(enemy, enemy.zOrder, MW.UNIT_TAG.ENEMY);
-    MW.CONTAINER.ENEMIES.push(enemy);
-    return enemy;
+Gift.create = function (arg) {
+    var Gift = new Gift(arg);
+    g_sharedGameLayer.addGift(Gift, Gift.zOrder, MW.UNIT_TAG.Gift);
+    MW.CONTAINER.GIFTS.push(Gift);
+    return Gift;
 };
 
-Enemy.preSet = function () {
-    var enemy = null;
+Gift.preSet = function () {
+    var Gift = null;
     for (var i = 0; i < 3; i++) {
-        for (var i = 0; i < EnemyType.length; i++) {
-            enemy = Enemy.create(EnemyType[i]);
-            enemy.setVisible(false);
-            enemy.active = false;
-            enemy.stopAllActions();
-            enemy.unscheduleAllCallbacks();
+        for (var i = 0; i < giftType.length; i++) {
+            Gift = Gift.create(giftType[i]);
+            Gift.setVisible(false);
+            Gift.active = false;
+            Gift.stopAllActions();
+            Gift.unscheduleAllCallbacks();
         }
     }
 };
