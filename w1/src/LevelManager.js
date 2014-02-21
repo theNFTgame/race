@@ -61,7 +61,7 @@ var LevelManager = cc.Class.extend({
 
         // 这里要改成只在某些赛道里出现
         // Math.max(80, 180 * Math.random())
-        var enemypos = cc.p( 100 + (winSize.width - 140) * Math.random(), winSize.height + Math.max(60, 180 * Math.random()));
+        var enemypos = cc.p( 100 + (winSize.width - 200) * Math.random(), winSize.height + Math.max(70, 180 * Math.random()));
         var enemycs =  addEnemy.getContentSize();
         addEnemy.setPosition( enemypos );
 
@@ -70,12 +70,17 @@ var LevelManager = cc.Class.extend({
         var a1=0;
         switch (addEnemy.moveType) {
             case MW.ENEMY_MOVE_TYPE.ATTACK:
-                offset = this._gameLayer._ship.getPosition();
-                tmpAction = cc.MoveTo.create(1, offset);
+                // offset = this._gameLayer._ship.getPosition();
+                offset = cc.p(0, -winSize.height - enemycs.height);
+                tmpAction = cc.MoveBy.create(4, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.VERTICAL:
                 offset = cc.p(0, -winSize.height - enemycs.height);
-                tmpAction = cc.MoveBy.create(4, offset);
+                tmpAction = cc.MoveBy.create(2, offset);
+                break;
+            case MW.ENEMY_MOVE_TYPE.VERTICAL2:
+                offset = cc.p(0, -winSize.height - enemycs.height);
+                tmpAction = cc.MoveBy.create(1, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.HORIZONTAL:
                 offset = cc.p(0, -100 - 200 * Math.random());

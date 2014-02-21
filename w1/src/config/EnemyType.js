@@ -5,7 +5,7 @@ var EnemyType = [
         // bulletType:"W2.png",
         HP:1,
         speed:200,
-        moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
+        moveType:MW.ENEMY_MOVE_TYPE.ATTACK,
         attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
         scoreValue:15
     },
@@ -25,7 +25,7 @@ var EnemyType = [
         // bulletType:"W2.png",
         HP:1,
         speed:250,
-        moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
+        moveType:MW.ENEMY_MOVE_TYPE.VERTICAL2,
         attackMode:MW.ENEMY_ATTACK_MODE.TSUIHIKIDAN,
         scoreValue:60
     },
@@ -35,7 +35,7 @@ var EnemyType = [
         // bulletType:"W2.png",
         HP:1,
         speed:350,
-        moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
+        moveType:MW.ENEMY_MOVE_TYPE.ATTACK,
         attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
         scoreValue:80
     },
@@ -45,7 +45,7 @@ var EnemyType = [
         // bulletType:"W2.png",
         HP:1,
         speed:400,
-        moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
+        moveType:MW.ENEMY_MOVE_TYPE.VERTICAL2,
         attackMode:MW.ENEMY_ATTACK_MODE.TSUIHIKIDAN,
         scoreValue:150
     },
@@ -55,7 +55,7 @@ var EnemyType = [
         // bulletType:"W2.png",
         HP:1,
         speed:500,
-        moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
+        moveType:MW.ENEMY_MOVE_TYPE.ATTACK,
         attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
         scoreValue:200
     }
@@ -75,7 +75,7 @@ var GiftType = [
         textureName:"E0.png",
         // bulletType:"W2.png",
         HP:1,
-        moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
+        moveType:MW.ENEMY_MOVE_TYPE.ATTACK,
         attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
         scoreValue:15
     },
@@ -84,7 +84,7 @@ var GiftType = [
         textureName:"E0.png",
         // bulletType:"W2.png",
         HP:1,
-        moveType:MW.ENEMY_MOVE_TYPE.VERTICAL,
+        moveType:MW.ENEMY_MOVE_TYPE.ATTACK,
         attackMode:MW.ENEMY_ATTACK_MODE.NORMAL,
         scoreValue:15
     },
