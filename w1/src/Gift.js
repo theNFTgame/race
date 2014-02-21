@@ -20,7 +20,7 @@ var Gift = cc.Sprite.extend({
         this.speed = arg.speed;
 
         // this.initWithSpriteFrameName(arg.textureName);
-        cc.log(arg);
+        // cc.log(arg);
         this.initWithFile(res.Cars, cc.rect(0, 0, 100, 200));
         this.setScale(0.5);
         this.schedule(this.shoot, this.delayTime);
@@ -113,21 +113,22 @@ Gift.getOrCreateGift = function (arg) {
 };
 
 Gift.create = function (arg) {
-    var Gift = new Gift(arg);
-    g_sharedGameLayer.addGift(Gift, Gift.zOrder, MW.UNIT_TAG.Gift);
-    MW.CONTAINER.GIFTS.push(Gift);
-    return Gift;
+    var gift = new Gift(arg);
+    // cc.log(GiftType)
+    g_sharedGameLayer.addGift(gift, gift.zOrder, MW.UNIT_TAG.GIFT);
+    MW.CONTAINER.GIFTS.push(gift);
+    return gift;
 };
 
 Gift.preSet = function () {
-    var Gift = null;
+    var gift = null;
     for (var i = 0; i < 3; i++) {
-        for (var i = 0; i < giftType.length; i++) {
-            Gift = Gift.create(giftType[i]);
-            Gift.setVisible(false);
-            Gift.active = false;
-            Gift.stopAllActions();
-            Gift.unscheduleAllCallbacks();
+        for (var i = 0; i < GiftType.length; i++) {
+            gift = Gift.create(GiftType[i]);
+            gift.setVisible(false);
+            gift.active = false;
+            gift.stopAllActions();
+            gift.unscheduleAllCallbacks();
         }
     }
 };

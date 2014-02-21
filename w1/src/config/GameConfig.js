@@ -45,9 +45,20 @@ MW.SOUND = true;
 MW.ENEMY_MOVE_TYPE = {
     ATTACK:0,
     VERTICAL:1,
+    VERTICAL2:2,
+    VERTICAL3:3,
+    HORIZONTAL:4,
+    OVERLAP:5
+};
+
+
+MW.GIFT_MOVE_TYPE = {
+    ATTACK:0,
+    VERTICAL:1,
     HORIZONTAL:2,
     OVERLAP:3
 };
+
 
 //delta x
 MW.DELTA_X = -100;

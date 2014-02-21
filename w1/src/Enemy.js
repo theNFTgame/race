@@ -23,7 +23,7 @@ var Enemy = cc.Sprite.extend({
         this.speed = arg.speed;
 
         // this.initWithSpriteFrameName(arg.textureName);
-        cc.log(arg);
+        // cc.log(arg);
         this.initWithFile(res.Cars, cc.rect(0, 0, 100, 200));
         this.setScale(0.5);
         this.schedule(this.shoot, this.delayTime);

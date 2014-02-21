@@ -39,6 +39,7 @@ var GameLayer = cc.Layer.extend({
 
             // reset global values
             MW.CONTAINER.ENEMIES = [];
+            MW.CONTAINER.GIFTS = [];
             MW.CONTAINER.ENEMY_BULLETS = [];
             MW.CONTAINER.PLAYER_BULLETS = [];
             MW.CONTAINER.EXPLOSIONS = [];
@@ -47,6 +48,7 @@ var GameLayer = cc.Layer.extend({
             MW.CONTAINER.BACKSKYS = [];
             MW.CONTAINER.BACKTILEMAPS = [];
             MW.ACTIVE_ENEMIES = 0;
+            MW.ACTIVE_GIFTS = 0;
 
             MW.SCORE = 0;
             MW.LIFE = 1;
@@ -112,6 +114,8 @@ var GameLayer = cc.Layer.extend({
             /*if ('touches' in sys.capabilities)*/
                 this.setTouchEnabled(true);
 
+
+            // cc.log(sys.capabilities);
             // schedule
             this.scheduleUpdate();
             this.schedule(this.scoreCounter, 1);
@@ -131,6 +135,7 @@ var GameLayer = cc.Layer.extend({
             SparkEffect.preSet();
             Explosion.preSet();
             BackSky.preSet();
+            Gift.preSet();
             // BackTileMap.preSet();
 
             this.initBackground();
@@ -332,6 +337,9 @@ GameLayer.scene = function () {
 
 GameLayer.prototype.addEnemy = function (enemy, z, tag) {
     this._texTransparentBatch.addChild(enemy, z, tag);
+};
+GameLayer.prototype.addGift = function (gift, z, tag) {
+    this._texTransparentBatch.addChild(gift, z, tag);
 };
 
 GameLayer.prototype.addExplosions = function (explosion) {
