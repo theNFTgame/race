@@ -1,30 +1,30 @@
 cc.dumpConfig();
 
-function handleOrientationEvent(event) {
+// function handleOrientationEvent(event) {
         
-    var x = event.beta ? event.beta : event.y * 90;
-    var y = event.gamma ? event.gamma : event.x * 90;
-    //window.console && console.info('Raw position: x, y: ', x, y);
-    // MW.DeviceOrientation
-    if (!MW.DeviceOrientation){
-        MW.DeviceOrientation = {};
-    }
-    if (!MW.DeviceOrientation.initialX && !MW.DeviceOrientation.initialY) {
-        MW.DeviceOrientation.initialX = x;
-        MW.DeviceOrientation.initialY = y;
-        // cc.log('start DeviceOrientation!');
-    } else {
-        var positionX = MW.DeviceOrientation.initialX - x;
-        var positionY = MW.DeviceOrientation.initialY - y;
+//     var x = event.beta ? event.beta : event.y * 90;
+//     var y = event.gamma ? event.gamma : event.x * 90;
+//     //window.console && console.info('Raw position: x, y: ', x, y);
+//     // MW.DeviceOrientation
+//     if (!MW.DeviceOrientation){
+//         MW.DeviceOrientation = {};
+//     }
+//     if (!MW.DeviceOrientation.initialX && !MW.DeviceOrientation.initialY) {
+//         MW.DeviceOrientation.initialX = x;
+//         MW.DeviceOrientation.initialY = y;
+//         // cc.log('start DeviceOrientation!');
+//     } else {
+//         var positionX = MW.DeviceOrientation.initialX - x;
+//         var positionY = MW.DeviceOrientation.initialY - y;
 
-        MW.DeviceOrientation.PostX = positionX;
-        MW.DeviceOrientation.PostY = positionY;
-        // cc.log(MW.DeviceOrientation.initialY);
-        // cc.log(event);
-    }
-}
-window.addEventListener("MozOrientation", handleOrientationEvent, true);
-window.addEventListener("deviceorientation", handleOrientationEvent, true);
+//         MW.DeviceOrientation.PostX = positionX;
+//         MW.DeviceOrientation.PostY = positionY;
+//         // cc.log(MW.DeviceOrientation.initialY);
+//         // cc.log(event);
+//     }
+// }
+// window.addEventListener("MozOrientation", handleOrientationEvent, true);
+// window.addEventListener("deviceorientation", handleOrientationEvent, true);
 
 var SysMenu = cc.Layer.extend({
     _ship:null,

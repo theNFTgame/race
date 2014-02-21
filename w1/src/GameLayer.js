@@ -111,11 +111,21 @@ var GameLayer = cc.Layer.extend({
                 this.setMouseEnabled(true);
 
             if (sys.capabilities.hasOwnProperty('touches'))
-            /*if ('touches' in sys.capabilities)*/
+            // //if ('touches' in sys.capabilities)
                 this.setTouchEnabled(true);
 
+            if (sys.capabilities.hasOwnProperty('accelerometer')){
+                this.setAccelerometerEnabled(true);
+                this.setAccelerometerInterval(1/30);
+                this.prevX = 0;
+                this.prevY = 0;
+            }
+            /*if ('accelerometer' in sys.capabilities)*/
+                
+            
 
-            cc.log(sys.capabilities);
+
+            // cc.log(sys.capabilities);
             // schedule
             this.scheduleUpdate();
             this.schedule(this.scoreCounter, 1);
@@ -151,11 +161,36 @@ var GameLayer = cc.Layer.extend({
     },
 
     onTouchesMoved:function (touches, event) {
+        cc.log(touches[0]);
         this.processEvent(touches[0]);
     },
 
     onMouseDragged:function (event) {
         this.processEvent(event);
+    },
+
+    onAccelerometer:function(accelEvent) {
+        cc.log('Accel x: '+ accelEvent.x + ' y:' + accelEvent.y + ' z:' + accelEvent.z + ' time:' + accelEvent.timestamp );
+        var w = winSize.width;
+        var h = winSize.height;
+
+        var x = w * accelEvent.x + w/2;
+        var y = h * accelEvent.y + h/2;
+
+        // Low pass filter
+        x = x*0.2 + this.prevX*0.8;
+        y = y*0.2 + this.prevY*0.8;
+
+        this.prevX = x;
+        this.prevY = y;
+        
+        if (this._state == STATE_PLAYING) {
+            var curPos = this._ship.getPosition();
+            curPos.x = x;
+            curPos.y = y;
+            curPos.x = Math.max( 110 , Math.min( curPos.x , 210) );
+            this._ship.setPosition(curPos);
+        }
     },
 
     processEvent:function (event) {
@@ -164,7 +199,6 @@ var GameLayer = cc.Layer.extend({
             var curPos = this._ship.getPosition();
             curPos = cc.pAdd(curPos, delta);
             curPos = cc.pClamp(curPos, cc.POINT_ZERO, cc.p(winSize.width, winSize.height));
-            // cc.log(curPos);
             curPos.x = Math.max( 110 , Math.min( curPos.x , 210) );
             this._ship.setPosition(curPos);
         }
