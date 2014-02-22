@@ -170,7 +170,7 @@ var GameLayer = cc.Layer.extend({
     },
 
     onAccelerometer:function(accelEvent) {
-        cc.log('Accel x: '+ accelEvent.x + ' y:' + accelEvent.y + ' z:' + accelEvent.z + ' time:' + accelEvent.timestamp );
+        
         var w = winSize.width;
         var h = winSize.height;
 
@@ -185,11 +185,14 @@ var GameLayer = cc.Layer.extend({
         this.prevY = y;
         
         if (this._state == STATE_PLAYING) {
-            var curPos = this._ship.getPosition();
-            curPos.x = x;
-            curPos.y = y;
-            curPos.x = Math.max( 110 , Math.min( curPos.x , 210) );
-            this._ship.setPosition(curPos);
+
+            cc.log('Accel x: '+ accelEvent.x + ' y:' + accelEvent.y + ' z:' + accelEvent.z + ' time:' + accelEvent.timestamp + ', winSize:' + winSize.width + ',\n this.prevX:' + this.prevX + ', this.prevX:' + this.prevX + '\n x:' + x + ',y:' + y);
+
+            x = Math.max( 110 , Math.min( x, 210) );
+            
+            this._ship.setPosition(cc.p(x,y));
+            cc.log(this._ship.setPosition());
+            cc.log('setPosition by onAccelerometer!');
         }
     },
 

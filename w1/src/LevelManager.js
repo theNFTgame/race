@@ -38,7 +38,7 @@ var LevelManager = cc.Class.extend({
     },
 
     loadLevelResource:function(deltaTime){
-        cc.log(this._currentLevel);
+        // cc.log(this._currentLevel);
         if(MW.ACTIVE_ENEMIES>= this._currentLevel.enemyMax){
             return;
         }
