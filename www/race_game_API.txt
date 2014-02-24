@@ -1,0 +1,50 @@
+1.1 get_global_ranking
+
+
+Request: POST
+============================
+game_name:RaceGame
+limit:10 					// top 10
+
+Response: 
+============================
+[
+	{"index":0,"name":"no1","value01":"1777","value02":"0","value03":"0"},
+	{"index":1,"name":"Yorhom","value01":"1262","value02":"0","value03":"0"},
+	{"index":2,"name":"yofine","value01":"1022","value02":"0","value03":"0"},
+	{"index":3,"name":"fan","value01":"825","value02":"0","value03":"0"},
+	{"index":4,"name":"Yorhom2","value01":"748","value02":"0","value03":"0"},
+	...
+]
+
+
+1.2 submit_game_score
+
+Request: POST
+============================
+game_name:RaceGame
+player:player_name 			// player's name
+score:score        			// player's scrore
+
+
+Response: 
+============================
+on success
+============================
+{
+	"result":"success",
+	"message":"",
+	"game_name":"RaceGame",
+	"user_id":"",
+	"user_name":"player_name"
+}
+============================
+on error
+============================
+{
+	"result":"error",
+	"message":"",  			//error message
+	"game_name":"",
+	"user_id":"",
+	"user_name":""
+}

@@ -250,6 +250,19 @@ var GameLayer = cc.Layer.extend({
                 }
             }
         }
+        for (i = 0; i < MW.CONTAINER.GIFTS.length; i++) {
+            selChild = MW.CONTAINER.GIFTS[i];
+            if (!selChild.active)
+                continue;
+
+            if (this.collide(selChild, locShip)) {
+                if (locShip.active) {
+                    selChild.hurt();
+                    // locShip.hurt();
+                    cc.log('get the gift! Type: ' + selChild.giftType );
+                }
+            }
+        }
 
         // for (i = 0; i < MW.CONTAINER.ENEMY_BULLETS.length; i++) {
         //     selChild = MW.CONTAINER.ENEMY_BULLETS[i];
