@@ -28,8 +28,13 @@ var res = {
     menuTitle_png : 'res/menuTitle.png',
     textureOpaquePack_plist : 'res/textureOpaquePack.plist',
     textureOpaquePack_png : 'res/textureOpaquePack.png',
-    textureTransparentPack_plist : 'res/textureTransparentPack.plist',
-    textureTransparentPack_png : 'res/textureTransparentPack.png',
+    // textureTransparentPack_plist : 'res/textureTransparentPack.plist',
+    // textureTransparentPack_png : 'res/textureTransparentPack.png',
+    textureCars_plist : 'res/cars_texture_coordinates.plist',
+    textureCars_png : 'res/cars_texture_coordinates.png',
+    textureTransparentPack_plist : 'res/cars_texture_coordinates.plist',
+    textureTransparentPack_png : 'res/cars_texture_coordinates.png',
+    
     myCarbackground : 'res/background2.jpg',
     Cars : 'res/cars.png',
     Gifts : 'res/gifts.png'
@@ -49,6 +54,9 @@ var g_mainmenu = [
     {src:res.textureTransparentPack_png},
     {src:res.Cars},
     {src:res.Gifts},
+
+    // {src:res.textureCars_plist},
+    // {src:res.textureCars_png},
 
     //image
     {src:res.cocos2d_html5_png},
@@ -83,4 +91,6 @@ var g_mainmenu = [
 ];
 
 
-var g_maingame = [];
+var g_maingame = [
+    
+];

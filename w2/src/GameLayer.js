@@ -67,6 +67,12 @@ var GameLayer = cc.Layer.extend({
             this._texTransparentBatch = cc.SpriteBatchNode.createWithTexture(texTransparent);
             this.addChild(this._texTransparentBatch);
 
+            // // CarsBath
+            // var carTransparent = cc.TextureCache.getInstance().addImage(res.textureCars_png);
+            // this._texCarBatch = cc.SpriteBatchNode.createWithTexture(carTransparent);
+            // this.addChild(this._texTransparentBatch);
+
+
             winSize = cc.Director.getInstance().getWinSize();
             this._levelManager = new LevelManager(this);
 

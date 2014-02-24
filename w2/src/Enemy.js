@@ -26,7 +26,8 @@ var Enemy = cc.Sprite.extend({
         // cc.log(arg);
         //车子的图片
         
-        this.initWithFile(res.Cars, cc.rect(0, 0, 100, 200));
+        // this.initWithFile(res.Cars, cc.rect(0, 0, 100, 200));
+        this.initWithSpriteFrameName(arg.textureName);
         this.setScale(0.5);
         this.schedule(this.shoot, this.delayTime);
     },

@@ -1,7 +1,7 @@
 var EnemyType = [
     {
         type:0,
-        textureName:"E0.png",
+        textureName:"car_e1.png",
         // bulletType:"W2.png",
         HP:1,
         speed:200,
@@ -11,7 +11,7 @@ var EnemyType = [
     },
     {
         type:1,
-        textureName:"E1.png",
+        textureName:"car_e2.png",
         // bulletType:"W2.png",
         HP:1,
         speed:300,
@@ -21,7 +21,7 @@ var EnemyType = [
     },
     {
         type:2,
-        textureName:"E2.png",
+        textureName:"car_e3.png",
         // bulletType:"W2.png",
         HP:1,
         speed:250,
@@ -31,7 +31,7 @@ var EnemyType = [
     },
     {
         type:3,
-        textureName:"E3.png",
+        textureName:"car_e4.png",
         // bulletType:"W2.png",
         HP:1,
         speed:350,
@@ -41,7 +41,7 @@ var EnemyType = [
     },
     {
         type:4,
-        textureName:"E4.png",
+        textureName:"car_e1.png",
         // bulletType:"W2.png",
         HP:1,
         speed:400,
@@ -51,7 +51,7 @@ var EnemyType = [
     },
     {
         type:5,
-        textureName:"E5.png",
+        textureName:"car_e2.png",
         // bulletType:"W2.png",
         HP:1,
         speed:500,
@@ -63,7 +63,9 @@ var EnemyType = [
 var GiftType = [
     {
         type:0,
-        textureName:"E0.png",
+        textureName:"car_adventure_icon.png",
+        txtPng:"car_adventure_txt.png",
+        carPng:"car_adventure.png",
         // bulletType:"W2.png",
         HP:1,
         speed:500,
@@ -75,7 +77,9 @@ var GiftType = [
     },
     {
         type:1,
-        textureName:"E0.png",
+        textureName:"car_comfort_icon.png",
+        txtPng:"car_comfort_txt.png",
+        carPng:"car_comfort.png",
         // bulletType:"W2.png",
         HP:1,
         speed:500,
@@ -87,7 +91,9 @@ var GiftType = [
     },
     {
         type:2,
-        textureName:"E0.png",
+        textureName:"car_smooth_icon.png",
+        txtPng:"car_smooth_txt.png",
+        carPng:"car_smooth.png",
         // bulletType:"W2.png",
         HP:1,
         speed:500,
@@ -99,7 +105,9 @@ var GiftType = [
     },
     {
         type:3,
-        textureName:"E0.png",
+        textureName:"car_sporty_icon.png",
+        txtPng:"car_sporty_txt.png",
+        carPng:"car_sporty.png",
         // bulletType:"W2.png",
         HP:1,
         speed:500,
