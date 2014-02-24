@@ -49,6 +49,7 @@ var GameLayer = cc.Layer.extend({
             MW.CONTAINER.BACKTILEMAPS = [];
             MW.ACTIVE_ENEMIES = 0;
             MW.ACTIVE_GIFTS = 0;
+            MW.GIFT_Countdown = 0;
 
             MW.SCORE = 0;
             MW.LIFE = 1;
@@ -221,9 +222,15 @@ var GameLayer = cc.Layer.extend({
             this.checkIsCollide();
             this.removeInactiveUnit(dt);
             this.checkIsReborn();
+            this.checkGiftStatus();
             this.updateUI();
             this._movingBackground(dt);
         }
+    },
+    checkGiftStatus:function () {
+        // cc.log(this);
+        // cc.log(MW.CONTAINER.GIFTS);
+        // cc.log(MW.ACTIVE_GIFTS);
     },
     checkIsCollide:function () {
         var selChild, bulletChild, giftChild;
@@ -259,6 +266,7 @@ var GameLayer = cc.Layer.extend({
                 if (locShip.active) {
                     selChild.hurt();
                     // locShip.hurt();
+
                     cc.log('get the gift! Type: ' + selChild.giftType );
                 }
             }

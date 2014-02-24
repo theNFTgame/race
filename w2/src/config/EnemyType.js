@@ -67,6 +67,8 @@ var GiftType = [
         // bulletType:"W2.png",
         HP:1,
         speed:500,
+        textTime:120,
+        effectTime:300,
         moveType:MW.GIFT_MOVE_TYPE.VERTICAL,
         attackMode:MW.GIFT_ATTACK_MODE.NORMAL,
         scoreValue:15
@@ -77,6 +79,8 @@ var GiftType = [
         // bulletType:"W2.png",
         HP:1,
         speed:500,
+        textTime:120,
+        effectTime:300,
         moveType:MW.GIFT_MOVE_TYPE.VERTICAL,
         attackMode:MW.GIFT_ATTACK_MODE.NORMAL,
         scoreValue:15
@@ -87,6 +91,8 @@ var GiftType = [
         // bulletType:"W2.png",
         HP:1,
         speed:500,
+        textTime:120,
+        effectTime:300,
         moveType:MW.GIFT_MOVE_TYPE.VERTICAL,
         attackMode:MW.GIFT_ATTACK_MODE.NORMAL,
         scoreValue:15
@@ -97,6 +103,8 @@ var GiftType = [
         // bulletType:"W2.png",
         HP:1,
         speed:500,
+        textTime:120,
+        effectTime:300,
         moveType:MW.GIFT_MOVE_TYPE.VERTICAL,
         attackMode:MW.GIFT_ATTACK_MODE.NORMAL,
         scoreValue:15

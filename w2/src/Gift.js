@@ -90,7 +90,7 @@ var Gift = cc.Sprite.extend({
 });
 
 Gift.getOrCreateGift = function (arg) {
-    cc.log('getOrCreateGift');
+    // cc.log('getOrCreateGift');
     var selChild = null;
     for (var j = 0; j < MW.CONTAINER.GIFTS.length; j++) {
         selChild = MW.CONTAINER.GIFTS[j];

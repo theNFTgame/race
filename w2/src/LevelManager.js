@@ -67,10 +67,17 @@ var LevelManager = cc.Class.extend({
         }
         // cc.log('MW.ACTIVE_GIFTS:' + MW.ACTIVE_GIFTS + ', this._currentLevel.giftMax:' + this._currentLevel.giftMax);
         if(MW.ACTIVE_GIFTS < this._currentLevel.giftMax){
+            cc.log(MW.GIFT_Countdown);
             var newGiftType = fRandomBy( 0, 3) ;
             var selGift = locCurrentLevel.gifts[0];
             // cc.log(selGift);
-            this.addGiftToGameLayer(selGift.Types[newGiftType]);
+            if ( MW.GIFT_Countdown >= 5) {
+                this.addGiftToGameLayer(selGift.Types[newGiftType]);
+                MW.GIFT_Countdown = 0;
+            } else {
+                MW.GIFT_Countdown++;
+            }
+            
             // for(var i = 0; i< locCurrentLevel.gifts.length; i++){
             //     // cc.log(locCurrentLevel.gifts[i]);
             //     var selGift = locCurrentLevel.gifts[i];
@@ -146,7 +153,7 @@ var LevelManager = cc.Class.extend({
         var giftpos = cc.p( 110 + fromX , winSize.height + Math.max(90, 180 * Math.random()));
         var giftcs =  addGift.getContentSize();
         addGift.setPosition( giftpos );
-        cc.log(addGift.getPosition());
+        // cc.log(addGift.getPosition());
 
         var offset, tmpAction;
         var a0=0;
