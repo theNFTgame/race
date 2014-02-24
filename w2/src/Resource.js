@@ -34,10 +34,11 @@ var res = {
     textureCars_png : 'res/cars_texture_coordinates.png',
     textureTransparentPack_plist : 'res/cars_texture_coordinates.plist',
     textureTransparentPack_png : 'res/cars_texture_coordinates.png',
-    
+
     myCarbackground : 'res/background2.jpg',
     Cars : 'res/cars.png',
-    Gifts : 'res/gifts.png'
+    Gifts : 'res/gifts.png',
+    sysmenu_jpg : 'res/sysmenu.jpg'
 };
 
 var g_mainmenu = [
@@ -54,6 +55,7 @@ var g_mainmenu = [
     {src:res.textureTransparentPack_png},
     {src:res.Cars},
     {src:res.Gifts},
+    {src:res.sysmenu_jpg},
 
     // {src:res.textureCars_plist},
     // {src:res.textureCars_png},

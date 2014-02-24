@@ -17,8 +17,8 @@ var Ship = cc.Sprite.extend({
         this._super();
 
         //init life
-        // this.initWithSpriteFrameName("ship01.png");
-        this.initWithFile(res.Cars, cc.rect(0, 0, 100, 200));
+        this.initWithSpriteFrameName("car_00.png");
+        // this.initWithFile(res.Cars, cc.rect(0, 0, 100, 200));
         this.setTag(this.zOrder);
         this.setPosition(this.appearPosition);
         this.setScale(0.5);
