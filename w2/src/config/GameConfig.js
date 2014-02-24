@@ -107,6 +107,7 @@ MW.GIFT_ATTACK_MODE = {
     TSUIHIKIDAN:2
 };
 MW.GIFT_Countdown = 0;
+MW.GIFT_ActiveType = null;
 
 //life up sorce
 MW.LIFEUP_SORCE = [50000, 100000, 150000, 200000, 250000, 300000];

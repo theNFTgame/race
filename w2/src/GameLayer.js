@@ -50,6 +50,7 @@ var GameLayer = cc.Layer.extend({
             MW.ACTIVE_ENEMIES = 0;
             MW.ACTIVE_GIFTS = 0;
             MW.GIFT_Countdown = 0;
+            MW.GIFT_ActiveType = null;
 
             MW.SCORE = 0;
             MW.LIFE = 1;
@@ -243,17 +244,24 @@ var GameLayer = cc.Layer.extend({
             if (!selChild.active)
                 continue;
 
-            for (var j = 0; j < MW.CONTAINER.PLAYER_BULLETS.length; j++) {
-                bulletChild = MW.CONTAINER.PLAYER_BULLETS[j];
-                if (bulletChild.active && this.collide(selChild, bulletChild)) {
-                    bulletChild.hurt();
-                    selChild.hurt();
-                }
-            }
+            // for (var j = 0; j < MW.CONTAINER.PLAYER_BULLETS.length; j++) {
+            //     bulletChild = MW.CONTAINER.PLAYER_BULLETS[j];
+            //     if (bulletChild.active && this.collide(selChild, bulletChild)) {
+            //         bulletChild.hurt();
+            //         selChild.hurt();
+            //     }
+            // }
             if (this.collide(selChild, locShip)) {
                 if (locShip.active) {
                     selChild.hurt();
-                    locShip.hurt();
+                    cc.log('check MW.GIFT_ActiveType:' + MW.GIFT_ActiveType);
+                    if( MW.GIFT_ActiveType !== null && MW.GIFT_ActiveType !== 0){
+                        MW.GIFT_ActiveType = null;
+                    }else{
+                        cc.log('car life: ' + MW.LIFE );
+                        this.active = false;
+                        locShip.hurt();
+                    }
                 }
             }
         }
@@ -266,8 +274,25 @@ var GameLayer = cc.Layer.extend({
                 if (locShip.active) {
                     selChild.hurt();
                     // locShip.hurt();
+                    MW.GIFT_ActiveType = selChild.giftType;
 
+                    // set up gift status
+                    switch (MW.GIFT_ActiveType) {
+                        case 0:
+                            MW.LIFE = 2;
+                        break;
+                        case 1:
+                            MW.LIFE = 99999;
+                        break;
+                        case 2:
+                            MW.LIFE = 99999;
+                        break;
+                        case 3:
+                            MW.LIFE = 99999;
+                        break;
+                    }
                     cc.log('get the gift! Type: ' + selChild.giftType );
+                    cc.log('car life: ' + MW.LIFE );
                 }
             }
         }
