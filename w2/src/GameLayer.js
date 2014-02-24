@@ -70,6 +70,7 @@ var GameLayer = cc.Layer.extend({
 
             this.screenRect = cc.rect(0, 0, winSize.width, winSize.height + 10);
 
+            // 记分牌
             // score
             this.lbScore = cc.LabelBMFont.create("Score: 0", res.arial_14_fnt);
             this.lbScore.setAnchorPoint(1, 0);
@@ -116,7 +117,7 @@ var GameLayer = cc.Layer.extend({
 
             if (sys.capabilities.hasOwnProperty('accelerometer')){
                 this.setAccelerometerEnabled(true);
-                this.setAccelerometerInterval(1/30);
+                this.setAccelerometerInterval(1/60);
                 this.prevX = 0;
                 this.prevY = 0;
             }
@@ -161,7 +162,7 @@ var GameLayer = cc.Layer.extend({
     },
 
     onTouchesMoved:function (touches, event) {
-        cc.log(touches[0]);
+        // cc.log(touches[0]);
         this.processEvent(touches[0]);
     },
 
@@ -225,8 +226,10 @@ var GameLayer = cc.Layer.extend({
         }
     },
     checkIsCollide:function () {
-        var selChild, bulletChild;
+        var selChild, bulletChild, giftChild;
         // check collide
+
+        // 检测碰撞
         var i, locShip =this._ship;
         for (i = 0; i < MW.CONTAINER.ENEMIES.length; i++) {
             selChild = MW.CONTAINER.ENEMIES[i];
@@ -248,15 +251,15 @@ var GameLayer = cc.Layer.extend({
             }
         }
 
-        for (i = 0; i < MW.CONTAINER.ENEMY_BULLETS.length; i++) {
-            selChild = MW.CONTAINER.ENEMY_BULLETS[i];
-            if (selChild.active && this.collide(selChild, locShip)) {
-                if (locShip.active) {
-                    selChild.hurt();
-                    locShip.hurt();
-                }
-            }
-        }
+        // for (i = 0; i < MW.CONTAINER.ENEMY_BULLETS.length; i++) {
+        //     selChild = MW.CONTAINER.ENEMY_BULLETS[i];
+        //     if (selChild.active && this.collide(selChild, locShip)) {
+        //         if (locShip.active) {
+        //             selChild.hurt();
+        //             locShip.hurt();
+        //         }
+        //     }
+        // }
     },
     removeInactiveUnit:function (dt) {
         var selChild, children = this._texOpaqueBatch.getChildren();
@@ -380,6 +383,7 @@ GameLayer.scene = function () {
 GameLayer.prototype.addEnemy = function (enemy, z, tag) {
     this._texTransparentBatch.addChild(enemy, z, tag);
 };
+
 GameLayer.prototype.addGift = function (gift, z, tag) {
     this._texTransparentBatch.addChild(gift, z, tag);
 };

@@ -21,12 +21,13 @@ var Gift = cc.Sprite.extend({
 
         // this.initWithSpriteFrameName(arg.textureName);
         // cc.log(arg);
-        this.initWithFile(res.menu_png, cc.rect(0, 0, 100, 200));
-        this.setScale(2);
+        this.initWithFile(res.Gifts, cc.rect(0, 0, 100, 100));
+        this.setScale(0.5);
         this.schedule(this.shoot, this.delayTime);
     },
     _timeTick:0,
     update:function (dt) {
+        // cc.log(this.getPosition());
         var p = this.getPosition();
         if ((p.x < 0 || p.x > 320) && (p.y < 0 || p.y > 480)) {
             this.active = false;
@@ -89,7 +90,7 @@ var Gift = cc.Sprite.extend({
 });
 
 Gift.getOrCreateGift = function (arg) {
-    cc.log(arg);
+    cc.log('getOrCreateGift');
     var selChild = null;
     for (var j = 0; j < MW.CONTAINER.GIFTS.length; j++) {
         selChild = MW.CONTAINER.GIFTS[j];
@@ -113,16 +114,14 @@ Gift.getOrCreateGift = function (arg) {
 
 Gift.create = function (arg) {
     var gift = new Gift(arg);
-    // cc.log(GiftType)
     g_sharedGameLayer.addGift(gift, gift.zOrder, MW.UNIT_TAG.GIFT);
     MW.CONTAINER.GIFTS.push(gift);
-    cc.log(MW.CONTAINER.GIFTS);
     return gift;
 };
 
 Gift.preSet = function () {
     var gift = null;
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 2; i++) {
         for (var i = 0; i < GiftType.length; i++) {
             gift = Gift.create(GiftType[i]);
             gift.setVisible(false);

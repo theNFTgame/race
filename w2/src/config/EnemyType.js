@@ -66,7 +66,9 @@ var GiftType = [
         textureName:"E0.png",
         // bulletType:"W2.png",
         HP:1,
+        speed:500,
         moveType:MW.GIFT_MOVE_TYPE.VERTICAL,
+        attackMode:MW.GIFT_ATTACK_MODE.NORMAL,
         scoreValue:15
     },
     {
@@ -74,7 +76,9 @@ var GiftType = [
         textureName:"E0.png",
         // bulletType:"W2.png",
         HP:1,
-        moveType:MW.GIFT_MOVE_TYPE.ATTACK,
+        speed:500,
+        moveType:MW.GIFT_MOVE_TYPE.VERTICAL,
+        attackMode:MW.GIFT_ATTACK_MODE.NORMAL,
         scoreValue:15
     },
     {
@@ -82,7 +86,9 @@ var GiftType = [
         textureName:"E0.png",
         // bulletType:"W2.png",
         HP:1,
-        moveType:MW.GIFT_MOVE_TYPE.ATTACK,
+        speed:500,
+        moveType:MW.GIFT_MOVE_TYPE.VERTICAL,
+        attackMode:MW.GIFT_ATTACK_MODE.NORMAL,
         scoreValue:15
     },
     {
@@ -90,7 +96,9 @@ var GiftType = [
         textureName:"E0.png",
         // bulletType:"W2.png",
         HP:1,
+        speed:500,
         moveType:MW.GIFT_MOVE_TYPE.VERTICAL,
+        attackMode:MW.GIFT_ATTACK_MODE.NORMAL,
         scoreValue:15
     }
 ];

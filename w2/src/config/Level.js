@@ -1,11 +1,11 @@
 var Level1 = {
-    enemyMax:5,
+    enemyMax:4,
     giftMax:1,
     gifts:[
         {
             ShowType:"Repeate",
             ShowTime:"00:02",
-            Types:[0,1,2]
+            Types:[0,1,2,3]
         }
     ],
     enemies:[

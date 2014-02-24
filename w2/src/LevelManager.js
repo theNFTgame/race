@@ -22,6 +22,9 @@ var LevelManager = cc.Class.extend({
         var locCurrentLevelEnemies = this._currentLevel.enemies;
         for(var i = 0; i< level.enemies.length; i++)
             locCurrentLevelEnemies[i].ShowTime = this._minuteToSecond(locCurrentLevelEnemies[i].ShowTime);
+        var locCurrentLevelGifts = this._currentLevel.gifts;
+        for(var i = 0; i< level.gifts.length; i++)
+            locCurrentLevelGifts[i].ShowTime = this._minuteToSecond(locCurrentLevelGifts[i].ShowTime);
     },
     _minuteToSecond:function(minuteStr){
         if(!minuteStr)
@@ -62,17 +65,20 @@ var LevelManager = cc.Class.extend({
                 }
             }
         }
-        if(MW.ACTIVE_GIFTS<= this._currentLevel.giftMax){
-
-            
-            for(var i = 0; i< locCurrentLevel.gifts.length; i++){
-                // cc.log(locCurrentLevel.gifts[i]);
-                var selGift = locCurrentLevel.gifts[i];
-                // cc.log(selGift.Types);
-                for(var rIndex = 0; rIndex < selGift.Types.length;rIndex++ ){
-                    this.addGiftToGameLayer(selGift.Types[rIndex]);
-                }
-            }
+        // cc.log('MW.ACTIVE_GIFTS:' + MW.ACTIVE_GIFTS + ', this._currentLevel.giftMax:' + this._currentLevel.giftMax);
+        if(MW.ACTIVE_GIFTS < this._currentLevel.giftMax){
+            var newGiftType = fRandomBy( 0, 3) ;
+            var selGift = locCurrentLevel.gifts[0];
+            // cc.log(selGift);
+            this.addGiftToGameLayer(selGift.Types[newGiftType]);
+            // for(var i = 0; i< locCurrentLevel.gifts.length; i++){
+            //     // cc.log(locCurrentLevel.gifts[i]);
+            //     var selGift = locCurrentLevel.gifts[i];
+            //     // cc.log(selGift.Types);
+            //     for(var rIndex = 0; rIndex < selGift.Types.length;rIndex++ ){
+            //         this.addGiftToGameLayer(selGift.Types[rIndex]);
+            //     }
+            // }
         }
     },
 
@@ -140,6 +146,7 @@ var LevelManager = cc.Class.extend({
         var giftpos = cc.p( 110 + fromX , winSize.height + Math.max(90, 180 * Math.random()));
         var giftcs =  addGift.getContentSize();
         addGift.setPosition( giftpos );
+        cc.log(addGift.getPosition());
 
         var offset, tmpAction;
         var a0=0;
@@ -147,11 +154,11 @@ var LevelManager = cc.Class.extend({
         switch (addGift.moveType) {
             case MW.GIFT_MOVE_TYPE.ATTACK:
                 // offset = this._gameLayer._ship.getPosition();
-                offset = cc.p(0, -winSize.height - giftpos.height);
+                offset = cc.p(0, -winSize.height - giftcs.height);
                 tmpAction = cc.MoveBy.create(4, offset);
                 break;
             case MW.GIFT_MOVE_TYPE.VERTICAL:
-                offset = cc.p(0, -winSize.height - giftpos.height);
+                offset = cc.p(0, -winSize.height - giftcs.height);
                 tmpAction = cc.MoveBy.create(3, offset);
                 break;
             case MW.GIFT_MOVE_TYPE.OVERLAP:
@@ -163,7 +170,6 @@ var LevelManager = cc.Class.extend({
         }
 
         addGift.runAction(tmpAction);
-        cc.log('in addGiftToGameLayer function');
     }
 
 });

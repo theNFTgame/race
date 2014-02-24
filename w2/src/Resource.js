@@ -31,7 +31,8 @@ var res = {
     textureTransparentPack_plist : 'res/textureTransparentPack.plist',
     textureTransparentPack_png : 'res/textureTransparentPack.png',
     myCarbackground : 'res/background2.jpg',
-    Cars : 'res/cars.png'
+    Cars : 'res/cars.png',
+    Gifts : 'res/gifts.png'
 };
 
 var g_mainmenu = [
@@ -47,6 +48,7 @@ var g_mainmenu = [
     {src:res.textureTransparentPack_plist},
     {src:res.textureTransparentPack_png},
     {src:res.Cars},
+    {src:res.Gifts},
 
     //image
     {src:res.cocos2d_html5_png},
