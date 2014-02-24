@@ -19,9 +19,9 @@ var Gift = cc.Sprite.extend({
         this.giftType = arg.type;
         this.speed = arg.speed;
 
-        // this.initWithSpriteFrameName(arg.textureName);
+        this.initWithSpriteFrameName(arg.textureName);
         // cc.log(arg);
-        this.initWithFile(res.Gifts, cc.rect(0, 0, 100, 100));
+        // this.initWithFile(res.Gifts, cc.rect(0, 0, 100, 100));
         this.setScale(0.5);
         this.schedule(this.shoot, this.delayTime);
     },
