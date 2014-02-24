@@ -38,7 +38,7 @@ var LevelManager = cc.Class.extend({
     },
 
     loadLevelResource:function(deltaTime){
-        cc.log(this._currentLevel);
+        // cc.log(this._currentLevel);
         if(MW.ACTIVE_ENEMIES>= this._currentLevel.enemyMax){
             return;
         }
@@ -66,9 +66,9 @@ var LevelManager = cc.Class.extend({
 
             
             for(var i = 0; i< locCurrentLevel.gifts.length; i++){
-                cc.log(locCurrentLevel.gifts[i]);
+                // cc.log(locCurrentLevel.gifts[i]);
                 var selGift = locCurrentLevel.gifts[i];
-                cc.log(selGift.Types);
+                // cc.log(selGift.Types);
                 for(var rIndex = 0; rIndex < selGift.Types.length;rIndex++ ){
                     this.addGiftToGameLayer(selGift.Types[rIndex]);
                 }
@@ -131,7 +131,7 @@ var LevelManager = cc.Class.extend({
         addEnemy.runAction(tmpAction);
     },
     addGiftToGameLayer:function(giftType){
-        cc.log('in addGiftToGameLayer function');
+        
         var addGift = Gift.getOrCreateGift(GiftType[giftType]);
 
         // 这里要改成只在某些赛道里出现
@@ -163,6 +163,7 @@ var LevelManager = cc.Class.extend({
         }
 
         addGift.runAction(tmpAction);
+        cc.log('in addGiftToGameLayer function');
     }
 
 });

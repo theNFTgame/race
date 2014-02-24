@@ -21,8 +21,8 @@ var Gift = cc.Sprite.extend({
 
         // this.initWithSpriteFrameName(arg.textureName);
         // cc.log(arg);
-        this.initWithFile(res.Cars, cc.rect(0, 0, 100, 200));
-        this.setScale(0.5);
+        this.initWithFile(res.menu_png, cc.rect(0, 0, 100, 200));
+        this.setScale(2);
         this.schedule(this.shoot, this.delayTime);
     },
     _timeTick:0,
@@ -64,9 +64,9 @@ var Gift = cc.Sprite.extend({
         var a = Explosion.getOrCreateExplosion();
         a.setPosition(this.getPosition());
         SparkEffect.getOrCreateSparkEffect(this.getPosition());
-        if (MW.SOUND) {
-            cc.AudioEngine.getInstance().playEffect(res.explodeEffect_mp3);
-        }
+        // if (MW.SOUND) {
+        //     cc.AudioEngine.getInstance().playEffect(res.explodeEffect_mp3);
+        // }
         this.setVisible(false);
         this.active = false;
         this.stopAllActions();
@@ -116,6 +116,7 @@ Gift.create = function (arg) {
     // cc.log(GiftType)
     g_sharedGameLayer.addGift(gift, gift.zOrder, MW.UNIT_TAG.GIFT);
     MW.CONTAINER.GIFTS.push(gift);
+    cc.log(MW.CONTAINER.GIFTS);
     return gift;
 };
 

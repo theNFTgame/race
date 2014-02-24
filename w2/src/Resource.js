@@ -67,14 +67,14 @@ var g_mainmenu = [
     {src:res.bgMusic_ogg},
 
     //effect
-    {src:res.buttonEffet_mp3},
-    {src:res.explodeEffect_mp3},
-    {src:res.fireEffect_mp3},
-    {src:res.shipDestroyEffect_mp3},
-    {src:res.buttonEffet_ogg},
-    {src:res.explodeEffect_ogg},
-    {src:res.fireEffect_ogg},
-    {src:res.shipDestroyEffect_ogg},
+    // {src:res.buttonEffet_mp3},
+    // {src:res.explodeEffect_mp3},
+    // {src:res.fireEffect_mp3},
+    // {src:res.shipDestroyEffect_mp3},
+    // {src:res.buttonEffet_ogg},
+    // {src:res.explodeEffect_ogg},
+    // {src:res.fireEffect_ogg},
+    // {src:res.shipDestroyEffect_ogg},
 
     // FNT
     {src:res.arial_14_fnt}
