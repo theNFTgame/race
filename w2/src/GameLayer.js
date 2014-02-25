@@ -56,6 +56,9 @@ var GameLayer = cc.Layer.extend({
             MW.LIFE = 1;
             this._state = STATE_PLAYING;
 
+            MW.Track = [3,3,3,3];
+            MW.Track_Position = [winSize.height,winSize.height,winSize.height,winSize.height];
+
             // OpaqueBatch
             var texOpaque = cc.TextureCache.getInstance().addImage(res.textureOpaquePack_png);
             this._texOpaqueBatch = cc.SpriteBatchNode.createWithTexture(texOpaque);
@@ -198,10 +201,9 @@ var GameLayer = cc.Layer.extend({
             // cc.log('Accel x: '+ accelEvent.x + ' y:' + accelEvent.y + ' z:' + accelEvent.z + ' time:' + accelEvent.timestamp + ', winSize:' + winSize.width + ',\n this.prevX:' + this.prevX + ', this.prevX:' + this.prevX + '\n x:' + x + ',y:' + y);
 
             x = Math.max( 110 , Math.min( x, 210) );
-            
-            this._ship.setPosition(cc.p(x,y));
-            // cc.log(this._ship.setPosition());
-            // cc.log('setPosition by onAccelerometer!');
+            // 测试期间暂时屏蔽
+            // this._ship.setPosition(cc.p(x,y));
+
         }
     },
 

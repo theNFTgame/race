@@ -94,14 +94,38 @@ var LevelManager = cc.Class.extend({
 
 
         // Math.max(80, 180 * Math.random())
-        var fromX = fRandomBy( 0, 3) * 35 ;
-        var enemypos = cc.p( 110 + fromX , winSize.height + Math.max(20, 80 * Math.random()));
+        var fromX = fRandomBy( 0, 3) ,
+            fromY = winSize.height + Math.max(90, 30 * fRandomBy( 2, 4));
+
+        
+
+        if(  fromY - MW.Track_Position[fromX] < 90 ) {
+            cc.log('return');
+            cc.log('this track is :'+ fromX + '. old MW.Track_Position[fromX]:' + MW.Track_Position[fromX] + ', fromY: ' + fromY);
+            return;
+        } else {
+            MW.Track_Position[fromX] = fromY;
+        }
+
+        var enemypos = cc.p( 110 + fromX * 35 , fromY );
+
+        
         var enemycs =  addEnemy.getContentSize();
         addEnemy.setPosition( enemypos );
 
         var offset, tmpAction;
         var a0=0;
         var a1=0;
+        // cc.log(fromX);
+        var maxSpeed = MW.Track[fromX];
+        // cc.log(MW.Track );
+        // cc.log('this track is :'+ fromX + '. old addEnemy.moveType:' + addEnemy.moveType + ', maxSpeed: ' + maxSpeed);
+        if( addEnemy.moveType >= maxSpeed ){
+            addEnemy.moveType = maxSpeed;
+        }else{
+            MW.Track[fromX] = addEnemy.moveType;
+        }
+        // cc.log('new addEnemy.moveType:' + addEnemy.moveType);
         switch (addEnemy.moveType) {
             case MW.ENEMY_MOVE_TYPE.ATTACK:
                 // offset = this._gameLayer._ship.getPosition();

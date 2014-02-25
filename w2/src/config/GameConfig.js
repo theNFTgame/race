@@ -133,3 +133,5 @@ MW.BULLET_SPEED = {
 // the counter of active enemies
 MW.ACTIVE_ENEMIES = 0;
 MW.ACTIVE_GIFT = 0;
+MW.Track = [3,3,3,3];
+MW.Track_Position = [480,480,480,480];

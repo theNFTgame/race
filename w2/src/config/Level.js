@@ -1,5 +1,5 @@
 var Level1 = {
-    enemyMax:4,
+    enemyMax:20,
     giftMax:1,
     gifts:[
         {
