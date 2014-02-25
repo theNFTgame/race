@@ -435,21 +435,21 @@ cc.LoaderScene = cc.Scene.extend(/** @lends cc.LoaderScene# */{
         this._logoTexture.width = logoWidth;
         this._logoTexture.height = logoHeight;
 
-        // bg
-        this._bgLayer = cc.LayerColor.create(cc.c4(32, 32, 32, 255));
+        // // bg
+        this._bgLayer = cc.LayerColor.create(cc.c4(32, 32, 32, 0));
         this._bgLayer.setPosition(0, 0);
         this.addChild(this._bgLayer, 0);
 
         //loading percent
         this._label = cc.LabelTTF.create("Loading... 0%", "Arial", 14);
-        this._label.setColor(cc.c3(180, 180, 180));
+        this._label.setColor(cc.c3(32, 32, 32));
         this._label.setPosition(cc.pAdd(centerPos, cc.p(0, -logoHeight / 2 - 10)));
         this._bgLayer.addChild(this._label, 10);
     },
 
     _initStage: function (centerPos) {
         this._texture2d = new cc.Texture2D();
-        this._texture2d.initWithElement(this._logoTexture);
+        // this._texture2d.initWithElement(this._logoTexture);
         this._texture2d.handleLoadedTexture();
         this._logo = cc.Sprite.createWithTexture(this._texture2d);
         this._logo.setScale(cc.CONTENT_SCALE_FACTOR());

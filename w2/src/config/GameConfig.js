@@ -133,3 +133,18 @@ MW.BULLET_SPEED = {
 // the counter of active enemies
 MW.ACTIVE_ENEMIES = 0;
 MW.ACTIVE_GIFT = 0;
+MW.TOP10 = [
+    {"index":0,"name":"no1","value01":"1777","value02":"0","value03":"0"},
+    {"index":1,"name":"Yorhom","value01":"1262","value02":"0","value03":"0"},
+    {"index":2,"name":"yofine","value01":"1022","value02":"0","value03":"0"},
+    {"index":3,"name":"fan","value01":"825","value02":"0","value03":"0"},
+    {"index":4,"name":"no1","value01":"1777","value02":"0","value03":"0"},
+    {"index":5,"name":"Yorhom","value01":"1262","value02":"0","value03":"0"},
+    {"index":6,"name":"yofine","value01":"1022","value02":"0","value03":"0"},
+    {"index":7,"name":"fan","value01":"825","value02":"0","value03":"0"},
+    {"index":8,"name":"no1","value01":"1777","value02":"0","value03":"0"},
+    {"index":9,"name":"Yorhom","value01":"1262","value02":"0","value03":"0"},
+    {"index":10,"name":"yofine","value01":"1022","value02":"0","value03":"0"}
+];
+
+
