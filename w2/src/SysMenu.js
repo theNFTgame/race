@@ -34,6 +34,8 @@ var SysMenu = cc.Layer.extend({
         if (this._super()) {
             cc.SpriteFrameCache.getInstance().addSpriteFrames(res.textureTransparentPack_plist);
 
+            cc.SpriteFrameCache.getInstance().addSpriteFrames(res.textureBTN_plist);
+
             winSize = cc.Director.getInstance().getWinSize();
             var sp = cc.Sprite.create(res.sysmenu_jpg);
             sp.setScale(0.5);
@@ -45,9 +47,13 @@ var SysMenu = cc.Layer.extend({
             logo.setPosition(0, 250);
             this.addChild(logo, 10, 1);
 
-            var newGameNormal = cc.Sprite.create(res.menu_png, cc.rect(0, 0, 126, 33));
-            var newGameSelected = cc.Sprite.create(res.menu_png, cc.rect(0, 33, 126, 33));
-            var newGameDisabled = cc.Sprite.create(res.menu_png, cc.rect(0, 33 * 2, 126, 33));
+            var newGameNormal = cc.Sprite.initWithSpriteFrameName('btn_start.png');
+            var newGameSelected = newGameNormal;
+            var newGameDisabled = newGameNormal;
+
+            // var newGameNormal = cc.Sprite.create(res.menu_png, cc.rect(0, 0, 126, 33));
+            // var newGameSelected = cc.Sprite.create(res.menu_png, cc.rect(0, 33, 126, 33));
+            // var newGameDisabled = cc.Sprite.create(res.menu_png, cc.rect(0, 33 * 2, 126, 33));
 
             // var gameSettingsNormal = cc.Sprite.create(res.menu_png, cc.rect(126, 0, 126, 33));
             // var gameSettingsSelected = cc.Sprite.create(res.menu_png, cc.rect(126, 33, 126, 33));
