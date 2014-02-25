@@ -94,30 +94,54 @@ var LevelManager = cc.Class.extend({
 
 
         // Math.max(80, 180 * Math.random())
-        var fromX = fRandomBy( 0, 3) * 35 ;
-        var enemypos = cc.p( 110 + fromX , winSize.height + Math.max(20, 80 * Math.random()));
+        var fromX = fRandomBy( 0, 3) ,
+            fromY = winSize.height + Math.max(50, 30 * fRandomBy( 1, 4));
+
+        
+
+        if(  fromY - MW.Track_Position[fromX] < 90 ) {
+            cc.log('return');
+            cc.log('this track is :'+ fromX + '. old MW.Track_Position[fromX]:' + MW.Track_Position[fromX] + ', fromY: ' + fromY);
+            return;
+        } else {
+            MW.Track_Position[fromX] = fromY;
+        }
+        cc.log('check return');
+        var enemypos = cc.p( 110 + fromX * 35 , fromY );
+
+        
         var enemycs =  addEnemy.getContentSize();
         addEnemy.setPosition( enemypos );
 
         var offset, tmpAction;
         var a0=0;
         var a1=0;
+        // cc.log(fromX);
+        var maxSpeed = MW.Track[fromX];
+        // cc.log(MW.Track );
+        // cc.log('this track is :'+ fromX + '. old addEnemy.moveType:' + addEnemy.moveType + ', maxSpeed: ' + maxSpeed);
+        if( addEnemy.moveType >= maxSpeed ){
+            addEnemy.moveType = maxSpeed;
+        }else{
+            MW.Track[fromX] = addEnemy.moveType;
+        }
+        // cc.log('new addEnemy.moveType:' + addEnemy.moveType);
         switch (addEnemy.moveType) {
             case MW.ENEMY_MOVE_TYPE.ATTACK:
                 // offset = this._gameLayer._ship.getPosition();
-                offset = cc.p(0, -winSize.height - enemycs.height*2);
+                offset = cc.p(0, -winSize.height - 200);
                 tmpAction = cc.MoveBy.create(4, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.VERTICAL:
-                offset = cc.p(0, -winSize.height - enemycs.height*2);
+                offset = cc.p(0, -winSize.height - 200);
                 tmpAction = cc.MoveBy.create(3, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.VERTICAL2:
-                offset = cc.p(0, -winSize.height - enemycs.height*2);
+                offset = cc.p(0, -winSize.height - 200);
                 tmpAction = cc.MoveBy.create(2, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.VERTICAL3:
-                offset = cc.p(0, -winSize.height - enemycs.height*2);
+                offset = cc.p(0, -winSize.height - 200);
                 tmpAction = cc.MoveBy.create(1, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.HORIZONTAL:

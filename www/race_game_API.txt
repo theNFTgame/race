@@ -25,6 +25,7 @@ Request: POST
 game_name:RaceGame
 player:player_name 			// player's name
 score:score        			// player's scrore
+refresh:1					// refresh top10 cache: 1:need refresh, 0:not
 
 
 Response: 

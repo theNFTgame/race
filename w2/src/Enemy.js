@@ -51,7 +51,7 @@ var Enemy = cc.Sprite.extend({
         }
 
         var p = this.getPosition();
-        if (p.x < 0 || p.x > g_sharedGameLayer.screenRect.width || p.y < 0 || p.y > g_sharedGameLayer.screenRect.height + 180) {
+        if (p.x < 0 || p.x > g_sharedGameLayer.screenRect.width || p.y < 0 || p.y > g_sharedGameLayer.screenRect.height + 200) {
             this.active = false;
             this.goaway();
         }
@@ -63,6 +63,7 @@ var Enemy = cc.Sprite.extend({
         this.stopAllActions();
         this.unschedule(this.shoot);
         MW.ACTIVE_ENEMIES--;
+        this.cleanTrack();
         // MW.SCORE += this.scoreValue;
     },
     destroy:function () {
@@ -75,9 +76,20 @@ var Enemy = cc.Sprite.extend({
         }
         this.setVisible(false);
         this.active = false;
+        this.cleanTrack();
         this.stopAllActions();
         this.unschedule(this.shoot);
         MW.ACTIVE_ENEMIES--;
+    },
+    cleanTrack: function(){
+        cc.log(MW.Track);
+        cc.log(MW.Track_Position);
+        var p = this.getPosition();
+        var trackNumber = (p.x - 110)/35;
+        MW.Track_Position = [480,480,480,480];
+        MW.Track[trackNumber] = 3;
+
+        // MW.Track_Position[trackNumber] = winSize.height;
     },
     shoot:function () {
         // var p = this.getPosition();

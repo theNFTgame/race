@@ -133,6 +133,7 @@ MW.BULLET_SPEED = {
 // the counter of active enemies
 MW.ACTIVE_ENEMIES = 0;
 MW.ACTIVE_GIFT = 0;
+
 MW.TOP10 = [
     {"index":0,"name":"no1","value01":"1777","value02":"0","value03":"0"},
     {"index":1,"name":"Yorhom","value01":"1262","value02":"0","value03":"0"},
@@ -147,4 +148,7 @@ MW.TOP10 = [
     {"index":10,"name":"yofine","value01":"1022","value02":"0","value03":"0"}
 ];
 
+
+MW.Track = [3,3,3,3];
+MW.Track_Position = [480,480,480,480];
 
