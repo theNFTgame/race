@@ -99,13 +99,13 @@ var LevelManager = cc.Class.extend({
 
         
 
-        if(  fromY - MW.Track_Position[fromX] < 90 ) {
-            cc.log('return');
-            cc.log('this track is :'+ fromX + '. old MW.Track_Position[fromX]:' + MW.Track_Position[fromX] + ', fromY: ' + fromY);
-            return;
-        } else {
-            MW.Track_Position[fromX] = fromY;
-        }
+        // if(  fromY - MW.Track_Position[fromX] < 90 ) {
+        //     cc.log('return');
+        //     cc.log('this track is :'+ fromX + '. old MW.Track_Position[fromX]:' + MW.Track_Position[fromX] + ', fromY: ' + fromY);
+        //     return;
+        // } else {
+        //     MW.Track_Position[fromX] = fromY;
+        // }
         cc.log('check return');
         var enemypos = cc.p( 110 + fromX * 35 , fromY );
 
@@ -120,11 +120,11 @@ var LevelManager = cc.Class.extend({
         var maxSpeed = MW.Track[fromX];
         // cc.log(MW.Track );
         // cc.log('this track is :'+ fromX + '. old addEnemy.moveType:' + addEnemy.moveType + ', maxSpeed: ' + maxSpeed);
-        if( addEnemy.moveType >= maxSpeed ){
-            addEnemy.moveType = maxSpeed;
-        }else{
-            MW.Track[fromX] = addEnemy.moveType;
-        }
+        // if( addEnemy.moveType >= maxSpeed ){
+        //     addEnemy.moveType = maxSpeed;
+        // }else{
+        //     MW.Track[fromX] = addEnemy.moveType;
+        // }
         // cc.log('new addEnemy.moveType:' + addEnemy.moveType);
         switch (addEnemy.moveType) {
             case MW.ENEMY_MOVE_TYPE.ATTACK:
