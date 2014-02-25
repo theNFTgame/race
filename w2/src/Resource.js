@@ -38,7 +38,8 @@ var res = {
     myCarbackground : 'res/background2.jpg',
     Cars : 'res/cars.png',
     Gifts : 'res/gifts.png',
-    sysmenu_jpg : 'res/sysmenu.jpg'
+    sysmenu_jpg : 'res/sysmenu.jpg',
+    bg_gameover_jpg : 'res/bg_gameover.jpg'
 };
 
 var g_mainmenu = [
@@ -56,6 +57,7 @@ var g_mainmenu = [
     {src:res.Cars},
     {src:res.Gifts},
     {src:res.sysmenu_jpg},
+    {src:res.bg_gameover_jpg},
 
     // {src:res.textureCars_plist},
     // {src:res.textureCars_png},

@@ -5,14 +5,15 @@ var GameOver = cc.Layer.extend({
     init:function () {
         var bRet = false;
         if (this._super()) {
-            var sp = cc.Sprite.create(res.loading_png);
+            var sp = cc.Sprite.create(res.bg_gameover_jpg);
+            sp.setScale(0.5);
             sp.setAnchorPoint(0,0);
             this.addChild(sp, 0, 1);
 
-            var logo = cc.Sprite.create(res.gameOver_png);
-            logo.setAnchorPoint(0,0);
-            logo.setPosition(0,300);
-            this.addChild(logo,10,1);
+            // var logo = cc.Sprite.create(res.gameOver_png);
+            // logo.setAnchorPoint(0,0);
+            // logo.setPosition(0,300);
+            // this.addChild(logo,10,1);
 
             var playAgainNormal = cc.Sprite.create(res.menu_png, cc.rect(378, 0, 126, 33));
             var playAgainSelected = cc.Sprite.create(res.menu_png, cc.rect(378, 33, 126, 33));
@@ -22,6 +23,7 @@ var GameOver = cc.Layer.extend({
             // cocos2dhtml5.setPosition(160,150);
             // this.addChild(cocos2dhtml5,10);
             var flare = cc.Sprite.create(res.flare_jpg);
+
             this.addChild(flare);
             flare.setVisible(false);
             var playAgain = cc.MenuItemSprite.create(playAgainNormal, playAgainSelected, playAgainDisabled, function(){
@@ -32,9 +34,9 @@ var GameOver = cc.Layer.extend({
             this.addChild(menu, 1, 2);
             menu.setPosition(winSize.width / 2, 220);
 
-            var lbScore = cc.LabelTTF.create("Your Score:"+MW.SCORE,"Arial Bold",16);
+            var lbScore = cc.LabelTTF.create(""+MW.SCORE + " M","Arial Bold",26);
             lbScore.setPosition(160,280);
-            lbScore.setColor(cc.c3b(250,179,0));
+            lbScore.setColor(cc.c3b(0,0,0));
             this.addChild(lbScore,10);
 
             // var b1 = cc.LabelTTF.create("Download Cocos2d-html5","Arial",14);
