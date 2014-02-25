@@ -198,7 +198,7 @@ var GameLayer = cc.Layer.extend({
             // cc.log('Accel x: '+ accelEvent.x + ' y:' + accelEvent.y + ' z:' + accelEvent.z + ' time:' + accelEvent.timestamp + ', winSize:' + winSize.width + ',\n this.prevX:' + this.prevX + ', this.prevX:' + this.prevX + '\n x:' + x + ',y:' + y);
 
             x = Math.max( 110 , Math.min( x, 210) );
-            y = Math.max( 10 , Math.min( y , winSize.height - 60) );
+            y = Math.max( 30 , Math.min( y , winSize.height - 60) );
             
             // this._ship.setPosition(cc.p(x,y));
             // cc.log(this._ship.setPosition());

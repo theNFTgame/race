@@ -31,8 +31,8 @@ var MW = MW || {};
 (function () {
     var d = document;
     var c = {
-        COCOS2D_DEBUG:2, //0 to turn debug off, 1 for basic debug, and 2 for full debug
-        showFPS:true,
+        COCOS2D_DEBUG:0, //0 to turn debug off, 1 for basic debug, and 2 for full debug
+        showFPS:false,
         loadExtension:false,
         frameRate:60,
         renderMode:1,       //Choose of RenderMode: 0(default), 1(Canvas only), 2(WebGL only)
