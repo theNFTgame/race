@@ -95,7 +95,7 @@ var LevelManager = cc.Class.extend({
 
         // Math.max(80, 180 * Math.random())
         var fromX = fRandomBy( 0, 3) ,
-            fromY = winSize.height + Math.max(90, 30 * fRandomBy( 2, 4));
+            fromY = winSize.height + Math.max(50, 30 * fRandomBy( 1, 4));
 
         
 
@@ -106,7 +106,7 @@ var LevelManager = cc.Class.extend({
         } else {
             MW.Track_Position[fromX] = fromY;
         }
-
+        cc.log('check return');
         var enemypos = cc.p( 110 + fromX * 35 , fromY );
 
         
@@ -129,19 +129,19 @@ var LevelManager = cc.Class.extend({
         switch (addEnemy.moveType) {
             case MW.ENEMY_MOVE_TYPE.ATTACK:
                 // offset = this._gameLayer._ship.getPosition();
-                offset = cc.p(0, -winSize.height - enemycs.height*2);
+                offset = cc.p(0, -winSize.height - 200);
                 tmpAction = cc.MoveBy.create(4, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.VERTICAL:
-                offset = cc.p(0, -winSize.height - enemycs.height*2);
+                offset = cc.p(0, -winSize.height - 200);
                 tmpAction = cc.MoveBy.create(3, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.VERTICAL2:
-                offset = cc.p(0, -winSize.height - enemycs.height*2);
+                offset = cc.p(0, -winSize.height - 200);
                 tmpAction = cc.MoveBy.create(2, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.VERTICAL3:
-                offset = cc.p(0, -winSize.height - enemycs.height*2);
+                offset = cc.p(0, -winSize.height - 200);
                 tmpAction = cc.MoveBy.create(1, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.HORIZONTAL:
