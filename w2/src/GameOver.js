@@ -5,6 +5,8 @@ var GameOver = cc.Layer.extend({
     init:function () {
         var bRet = false;
         if (this._super()) {
+            cc.SpriteFrameCache.getInstance().addSpriteFrames(res.textureBTN_plist);
+
             var sp = cc.Sprite.create(res.bg_gameover_jpg);
             sp.setScale(0.5);
             sp.setAnchorPoint(0,0);
@@ -15,9 +17,16 @@ var GameOver = cc.Layer.extend({
             // logo.setPosition(0,300);
             // this.addChild(logo,10,1);
 
-            var playAgainNormal = cc.Sprite.create(res.menu_png, cc.rect(378, 0, 126, 33));
-            var playAgainSelected = cc.Sprite.create(res.menu_png, cc.rect(378, 33, 126, 33));
-            var playAgainDisabled = cc.Sprite.create(res.menu_png, cc.rect(378, 33 * 2, 126, 33));
+            var playAgainNormal = cc.Sprite.createWithSpriteFrameName('btn_replay.png');
+            var playAgainSelected = cc.Sprite.createWithSpriteFrameName('btn_replay.png');
+            var playAgainDisabled = cc.Sprite.createWithSpriteFrameName('btn_replay.png');
+            playAgainNormal.setScale(0.5);
+            playAgainSelected.setScale(0.5);
+            playAgainDisabled.setScale(0.5);
+
+            // var playAgainNormal = cc.Sprite.create(res.menu_png, cc.rect(378, 0, 126, 33));
+            // var playAgainSelected = cc.Sprite.create(res.menu_png, cc.rect(378, 33, 126, 33));
+            // var playAgainDisabled = cc.Sprite.create(res.menu_png, cc.rect(378, 33 * 2, 126, 33));
 
             // var cocos2dhtml5 = cc.Sprite.create(res.cocos2d_html5_png);
             // cocos2dhtml5.setPosition(160,150);
