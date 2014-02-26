@@ -54,6 +54,7 @@ var GameOver = cc.Layer.extend({
 
             }else{
                 // show submint
+                
 
             }
             
