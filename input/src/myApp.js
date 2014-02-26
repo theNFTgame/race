@@ -291,6 +291,8 @@ var TextFieldTTFDefaultTest = KeyboardNotificationLayer.extend({
     }
 });
 
+
+new TextFieldTTFDefaultTest;
 // =======================
 
 
