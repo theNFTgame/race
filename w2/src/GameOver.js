@@ -38,16 +38,38 @@ var GameOver = cc.Layer.extend({
             if (MW.TOP10[9].value01 >= MW.SCORE ){
                 // show btn ...
 
+                
+
+                var flare = cc.Sprite.create(res.flare_jpg);
+                this.addChild(flare);
+                flare.setVisible(false);
+
+                var playAgain = cc.MenuItemSprite.create(playAgainNormal, playAgainSelected, playAgainDisabled, function(){
+                    flareEffect(flare,this,this.onPlayAgain);
+                }.bind(this) );
                 var menu = cc.Menu.create(playAgain);
                 this.addChild(menu, 1, 2);
-                menu.setPosition(winSize.width / 2, 220);
+                menu.setPosition(winSize.width / 2 - 100 , 220);
 
-                var b1 = cc.LabelTTF.create("open google","Arial",14);
+                // btn share
+                var b0 = cc.Sprite.createWithSpriteFrameName('btn_share.png');
+                b0.setScale(0.5);
+                var menu0 = cc.MenuItemLabel.create(b0,function(){
+                    window.location.href = "share.html";
+                });
+                var overMenu0 = cc.Menu.create(menu0);
+                overMenu0.setPosition(winSize.width / 2 ,220);
+                this.addChild(overMenu0);
+
+
+                // var b1 = cc.LabelTTF.create("open google","Arial",14);
+                var b1 = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
+                b1.setScale(0.5);
                 var menu1 = cc.MenuItemLabel.create(b1,function(){
-                    window.location.href = "http://www.google.com";
+                    window.location.href = "rank.html";
                 });
                 var overMenu = cc.Menu.create(menu1);
-                overMenu.setPosition(160,80);
+                overMenu.setPosition(winSize.width / 2 + 100,220);
                 this.addChild(overMenu);
 
 
@@ -60,13 +82,7 @@ var GameOver = cc.Layer.extend({
             
 
 
-            var flare = cc.Sprite.create(res.flare_jpg);
-
-            this.addChild(flare);
-            flare.setVisible(false);
-            var playAgain = cc.MenuItemSprite.create(playAgainNormal, playAgainSelected, playAgainDisabled, function(){
-                flareEffect(flare,this,this.onPlayAgain);
-            }.bind(this) );
+            
 
 
 
