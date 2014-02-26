@@ -1,3 +1,13 @@
+function jsonpCallback(data){
+    MW.TOP10_t = data;
+    console.dir(data);
+};
+
+var script = document.createElement('script');
+script.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=get_global_ranking&game_name=RaceGame&limit=10&jsoncallback=jsonpCallback';
+document.getElementsByTagName('head')[0].appendChild(script);
+
+
 var GameOver = cc.Layer.extend({
     _ship:null,
     _lbScore:0,
@@ -24,13 +34,31 @@ var GameOver = cc.Layer.extend({
             playAgainSelected.setScale(0.5);
             playAgainDisabled.setScale(0.5);
 
-            // var playAgainNormal = cc.Sprite.create(res.menu_png, cc.rect(378, 0, 126, 33));
-            // var playAgainSelected = cc.Sprite.create(res.menu_png, cc.rect(378, 33, 126, 33));
-            // var playAgainDisabled = cc.Sprite.create(res.menu_png, cc.rect(378, 33 * 2, 126, 33));
+            cc.log(MW.TOP10[9].value01);
+            if (MW.TOP10[9].value01 >= MW.SCORE ){
+                // show btn ...
 
-            // var cocos2dhtml5 = cc.Sprite.create(res.cocos2d_html5_png);
-            // cocos2dhtml5.setPosition(160,150);
-            // this.addChild(cocos2dhtml5,10);
+                var menu = cc.Menu.create(playAgain);
+                this.addChild(menu, 1, 2);
+                menu.setPosition(winSize.width / 2, 220);
+
+                var b1 = cc.LabelTTF.create("open google","Arial",14);
+                var menu1 = cc.MenuItemLabel.create(b1,function(){
+                    window.location.href = "http://www.google.com";
+                });
+                var overMenu = cc.Menu.create(menu1);
+                overMenu.setPosition(160,80);
+                this.addChild(overMenu);
+
+
+
+            }else{
+                // show submint
+
+            }
+            
+
+
             var flare = cc.Sprite.create(res.flare_jpg);
 
             this.addChild(flare);
@@ -39,9 +67,7 @@ var GameOver = cc.Layer.extend({
                 flareEffect(flare,this,this.onPlayAgain);
             }.bind(this) );
 
-            var menu = cc.Menu.create(playAgain);
-            this.addChild(menu, 1, 2);
-            menu.setPosition(winSize.width / 2, 220);
+
 
             var lbScore = cc.LabelTTF.create(""+MW.SCORE + " M","Arial Bold",36);
             lbScore.setPosition(160,380);
