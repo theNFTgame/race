@@ -82,8 +82,8 @@ var Enemy = cc.Sprite.extend({
         MW.ACTIVE_ENEMIES--;
     },
     cleanTrack: function(){
-        cc.log(MW.Track);
-        cc.log(MW.Track_Position);
+        // cc.log(MW.Track);
+        // cc.log(MW.Track_Position);
         var p = this.getPosition();
         var trackNumber = (p.x - 110)/35;
         MW.Track_Position = [480,480,480,480];

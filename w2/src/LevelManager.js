@@ -67,7 +67,7 @@ var LevelManager = cc.Class.extend({
         }
         // cc.log('MW.ACTIVE_GIFTS:' + MW.ACTIVE_GIFTS + ', this._currentLevel.giftMax:' + this._currentLevel.giftMax);
         if(MW.ACTIVE_GIFTS < this._currentLevel.giftMax){
-            cc.log(MW.GIFT_Countdown);
+            // cc.log(MW.GIFT_Countdown);
             var newGiftType = fRandomBy( 0, 3) ;
             var selGift = locCurrentLevel.gifts[0];
             // cc.log(selGift);
@@ -106,7 +106,7 @@ var LevelManager = cc.Class.extend({
         // } else {
         //     MW.Track_Position[fromX] = fromY;
         // }
-        cc.log('check return');
+        // cc.log('check return');
         var enemypos = cc.p( 110 + fromX * 35 , fromY );
 
         

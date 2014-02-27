@@ -36,6 +36,7 @@ var GameLayer = cc.Layer.extend({
 
             cc.SpriteFrameCache.getInstance().addSpriteFrames(res.textureOpaquePack_plist);
             cc.SpriteFrameCache.getInstance().addSpriteFrames(res.b01_plist);
+            cc.SpriteFrameCache.getInstance().addSpriteFrames(res.textureBTN_plist);
 
             // reset global values
             MW.CONTAINER.ENEMIES = [];
@@ -297,17 +298,22 @@ var GameLayer = cc.Layer.extend({
                         break;
                         case 1:
                             // MW.LIFE = 99999;
-                            locShip.hpMax(99999);
+                            locShip.hpMax(99999,MW.GIFT_ActiveType);
                         break;
                         case 2:
-                            locShip.hpMax(99999);
+                            locShip.hpMax(99999,MW.GIFT_ActiveType);
                         break;
                         case 3:
-                            locShip.hpMax(99999);
+                            locShip.hpMax(99999,MW.GIFT_ActiveType);
                         break;
                     }
+                    this.scheduleOnce(this.timeCallback,5);
+                    // TODO add gift title 动画
+
+
+
                     cc.log('get the gift! Type: ' + selChild.giftType );
-                    cc.log('car life: ' + MW.LIFE);
+                    // cc.log('car life: ' + MW.LIFE);
                 }
             }
         }
@@ -336,6 +342,10 @@ var GameLayer = cc.Layer.extend({
             if (selChild && selChild.active)
                 selChild.update(dt);
         }
+    },
+    timeCallback:function(){
+        cc.log('timeCallback, clean gift.');
+        locShip.hpMax(1);
     },
     checkIsReborn:function () {
         var locShip = this._ship;

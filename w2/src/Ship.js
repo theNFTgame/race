@@ -92,8 +92,13 @@ var Ship = cc.Sprite.extend({
         // var b = Bullet.getOrCreateBullet(this.bulletSpeed, "W1.png", MW.ENEMY_ATTACK_MODE.NORMAL, 3000, MW.UNIT_TAG.PLAYER_BULLET);
         // b.setPosition(p.x - offset, p.y + 3 + cs.height * 0.3);
     },
-    hpMax:function (dt){
+    hpMax:function (dt, type){
         this.HP = dt;
+        if( dt > 2 ){
+            this.canBeAttack = true;
+        }else{
+            this.canBeAttack = false;
+        }
     },
     destroy:function () {
         MW.LIFE--;
