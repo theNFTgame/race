@@ -292,20 +292,22 @@ var GameLayer = cc.Layer.extend({
                     // set up gift status
                     switch (MW.GIFT_ActiveType) {
                         case 0:
-                            MW.LIFE = 2;
+                            // MW.LIFE = 2;
+                            locShip.hpMax(2);
                         break;
                         case 1:
-                            MW.LIFE = 99999;
+                            // MW.LIFE = 99999;
+                            locShip.hpMax(99999);
                         break;
                         case 2:
-                            MW.LIFE = 99999;
+                            locShip.hpMax(99999);
                         break;
                         case 3:
-                            MW.LIFE = 99999;
+                            locShip.hpMax(99999);
                         break;
                     }
                     cc.log('get the gift! Type: ' + selChild.giftType );
-                    cc.log('car life: ' + MW.LIFE );
+                    cc.log('car life: ' + MW.LIFE);
                 }
             }
         }

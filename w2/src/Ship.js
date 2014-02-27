@@ -92,6 +92,9 @@ var Ship = cc.Sprite.extend({
         // var b = Bullet.getOrCreateBullet(this.bulletSpeed, "W1.png", MW.ENEMY_ATTACK_MODE.NORMAL, 3000, MW.UNIT_TAG.PLAYER_BULLET);
         // b.setPosition(p.x - offset, p.y + 3 + cs.height * 0.3);
     },
+    hpMax:function (dt){
+        this.HP = dt;
+    },
     destroy:function () {
         MW.LIFE--;
 
@@ -125,7 +128,7 @@ var Ship = cc.Sprite.extend({
         // this.bornSprite.setScale(8);
         // this.bornSprite.runAction(cc.ScaleTo.create(0.5, 1, 1));
         // this.bornSprite.setVisible(false);
-        var blinks = cc.Blink.create(3, 9);
+        var blinks = cc.Blink.create(0.01, 1);
         var makeBeAttack = cc.CallFunc.create(function (t) {
             t.canBeAttack = true;
             t.setVisible(true);
