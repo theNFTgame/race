@@ -27,7 +27,9 @@ var GameOver = cc.Layer.extend({
             // logo.setPosition(0,300);
             // this.addChild(logo,10,1);
 
-            
+            var flare = cc.Sprite.create(res.flare_jpg);
+            this.addChild(flare);
+            flare.setVisible(false);
 
             cc.log(MW.TOP10[9].value01);
             if (MW.TOP10[9].value01 >= MW.SCORE ){
@@ -40,9 +42,7 @@ var GameOver = cc.Layer.extend({
                 playAgainDisabled.setScale(0.5);
                 
 
-                var flare = cc.Sprite.create(res.flare_jpg);
-                this.addChild(flare);
-                flare.setVisible(false);
+                
 
                 var playAgain = cc.MenuItemSprite.create(playAgainNormal, playAgainSelected, playAgainDisabled, function(){
                     flareEffect(flare,this,this.onPlayAgain);
@@ -86,6 +86,24 @@ var GameOver = cc.Layer.extend({
                 box4.setFontColor(cc.c3b(20, 20, 20));
                 box4.setMaxLength(20);
                 this.addChild(box4);
+
+                var newGameNormal = cc.Sprite.createWithSpriteFrameName('btn_start.png');
+                var newGameSelected = cc.Sprite.createWithSpriteFrameName('btn_start.png');
+                var newGameDisabled = cc.Sprite.createWithSpriteFrameName('btn_start.png');
+                newGameNormal.setScale(0.5);
+                newGameSelected.setScale(0.5);
+                newGameDisabled.setScale(0.5);
+
+                var newGame = cc.MenuItemSprite.create(newGameNormal, newGameSelected, newGameDisabled, function () {
+                    // this.onButtonEffect();
+                    flareEffect(flare, this, this.onRankList);
+                }.bind(this));
+                var menu  =  cc.Menu.create(newGame);
+                menu.alignItemsVerticallyWithPadding(10);
+                this.addChild(menu, 1, 2);
+                menu.setPosition(winSize.width / 2 + 50, winSize.height / 2 - 100);
+
+
             }
             
 
@@ -127,6 +145,12 @@ var GameOver = cc.Layer.extend({
         scene.addChild(GameControlMenu.create());
         cc.Director.getInstance().replaceScene(cc.TransitionFade.create(1.2,scene));
     },
+    onSubmitScore:function (pSender) {
+        var scene = cc.Scene.create();
+        scene.addChild(GameLayer.create());
+        scene.addChild(GameControlMenu.create());
+        cc.Director.getInstance().replaceScene(cc.TransitionFade.create(1.2,scene));
+    },
     editBoxTextChanged: function (editBox, text) {
         cc.log("editBox " + this._getEditBoxName(editBox) + ", TextChanged, text: " + text);
     },
@@ -139,7 +163,15 @@ var GameOver = cc.Layer.extend({
             return "box4";
         }
         return "Unknown EditBox";
-    }
+    },
+    onRankList:function (pSender) {
+        //load resources
+        // cc.LoaderScene.preload(g_maingame, function () {
+            var scene = cc.Scene.create();
+            scene.addChild(RankList.create());
+            cc.Director.getInstance().replaceScene(cc.TransitionFade.create(1.2, scene));
+        // }, this);
+    },
 });
 
 GameOver.create = function () {

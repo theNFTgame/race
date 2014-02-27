@@ -62,6 +62,7 @@ var MW = MW || {};
             'src/SysMenu.js',
             'src/HitEffect.js',
             'src/SparkEffect.js',
+            'src/RankList.js',
             'src/Background.js'
         ]
     };
