@@ -10,7 +10,7 @@ var RankList = cc.Layer.extend({
         if (this._super()) {
             cc.SpriteFrameCache.getInstance().addSpriteFrames(res.textureBTN_plist);
 
-            var sp = cc.Sprite.create(res.bg_gameover_jpg);
+            var sp = cc.Sprite.create(res.bg_ranklist_jpg);
             sp.setScale(0.5);
             sp.setAnchorPoint(0,0);
             this.addChild(sp, 0, 1);

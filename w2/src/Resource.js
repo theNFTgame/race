@@ -41,7 +41,8 @@ var res = {
     Cars : 'res/cars.png',
     Gifts : 'res/gifts.png',
     sysmenu_jpg : 'res/sysmenu.jpg',
-    bg_gameover_jpg : 'res/bg_gameover.jpg'
+    bg_gameover_jpg : 'res/bg_gameover.jpg',
+    bg_ranklist_jpg : 'res/bg_ranking.jpg'
 };
 
 var g_mainmenu = [
@@ -62,6 +63,7 @@ var g_mainmenu = [
     {src:res.textureBTN_plist},
     {src:res.sysmenu_jpg},
     {src:res.bg_gameover_jpg},
+    {src:res.bg_ranklist_jpg},
 
     // {src:res.textureCars_plist},
     // {src:res.textureCars_png},
