@@ -27,17 +27,17 @@ var GameOver = cc.Layer.extend({
             // logo.setPosition(0,300);
             // this.addChild(logo,10,1);
 
-            var playAgainNormal = cc.Sprite.createWithSpriteFrameName('btn_replay.png');
-            var playAgainSelected = cc.Sprite.createWithSpriteFrameName('btn_replay.png');
-            var playAgainDisabled = cc.Sprite.createWithSpriteFrameName('btn_replay.png');
-            playAgainNormal.setScale(0.5);
-            playAgainSelected.setScale(0.5);
-            playAgainDisabled.setScale(0.5);
+            
 
             cc.log(MW.TOP10[9].value01);
             if (MW.TOP10[9].value01 >= MW.SCORE ){
                 // show btn ...
-
+                var playAgainNormal = cc.Sprite.createWithSpriteFrameName('btn_replay.png');
+                var playAgainSelected = cc.Sprite.createWithSpriteFrameName('btn_replay.png');
+                var playAgainDisabled = cc.Sprite.createWithSpriteFrameName('btn_replay.png');
+                playAgainNormal.setScale(0.5);
+                playAgainSelected.setScale(0.5);
+                playAgainDisabled.setScale(0.5);
                 
 
                 var flare = cc.Sprite.create(res.flare_jpg);
@@ -75,8 +75,17 @@ var GameOver = cc.Layer.extend({
 
 
             }else{
+                
                 // show submint
-
+                var box4 = cc.EditBox.create(cc.size(200, 40), cc.Scale9Sprite.createWithSpriteFrameName('btn_replay.png'));
+                cc.log(box4);
+                box4.setPlaceholderFontColor(cc.c3b(255, 0, 0));
+                box4.setPlaceHolder("名字:");
+                box4.setPosition(winSize.width / 2 , 220);
+                box4.setDelegate(this);
+                box4.setFontColor(cc.c3b(20, 20, 20));
+                box4.setMaxLength(20);
+                this.addChild(box4);
             }
             
 
@@ -117,6 +126,19 @@ var GameOver = cc.Layer.extend({
         scene.addChild(GameLayer.create());
         scene.addChild(GameControlMenu.create());
         cc.Director.getInstance().replaceScene(cc.TransitionFade.create(1.2,scene));
+    },
+    editBoxTextChanged: function (editBox, text) {
+        cc.log("editBox " + this._getEditBoxName(editBox) + ", TextChanged, text: " + text);
+    },
+
+    editBoxReturn: function (editBox) {
+        cc.log("editBox " + this._getEditBoxName(editBox) + " was returned !");
+    },
+    _getEditBoxName :function(editBox){
+        if (this._box4 == editBox) {
+            return "box4";
+        }
+        return "Unknown EditBox";
     }
 });
 
