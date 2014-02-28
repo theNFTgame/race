@@ -52,11 +52,7 @@ var GameOver = cc.Layer.extend({
             // logo.setPosition(0,300);
             // this.addChild(logo,10,1);
 
-            // 了解道具拿到最多的类型
-            var b = listSortBy(MW.GiftRecord , 'age',  'desc');
-            cc.log(b);
-            var mostGiftType = b[0].type;
-            cc.log('mostGiftType:' + mostGiftType);
+
 
 
 
@@ -104,6 +100,20 @@ var GameOver = cc.Layer.extend({
                 var overMenu = cc.Menu.create(menu1);
                 overMenu.setPosition(winSize.width / 2 + 140,220);
                 this.addChild(overMenu);
+
+                // 了解道具拿到最多的类型
+                var b = listSortBy(MW.GiftRecord , 'age',  'desc');
+                cc.log(b);
+                var mostGiftType = b[0].type;
+                cc.log('mostGiftType:' + mostGiftType);
+
+                var thisGift = GiftType[mostGiftType];
+                var NewTitleImage = thisGift.btnPng;
+                this.titleScore = cc.Sprite.createWithSpriteFrameName(NewTitleImage);
+                // this.titleScore = cc.Sprite.createWithSpriteFrameName('car_smooth_txt.png');
+                this.titleScore.setPosition(winSize.width /2 , winSize.height - 190);
+                this.titleScore.setScale(0.5);
+                this.addChild(this.titleScore, 1020);
 
 
 
