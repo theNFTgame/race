@@ -270,7 +270,7 @@ var GameLayer = cc.Layer.extend({
                     selChild.hurt();
                     cc.log('check MW.GIFT_ActiveType:' + MW.GIFT_ActiveType);
                     if( MW.GIFT_ActiveType !== null && MW.GIFT_ActiveType !== 0){
-                        MW.GIFT_ActiveType = null;
+                        // MW.GIFT_ActiveType = null;
                     }else{
                         cc.log('car life: ' + MW.LIFE );
                         this.active = false;
@@ -289,12 +289,12 @@ var GameLayer = cc.Layer.extend({
                     selChild.hurt();
                     // locShip.hurt();
                     MW.GIFT_ActiveType = selChild.giftType;
-
+                    cc.log('GIFT_ActiveType:'+ MW.GIFT_ActiveType);
                     // set up gift status
                     switch (MW.GIFT_ActiveType) {
                         case 0:
                             // MW.LIFE = 2;
-                            locShip.hpMax(2);
+                            locShip.hpMax(2,MW.GIFT_ActiveType);
                         break;
                         case 1:
                             // MW.LIFE = 99999;
@@ -307,7 +307,7 @@ var GameLayer = cc.Layer.extend({
                             locShip.hpMax(99999,MW.GIFT_ActiveType);
                         break;
                     }
-                    this.scheduleOnce(this.timeCallback,5);
+                    this.scheduleOnce(this.timeCallback,6);
                     // TODO add gift title 动画
 
 
@@ -344,8 +344,9 @@ var GameLayer = cc.Layer.extend({
         }
     },
     timeCallback:function(){
+        var locShip = this._ship;
         cc.log('timeCallback, clean gift.');
-        locShip.hpMax(1);
+        locShip.backNormal(1);
     },
     checkIsReborn:function () {
         var locShip = this._ship;

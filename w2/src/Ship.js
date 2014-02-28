@@ -24,8 +24,9 @@ var Ship = cc.Sprite.extend({
         this.setScale(0.5);
 
         // // set frame
-        // var frame0 = cc.SpriteFrameCache.getInstance().getSpriteFrame("ship01.png");
-        // var frame1 = cc.SpriteFrameCache.getInstance().getSpriteFrame("ship02.png");
+        // cc.log(cc.SpriteFrameCache.getInstance());
+        // var frame0 = cc.SpriteFrameCache.getInstance().getSpriteFrameName("car_00.png");
+        // var frame1 = cc.SpriteFrameCache.getInstance().getSpriteFrameName("car_01.png");
 
         // var animFrames = [];
         // animFrames.push(frame0);
@@ -94,11 +95,24 @@ var Ship = cc.Sprite.extend({
     },
     hpMax:function (dt, type){
         this.HP = dt;
+        var thisGift = GiftType[type];
+        var NewCarImage = thisGift.carPng;
+        cc.log(NewCarImage);
+        this.initWithSpriteFrameName(NewCarImage);
+        
         if( dt > 2 ){
             this.canBeAttack = true;
         }else{
+
             this.canBeAttack = false;
+
         }
+    },
+    backNormal:function(){
+        MW.GIFT_ActiveType = null;
+        this.initWithSpriteFrameName("car_00.png");
+        this.HP = 1;
+        this.canBeAttack = true;
     },
     destroy:function () {
         MW.LIFE--;
