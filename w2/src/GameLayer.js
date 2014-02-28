@@ -90,6 +90,14 @@ var GameLayer = cc.Layer.extend({
             this.addChild(this.lbScore, 1000);
             this.lbScore.setPosition(winSize.width - 5, winSize.height - 230);
 
+
+            // gift title
+            // this.titleScore = cc.Sprite.createWithSpriteFrameName('car_smooth_txt.png');
+            // this.titleScore.setPosition(winSize.width /2 + 100 , winSize.height - 90);
+            // this.titleScore.setScale(0.5);
+            // this.addChild(this.titleScore, 1020);
+            // this.titleScore.setVisible(false);
+
             // // ship life
             // var life = cc.Sprite.createWithSpriteFrameName("ship01.png");
             // life.setScale(0.6);
@@ -291,6 +299,16 @@ var GameLayer = cc.Layer.extend({
                     MW.GIFT_ActiveType = selChild.giftType;
                     cc.log('GIFT_ActiveType:'+ MW.GIFT_ActiveType);
                     // set up gift status
+                    var thisGift = GiftType[selChild.giftType];
+                    var NewTitleImage = thisGift.txtPng;
+                    cc.log('gift title :' + NewTitleImage);
+                    this.titleScore = cc.Sprite.createWithSpriteFrameName(NewTitleImage);
+                    // this.titleScore = cc.Sprite.createWithSpriteFrameName('car_smooth_txt.png');
+                    this.titleScore.setPosition(winSize.width /2 , winSize.height - 90);
+                    this.titleScore.setScale(0.5);
+                    this.addChild(this.titleScore, 1020);
+                    // this.titleScore.setVisible(false);
+                    
                     switch (MW.GIFT_ActiveType) {
                         case 0:
                             // MW.LIFE = 2;
@@ -347,6 +365,7 @@ var GameLayer = cc.Layer.extend({
         var locShip = this._ship;
         cc.log('timeCallback, clean gift.');
         locShip.backNormal(1);
+        this.titleScore.setVisible(false);
     },
     checkIsReborn:function () {
         var locShip = this._ship;
