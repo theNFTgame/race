@@ -52,6 +52,12 @@ var GameLayer = cc.Layer.extend({
             MW.ACTIVE_GIFTS = 0;
             MW.GIFT_Countdown = 0;
             MW.GIFT_ActiveType = null;
+            MW.GiftRecord = [
+                    {type:0, age:0},
+                    {type:1, age:0},
+                    {type:2, age:0},
+                    {type:3, age:0}
+                ];
 
             MW.SCORE = 0;
             MW.LIFE = 1;
@@ -59,6 +65,7 @@ var GameLayer = cc.Layer.extend({
 
             MW.Track = [3,3,3,3];
             MW.Track_Position = [winSize.height,winSize.height,winSize.height,winSize.height];
+
 
             // OpaqueBatch
             var texOpaque = cc.TextureCache.getInstance().addImage(res.textureOpaquePack_png);
@@ -309,6 +316,9 @@ var GameLayer = cc.Layer.extend({
                     this.addChild(this.titleScore, 1020);
                     // this.titleScore.setVisible(false);
                     
+                    MW.GiftRecord[selChild.giftType].age++;
+
+
                     switch (MW.GIFT_ActiveType) {
                         case 0:
                             // MW.LIFE = 2;

@@ -1,11 +1,36 @@
 function jsonpCallback(data){
-    MW.TOP10_t = data;
+    
     console.dir(data);
-};
+    
+    MW.TOP10_t = data;
+    cc.log(MW.TOP10_t);
+    cc.log(MW.TOP10);
+    var a = listSortBy(MW.TOP10_t, 'value01', 'desc');
+    cc.log(a[0]);
+    var b = listSortBy(MW.GiftRecord , 'age',  'desc');
+    cc.log(b);
+}
 
 var script = document.createElement('script');
 script.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=get_global_ranking&game_name=RaceGame&limit=10&jsoncallback=jsonpCallback';
 document.getElementsByTagName('head')[0].appendChild(script);
+
+function listSortBy(arr, field, order){
+    var refer = [],
+        result=[],
+        order = order=='asc'?'asc':'desc',
+        index;
+    for(i=0; i<arr.length; i++){
+        refer[i] = arr[i][field]+':'+i;
+    }
+    refer.sort();
+    if(order=='desc') refer.reverse();
+    for(i=0;i<refer.length;i++){
+        index = refer[i].split(':')[1];
+        result[i] = arr[index];
+    }
+    return result;
+}
 
 
 var GameOver = cc.Layer.extend({
@@ -26,6 +51,14 @@ var GameOver = cc.Layer.extend({
             // logo.setAnchorPoint(0,0);
             // logo.setPosition(0,300);
             // this.addChild(logo,10,1);
+
+            // 了解道具拿到最多的类型
+            var b = listSortBy(MW.GiftRecord , 'age',  'desc');
+            cc.log(b);
+            var mostGiftType = b[0].type;
+            cc.log('mostGiftType:' + mostGiftType);
+
+
 
             var flare = cc.Sprite.create(res.flare_jpg);
             this.addChild(flare);
@@ -49,7 +82,7 @@ var GameOver = cc.Layer.extend({
                 }.bind(this) );
                 var menu = cc.Menu.create(playAgain);
                 this.addChild(menu, 1, 2);
-                menu.setPosition(winSize.width / 2 - 100 , 220);
+                menu.setPosition(winSize.width / 2 - 60 , 220);
 
                 // btn share
                 var b0 = cc.Sprite.createWithSpriteFrameName('btn_share.png');
@@ -58,7 +91,7 @@ var GameOver = cc.Layer.extend({
                     window.location.href = "share.html";
                 });
                 var overMenu0 = cc.Menu.create(menu0);
-                overMenu0.setPosition(winSize.width / 2 ,220);
+                overMenu0.setPosition(winSize.width / 2 + 40 ,220);
                 this.addChild(overMenu0);
 
 
@@ -69,7 +102,7 @@ var GameOver = cc.Layer.extend({
                     window.location.href = "rank.html";
                 });
                 var overMenu = cc.Menu.create(menu1);
-                overMenu.setPosition(winSize.width / 2 + 100,220);
+                overMenu.setPosition(winSize.width / 2 + 140,220);
                 this.addChild(overMenu);
 
 

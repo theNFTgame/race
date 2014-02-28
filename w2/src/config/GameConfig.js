@@ -144,10 +144,16 @@ MW.TOP10 = [
     {"index":6,"name":"yofine", "value01":"23336","value02":"0","value03":"0"},
     {"index":7,"name":"fan",    "value01":"23335","value02":"0","value03":"0"},
     {"index":8,"name":"no1",    "value01":"23334","value02":"0","value03":"0"},
-    {"index":9,"name":"Yorhom", "value01":"299990","value02":"0","value03":"0"}
+    {"index":9,"name":"Yorhom", "value01":"2000","value02":"0","value03":"0"}
 ];
 
 
 MW.Track = [3,3,3,3];
 MW.Track_Position = [480,480,480,480];
 
+MW.GiftRecord = [
+                    {type:0, age:0},
+                    {type:1, age:0},
+                    {type:2, age:0},
+                    {type:3, age:0}
+                ];
