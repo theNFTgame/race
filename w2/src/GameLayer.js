@@ -101,7 +101,7 @@ var GameLayer = cc.Layer.extend({
             this.lbScore.setAnchorPoint(1, 0);
             this.lbScore.setAlignment(cc.TEXT_ALIGNMENT_RIGHT);
             this.addChild(this.lbScore, 1110);
-            this.lbScore.setPosition(winSize.width - 5, winSize.height - 130);
+            this.lbScore.setPosition(winSize.width - 25, winSize.height - 130);
 
 
             // gift title
@@ -341,6 +341,7 @@ var GameLayer = cc.Layer.extend({
                             locShip.hpMax(99999,MW.GIFT_ActiveType);
                         break;
                     }
+                    this.scheduleOnce(this.removeGiftTitle,3);
                     this.scheduleOnce(this.timeCallback,6);
                     // TODO add gift title 动画
 
@@ -376,6 +377,9 @@ var GameLayer = cc.Layer.extend({
             if (selChild && selChild.active)
                 selChild.update(dt);
         }
+    },
+    removeGiftTitle:function(){
+        this.titleScore.setVisible(false);
     },
     timeCallback:function(){
         var locShip = this._ship;
