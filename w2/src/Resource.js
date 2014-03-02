@@ -42,7 +42,8 @@ var res = {
     Gifts : 'res/gifts.png',
     sysmenu_jpg : 'res/sysmenu.jpg',
     bg_gameover_jpg : 'res/bg_gameover.jpg',
-    bg_ranklist_jpg : 'res/bg_ranking.jpg'
+    bg_ranklist_jpg : 'res/bg_ranking.jpg',
+    ScoreBoard_png : 'res/bg_gamelayer.png'
 };
 
 var g_mainmenu = [
@@ -74,6 +75,7 @@ var g_mainmenu = [
     {src:res.arial_14_png},
     {src:res.explosion_png},
     {src:res.textureOpaquePack_png},
+    {src:res.ScoreBoard_png},
 
     //tmx
     //{src:res.level01_tmx},

@@ -91,11 +91,17 @@ var GameLayer = cc.Layer.extend({
 
             // 记分牌
             // score
-            this.lbScore = cc.LabelBMFont.create("Score: 0", res.arial_14_fnt);
+            this.lbScoreBoard = cc.Sprite.create(res.ScoreBoard_png );
+            this.lbScoreBoard.setScale(0.5);
+            this.lbScoreBoard.setAnchorPoint(0,0);
+            this.addChild(this.lbScoreBoard, 1010);
+
+
+            this.lbScore = cc.LabelBMFont.create(" 0 ", res.arial_14_fnt);
             this.lbScore.setAnchorPoint(1, 0);
             this.lbScore.setAlignment(cc.TEXT_ALIGNMENT_RIGHT);
-            this.addChild(this.lbScore, 1000);
-            this.lbScore.setPosition(winSize.width - 5, winSize.height - 230);
+            this.addChild(this.lbScore, 1110);
+            this.lbScore.setPosition(winSize.width - 5, winSize.height - 130);
 
 
             // gift title
@@ -360,7 +366,7 @@ var GameLayer = cc.Layer.extend({
         var selChild, children = this._texOpaqueBatch.getChildren();
         for (var i in children) {
             selChild = children[i];
-            if (selChild && selChild.active)
+            if (selChild && selChild.acdtive)
                 selChild.update(dt);
         }
 
@@ -395,7 +401,7 @@ var GameLayer = cc.Layer.extend({
             this._tmpScore += 1;
         }
         // this._lbLife.setString(MW.LIFE + '');
-        this.lbScore.setString("Score: " + this._tmpScore);
+        this.lbScore.setString( this._tmpScore + " M");
     },
     collide:function (a, b) {
         var pos1 = a.getPosition();
