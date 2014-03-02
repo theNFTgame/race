@@ -94,14 +94,43 @@ var GameLayer = cc.Layer.extend({
             this.lbScoreBoard = cc.Sprite.create(res.ScoreBoard_png );
             this.lbScoreBoard.setScale(0.5);
             this.lbScoreBoard.setAnchorPoint(0,0);
-            this.addChild(this.lbScoreBoard, 1010);
+            this.addChild(this.lbScoreBoard, 1000);
 
 
-            this.lbScore = cc.LabelBMFont.create(" 0 ", res.arial_14_fnt);
+            this.lbScoreIcon_a = cc.Sprite.createWithSpriteFrameName(GiftType[0].sbPng);
+            this.lbScoreIcon_a.setPosition(winSize.width - 50, winSize.height - 200);
+            this.lbScoreIcon_a.setScale(0.5);
+            this.lbScoreIcon_a.setAnchorPoint(1, 0);
+            this.addChild(this.lbScoreIcon_a, 1110);
+
+            this.lbScoreIcon_b = cc.Sprite.createWithSpriteFrameName(GiftType[1].sbPng);
+            this.lbScoreIcon_b.setPosition(winSize.width - 10 , winSize.height - 200);
+            this.lbScoreIcon_b.setScale(0.5);
+            this.lbScoreIcon_b.setAnchorPoint(1, 0);
+            this.addChild(this.lbScoreIcon_b, 1110);
+
+            this.lbScoreIcon_c = cc.Sprite.createWithSpriteFrameName(GiftType[2].sbPng);
+            this.lbScoreIcon_c.setPosition(winSize.width - 50 , winSize.height - 240);
+            this.lbScoreIcon_c.setScale(0.5);
+            this.lbScoreIcon_c.setAnchorPoint(1, 0);
+            this.addChild(this.lbScoreIcon_c, 1110);
+
+            this.lbScoreIcon_d = cc.Sprite.createWithSpriteFrameName(GiftType[3].sbPng);
+            this.lbScoreIcon_d.setPosition(winSize.width - 10 , winSize.height - 240);
+            this.lbScoreIcon_d.setScale(0.5);
+            this.lbScoreIcon_d.setAnchorPoint(1, 0);
+            this.addChild(this.lbScoreIcon_d, 2110);
+
+            cc.log(this.lbScoreIcon_3);
+
+            // this.lbScore = cc.LabelBMFont.create(" 0 ", res.arial_14_fnt);
+
+            this.lbScore = cc.LabelTTF.create(""+MW.SCORE + " M","Arial Bold",12);
+            this.lbScore.setColor(cc.c3b(0,0,0));
             this.lbScore.setAnchorPoint(1, 0);
-            this.lbScore.setAlignment(cc.TEXT_ALIGNMENT_RIGHT);
+            // this.lbScore.setAlignment(cc.TEXT_ALIGNMENT_RIGHT);
             this.addChild(this.lbScore, 1110);
-            this.lbScore.setPosition(winSize.width - 25, winSize.height - 130);
+            this.lbScore.setPosition(winSize.width - 20, winSize.height - 140);
 
 
             // gift title
@@ -314,6 +343,7 @@ var GameLayer = cc.Layer.extend({
                     // set up gift status
                     var thisGift = GiftType[selChild.giftType];
                     var NewTitleImage = thisGift.txtPng;
+                    var NewBoardIcon = thisGift.sbOnPng;
                     cc.log('gift title :' + NewTitleImage);
                     this.titleScore = cc.Sprite.createWithSpriteFrameName(NewTitleImage);
                     // this.titleScore = cc.Sprite.createWithSpriteFrameName('car_smooth_txt.png');
@@ -321,6 +351,8 @@ var GameLayer = cc.Layer.extend({
                     this.titleScore.setScale(0.5);
                     this.addChild(this.titleScore, 1020);
                     // this.titleScore.setVisible(false);
+
+                    
                     
                     MW.GiftRecord[selChild.giftType].age++;
 
@@ -329,16 +361,43 @@ var GameLayer = cc.Layer.extend({
                         case 0:
                             // MW.LIFE = 2;
                             locShip.hpMax(2,MW.GIFT_ActiveType);
+                            this.lbScoreIcon_a = cc.Sprite.createWithSpriteFrameName(NewBoardIcon);
+                            this.lbScoreIcon_a.setPosition(winSize.width - 50, winSize.height - 200);
+                            this.lbScoreIcon_a.setScale(0.5);
+                            this.lbScoreIcon_a.setAnchorPoint(1, 0);
+                            this.addChild(this.lbScoreIcon_a, 1110);
+
+
                         break;
                         case 1:
                             // MW.LIFE = 99999;
                             locShip.hpMax(99999,MW.GIFT_ActiveType);
+                            this.lbScoreIcon_b = cc.Sprite.createWithSpriteFrameName(NewBoardIcon);
+
+                            this.lbScoreIcon_b.setPosition(winSize.width - 10 , winSize.height - 200);
+                            this.lbScoreIcon_b.setScale(0.5);
+                            this.lbScoreIcon_b.setAnchorPoint(1, 0);
+                            this.addChild(this.lbScoreIcon_b, 1110);
+
+
                         break;
                         case 2:
                             locShip.hpMax(99999,MW.GIFT_ActiveType);
+                            this.lbScoreIcon_c = cc.Sprite.createWithSpriteFrameName(NewBoardIcon);
+                                        this.lbScoreIcon_c.setPosition(winSize.width - 50 , winSize.height - 240);
+                            this.lbScoreIcon_c.setScale(0.5);
+                            this.lbScoreIcon_c.setAnchorPoint(1, 0);
+                            this.addChild(this.lbScoreIcon_c, 1110);
+
+
                         break;
                         case 3:
                             locShip.hpMax(99999,MW.GIFT_ActiveType);
+                            this.lbScoreIcon_d = cc.Sprite.createWithSpriteFrameName(NewBoardIcon);
+                            this.lbScoreIcon_d.setPosition(winSize.width - 10 , winSize.height - 240);
+                            this.lbScoreIcon_d.setScale(0.5);
+                            this.lbScoreIcon_d.setAnchorPoint(1, 0);
+                            this.addChild(this.lbScoreIcon_d, 2110);
                         break;
                     }
                     this.scheduleOnce(this.removeGiftTitle,3);

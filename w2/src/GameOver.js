@@ -103,9 +103,9 @@ var GameOver = cc.Layer.extend({
 
                 // 了解道具拿到最多的类型
                 var b = listSortBy(MW.GiftRecord , 'age',  'desc');
-                cc.log(b);
+                // cc.log(b);
                 var mostGiftType = b[0].type;
-                cc.log('mostGiftType:' + mostGiftType);
+                // cc.log('mostGiftType:' + mostGiftType);
 
                 var thisGift = GiftType[mostGiftType];
                 var NewTitleImage = thisGift.btnPng;
