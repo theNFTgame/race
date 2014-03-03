@@ -92,14 +92,14 @@ var GameOver = cc.Layer.extend({
 
 
                 // var b1 = cc.LabelTTF.create("open google","Arial",14);
-                var b1 = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
-                b1.setScale(0.5);
-                var menu1 = cc.MenuItemLabel.create(b1,function(){
-                    window.location.href = "rank.html";
-                });
-                var overMenu = cc.Menu.create(menu1);
-                overMenu.setPosition(winSize.width / 2 + 140,220);
-                this.addChild(overMenu);
+                // var b1 = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
+                // b1.setScale(0.5);
+                // var menu1 = cc.MenuItemLabel.create(b1,function(){
+                //     window.location.href = "rank.html";
+                // });
+                // var overMenu = cc.Menu.create(menu1);
+                // overMenu.setPosition(winSize.width / 2 + 140,220);
+                // this.addChild(overMenu);
 
                 // 了解道具拿到最多的类型
                 var b = listSortBy(MW.GiftRecord , 'age',  'desc');
@@ -114,6 +114,23 @@ var GameOver = cc.Layer.extend({
                 this.titleScore.setPosition(winSize.width /2 , winSize.height - 190);
                 this.titleScore.setScale(0.5);
                 this.addChild(this.titleScore, 1020);
+
+                // menu3 
+                var goRankListNormal = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
+                var goRankListSelected = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
+                var goRankListDisabled = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
+                goRankListNormal.setScale(0.5);
+                goRankListSelected.setScale(0.5);
+                goRankListDisabled.setScale(0.5);
+
+                var goRankList = cc.MenuItemSprite.create(goRankListNormal, goRankListSelected, goRankListDisabled, function () {
+                    // this.onButtonEffect();
+                    flareEffect(flare, this, this.onRankList);
+                }.bind(this));
+                var goRankmenu = cc.Menu.create(goRankList);
+                goRankmenu.alignItemsVerticallyWithPadding(10);
+                this.addChild(goRankmenu, 1, 2);
+                goRankmenu.setPosition(winSize.width / 2 + 140,220);
 
 
 
@@ -130,21 +147,21 @@ var GameOver = cc.Layer.extend({
                 box4.setMaxLength(20);
                 this.addChild(box4);
 
-                var newGameNormal = cc.Sprite.createWithSpriteFrameName('btn_start.png');
-                var newGameSelected = cc.Sprite.createWithSpriteFrameName('btn_start.png');
-                var newGameDisabled = cc.Sprite.createWithSpriteFrameName('btn_start.png');
-                newGameNormal.setScale(0.5);
-                newGameSelected.setScale(0.5);
-                newGameDisabled.setScale(0.5);
+                var goRankListNormal = cc.Sprite.createWithSpriteFrameName('btn_start.png');
+                var goRankListSelected = cc.Sprite.createWithSpriteFrameName('btn_start.png');
+                var goRankListDisabled = cc.Sprite.createWithSpriteFrameName('btn_start.png');
+                goRankListNormal.setScale(0.5);
+                goRankListSelected.setScale(0.5);
+                goRankListDisabled.setScale(0.5);
 
-                var newGame = cc.MenuItemSprite.create(newGameNormal, newGameSelected, newGameDisabled, function () {
+                var goRankList = cc.MenuItemSprite.create(goRankListNormal, goRankListSelected, goRankListDisabled, function () {
                     // this.onButtonEffect();
                     flareEffect(flare, this, this.onRankList);
                 }.bind(this));
-                var menu = cc.Menu.create(newGame);
-                menu.alignItemsVerticallyWithPadding(10);
-                this.addChild(menu, 1, 2);
-                menu.setPosition(winSize.width / 2 + 50, winSize.height / 2 - 100);
+                var goRankmenu = cc.Menu.create(goRankList);
+                goRankmenu.alignItemsVerticallyWithPadding(10);
+                this.addChild(goRankmenu, 1, 2);
+                goRankmenu.setPosition(winSize.width / 2 + 50, winSize.height / 2 - 100);
 
 
             }
