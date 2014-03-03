@@ -5,7 +5,7 @@ var GameControlMenu = cc.Layer.extend({
         if (this._super()) {
             cc.MenuItemFont.setFontSize(18);
             cc.MenuItemFont.setFontName("Arial");
-            var systemMenu = cc.MenuItemFont.create("Main Menu", this.onSysMenu);
+            var systemMenu = cc.MenuItemFont.create("Game Rank", this.onSysMenu);
             var menu = cc.Menu.create(systemMenu);
             menu.setPosition(0, 0);
             systemMenu.setAnchorPoint(0, 0);
