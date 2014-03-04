@@ -149,13 +149,15 @@ var GameOver = cc.Layer.extend({
                 // $('.getmore').attr('href', shareWord);
             var shareLink = document.getElementsByClassName('js-sharelink')[0];
             shareLink.setAttribute('href', shareWord);
-
+            // 我在@德国马牌轮胎 #赛车游戏#中驰骋了aaa米
+            cc.log('title:' + document.title );
+            document.title = "我在@德国马牌轮胎 #赛车游戏#中驰骋了" + MW.SCORE +"米";
 
 
             if (MW.TOP10[9].value01 >= MW.SCORE ){
 
 
-                var lbScore = cc.LabelTTF.create(""+MW.SCORE + " M","Arial Bold",36);
+                var lbScore = cc.LabelTTF.create(""+ MW.SCORE + " M","Arial Bold",36);
                 lbScore.setPosition(160,380);
                 lbScore.setColor(cc.c3b(0,0,0));
                 this.addChild(lbScore,10);
