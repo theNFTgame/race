@@ -10,38 +10,65 @@ shareLayerCloseer.addEventListener("click", function (event) {
 var rankLayerList = document.getElementById('toplist');
 var textRankList = '';
 
+function generatRankList(data){
+    var htmlCode = '<table>';
+// index: 0
+// name: "axing2"
+// value01: 123456789
+    for (var i = 0; i < data.length ; i++) {
+        cc.log(data[i]);
+        htmlCode = htmlCode + '<tr><td class="number">' + (data[i].index + 1) + '</td>';
+        htmlCode = htmlCode + '<td class="name">' + data[i].name + '</td>';
+        htmlCode = htmlCode + '<td class="value">' + data[i].value01 + '</td>';
 
+    }
+    htmlCode = htmlCode + '</tr></table>'
+
+    return htmlCode;
+}
 
 function jsonpCallback(data){
     // cc.log('jsonpCallback');
     // cc.log(data);
     MW.TOP10_t = data;
-    if(!MW.TOP10_t.game_name){
-        cc.log(rankLayerList);
-        rankLayerList.innerHTML = MW.TOP10_t ;
-    }else{
-         cc.log(MW.TOP10_t);
-    }
+    // if(!MW.TOP10_t.game_name){
+    //     cc.log(rankLayerList);
+    //     rankLayerList.innerHTML = MW.TOP10_t ;
+    // }else{
+    //      cc.log(MW.TOP10_t);
+    // }
     // cc.log(MW.TOP10_t);
     // cc.log(MW.TOP10);
     // var 
-    cc.log(MW.TOP10[9]);
-    MW.TOP10 = listSortBy(MW.TOP10_t, 'value01', 'desc');
-    cc.log(MW.TOP10[9]);
-    for (var i = MW.TOP10.length - 1; i >= 0; i--) {
-        
-    }
+    cc.log(MW.TOP10);
+    MW.TOP10 = data;
+    // MW.TOP10 = listSortBy(MW.TOP10_t, 'value01', 'desc');
+    cc.log(MW.TOP10);
+    var newlist = generatRankList(MW.TOP10);
+    rankLayerList.innerHTML = newlist;
+    cc.log(newlist);
     // cc.log(a[0]);
     // var b = listSortBy(MW.GiftRecord , 'age',  'desc');
     // // cc.log(b);
 }
 function jsonpPostback(data){
     MW.TOP10_t = data;
-    cc.log(data);
-    cc.log(MW.TOP10_t.global_ranking);
-    cc.log(MW.TOP10_t.img-code);
-    MW.TOP10 = listSortBy(MW.TOP10_t.global_ranking, 'value01', 'desc');
-    cc.log(MW.TOP10[9]);
+    // cc.log(data);
+    // cc.log(MW.TOP10_t.global_ranking);
+    // cc.log(MW.TOP10_t.img-code);
+    // MW.TOP10 = listSortBy(MW.TOP10_t.global_ranking, 'value01', 'desc');
+    // cc.log(MW.TOP10[9]);
+    MW.TOP10 = MW.TOP10_t.global_ranking;
+
+    
+    if(!MW.TOP10_t.game_name){
+    //     cc.log(rankLayerList);
+    //     rankLayerList.innerHTML = MW.TOP10_t ;
+    }else{
+    //      cc.log(MW.TOP10_t);
+        var newlist = generatRankList(MW.TOP10);
+        rankLayerList.innerHTML = newlist;
+    }
 }
 
 var script = document.createElement('script');
@@ -100,11 +127,6 @@ var GameOver = cc.Layer.extend({
             // logo.setAnchorPoint(0,0);
             // logo.setPosition(0,300);
             // this.addChild(logo,10,1);
-
-
-            var gamePost = document.createElement('script');
-            gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player=axing2&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jsonpPostback';
-            document.getElementsByTagName('head')[0].appendChild(gamePost);
 
 
 
@@ -219,6 +241,9 @@ var GameOver = cc.Layer.extend({
                 // var overMenu = cc.Menu.create(menu1);
                 // overMenu.setPosition(winSize.width / 2 + 140,220);
                 // this.addChild(overMenu);
+                var gamePost = document.createElement('script');
+                gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player=noname&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jsonpPostback';
+                document.getElementsByTagName('head')[0].appendChild(gamePost);
 
             }else{
                 
@@ -304,10 +329,16 @@ var GameOver = cc.Layer.extend({
     },
     editBoxTextChanged: function (editBox, text) {
         cc.log("editBox " + this._getEditBoxName(editBox) + ", TextChanged, text: " + text);
+        MW.playerName = text;
     },
 
     editBoxReturn: function (editBox) {
         cc.log("editBox " + this._getEditBoxName(editBox) + " was returned !");
+
+        var gamePost = document.createElement('script');
+                gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player='+ MW.playerName +'&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jsonpPostback';
+                document.getElementsByTagName('head')[0].appendChild(gamePost);
+
     },
     _getEditBoxName :function(editBox){
         if (this._box4 == editBox) {
