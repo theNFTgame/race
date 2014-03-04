@@ -75,7 +75,7 @@ var MW = MW || {};
         var p = d.getElementById(c.tag).parentNode;
         p.insertBefore(s);
         return;
-    }
+    };
 
 
     window.addEventListener('DOMContentLoaded', function () {

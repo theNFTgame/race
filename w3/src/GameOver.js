@@ -133,19 +133,33 @@ var GameOver = cc.Layer.extend({
                 goRankmenu.setPosition(winSize.width / 2 + 140,220);
 
 
+                var lbScore = cc.LabelTTF.create(""+MW.SCORE + " M","Arial Bold",36);
+                lbScore.setPosition(160,380);
+                lbScore.setColor(cc.c3b(0,0,0));
+                this.addChild(lbScore,10);
+
 
             }else{
                 
                 // show submint
                 var box4 = cc.EditBox.create(cc.size(200, 40), cc.Scale9Sprite.createWithSpriteFrameName('btn_replay.png'));
-                cc.log(box4);
+
                 box4.setPlaceholderFontColor(cc.c3b(255, 0, 0));
                 box4.setPlaceHolder("名字:");
-                box4.setPosition(winSize.width / 2 , 220);
+                // box4.initWithBackgroundColor(cc.size(200, 40), cc.c3b(200, 20, 20));
+                box4.setPosition( winSize.width / 2 , winSize.height / 2 - 100 );
                 box4.setDelegate(this);
-                box4.setFontColor(cc.c3b(20, 20, 20));
+                box4.setFontColor(cc.c3b(200, 200, 200));
                 box4.setMaxLength(20);
                 this.addChild(box4);
+                cc.log(box4);
+
+                //res.RankTitle_png
+
+                var RankTitle = cc.Sprite.create(res.RankTitle_png );
+                RankTitle.setScale(0.5);
+                RankTitle.setPosition(winSize.width / 2 , winSize.height / 2 + 100);
+                this.addChild(RankTitle, 1000);
 
                 var goRankListNormal = cc.Sprite.createWithSpriteFrameName('btn_start.png');
                 var goRankListSelected = cc.Sprite.createWithSpriteFrameName('btn_start.png');
@@ -172,10 +186,6 @@ var GameOver = cc.Layer.extend({
 
 
 
-            var lbScore = cc.LabelTTF.create(""+MW.SCORE + " M","Arial Bold",36);
-            lbScore.setPosition(160,380);
-            lbScore.setColor(cc.c3b(0,0,0));
-            this.addChild(lbScore,10);
 
             // var b1 = cc.LabelTTF.create("Download Cocos2d-html5","Arial",14);
             // var b2 = cc.LabelTTF.create("Download This Sample","Arial",14);

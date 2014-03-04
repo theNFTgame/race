@@ -144,7 +144,7 @@ MW.TOP10 = [
     {"index":6,"name":"yofine", "value01":"23336","value02":"0","value03":"0"},
     {"index":7,"name":"fan",    "value01":"23335","value02":"0","value03":"0"},
     {"index":8,"name":"no1",    "value01":"23334","value02":"0","value03":"0"},
-    {"index":9,"name":"Yorhom", "value01":"1000","value02":"0","value03":"0"}
+    {"index":9,"name":"Yorhom", "value01":"10","value02":"0","value03":"0"}
 ];
 
 
