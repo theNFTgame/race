@@ -1,0 +1,99 @@
+1.1 get_global_ranking
+
+
+Request: POST/GET
+url:http://wegift.reconnectplatform.com/racegame/operator
+============================
+action:get_global_ranking	// *
+refresh:1					// refresh top10 cache: 1:need refresh, 0:not ;if not ,the cache will refresh after 300 seconds.
+game_name:racegame 			// *
+limit:10 					// top 10
+jsoncallback:func               //json call back
+
+Response: 
+============================
+[
+	{"index":0,"name":"no1","value01":"1777","value02":"0","value03":"0"},
+	{"index":1,"name":"Yorhom","value01":"1262","value02":"0","value03":"0"},
+	{"index":2,"name":"yofine","value01":"1022","value02":"0","value03":"0"},
+	{"index":3,"name":"fan","value01":"825","value02":"0","value03":"0"},
+	{"index":4,"name":"Yorhom2","value01":"748","value02":"0","value03":"0"},
+	...
+]
+
+
+
+example:
+http://wegift.reconnectplatform.com/racegame/operator?action=get_global_ranking&game_name=RaceGame&limit=10&jsoncallback=jspfuc
+
+1.2 submit_game_score
+
+Request: POST/GET
+url:http://wegift.reconnectplatform.com/racegame/operator
+============================
+action:submit_game_score	// *
+game_name:racegame 			// *
+player:player_name 			// player's name
+score:score        			// player's scrore
+type:type        			// player's scrore type   [  a , c , s ,  s-2 ]
+refresh:1				// refresh top10 cache: 1:need refresh, 0:not
+jsoncallback:func               //json call back
+
+Response: 
+============================
+on success
+============================
+{
+	"result":"success",
+	"message":"",
+	"game_name":"RaceGame",
+	"user_id":"",
+	"user_name":"player_name",
+	"global_ranking": [], //this is same as the action:get_global_ranking
+	"img-code":"15634-405b3886"//with api get_score_by_img_code ,you can get the image for this score.
+}
+============================
+on error
+============================
+{
+	"result":"error",
+	"message":"",  			//error message
+	"game_name":"",
+	"user_id":"",
+	"user_name":""
+}
+
+example:
+http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player=axing2&score=125&type=a&refresh=1&jsoncallback=jspfuc
+
+
+1.3 get_score_by_img_code
+Request: POST/GET
+url:http://wegift.reconnectplatform.com/racegame/operator
+============================
+action:get_score_by_img_code	// *
+img-code:15634-405b3886 			// *
+
+Response: 
+============================
+on success
+============================
+image output
+
+============================
+on error
+============================
+{
+	"result":"error",
+	"message":""  			//error message
+}
+
+
+example:
+http://wegift.reconnectplatform.com/racegame/operator?action=get_score_by_img_code&img-code=15634-405b3886
+
+note:
+0303.1
+	attr "type" is added in 1.2.
+	results "img-code" added in 1.2.
+	new api get_score_by_img_code in 1.3.

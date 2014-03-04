@@ -1,6 +1,6 @@
 function jsonpCallback(data){
     
-    console.dir(data);
+    cc.log(data);
     
     MW.TOP10_t = data;
     cc.log(MW.TOP10_t);
@@ -21,6 +21,14 @@ var shareLayerCloseer = document.getElementsByClassName('js-shareclose')[0];//js
 shareLayerCloseer.addEventListener("click", function (event) {
     cc.log('close share layer!');
     shareLayer.style.display = "none";
+}, false);
+
+var rankLayer = document.getElementById('gameRank');
+
+var rankLayerCloseer = document.getElementsByClassName('js-rankclose')[0];//js-shareclose
+rankLayerCloseer.addEventListener("click", function (event) {
+    cc.log('close rank layer!');
+    rankLayer.style.display = "none";
 }, false);
 
 
@@ -61,7 +69,9 @@ var GameOver = cc.Layer.extend({
             // logo.setPosition(0,300);
             // this.addChild(logo,10,1);
 
-
+            var gamePost = document.createElement('script');
+            gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player=axing2&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jspfuc';
+            document.getElementsByTagName('head')[0].appendChild(gamePost);
 
 
 
@@ -136,22 +146,35 @@ var GameOver = cc.Layer.extend({
                 var overMenu0 = cc.Menu.create(menu0);
                 overMenu0.setPosition(winSize.width / 2 + 20 ,220);
                 this.addChild(overMenu0);
-                // menu3 
-                var goRankListNormal = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
-                var goRankListSelected = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
-                var goRankListDisabled = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
-                goRankListNormal.setScale(0.5);
-                goRankListSelected.setScale(0.5);
-                goRankListDisabled.setScale(0.5);
 
-                var goRankList = cc.MenuItemSprite.create(goRankListNormal, goRankListSelected, goRankListDisabled, function () {
-                    // this.onButtonEffect();
-                    flareEffect(flare, this, this.onRankList);
-                }.bind(this));
-                var goRankmenu = cc.Menu.create(goRankList);
-                goRankmenu.alignItemsVerticallyWithPadding(10);
-                this.addChild(goRankmenu, 1, 2);
-                goRankmenu.setPosition(winSize.width / 2 + 120,220);
+                // btn rank
+                var b1 = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
+                b1.setScale(0.5);
+                var menu1 = cc.MenuItemLabel.create(b1,function(){
+                    // window.location.href = "share.html";
+                    cc.log('call rank layer!');
+                    rankLayer.style.display = "block";
+                });
+                var overMenu1 = cc.Menu.create(menu1);
+                overMenu1.setPosition(winSize.width / 2 + 120 ,220);
+                this.addChild(overMenu1);
+
+                // menu3 
+                // var goRankListNormal = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
+                // var goRankListSelected = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
+                // var goRankListDisabled = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
+                // goRankListNormal.setScale(0.5);
+                // goRankListSelected.setScale(0.5);
+                // goRankListDisabled.setScale(0.5);
+
+                // var goRankList = cc.MenuItemSprite.create(goRankListNormal, goRankListSelected, goRankListDisabled, function () {
+                //     // this.onButtonEffect();
+                //     flareEffect(flare, this, this.onRankList);
+                // }.bind(this));
+                // var goRankmenu = cc.Menu.create(goRankList);
+                // goRankmenu.alignItemsVerticallyWithPadding(10);
+                // this.addChild(goRankmenu, 1, 2);
+                // goRankmenu.setPosition(winSize.width / 2 + 120,220);
 
 
                 // var b1 = cc.LabelTTF.create("open google","Arial",14);
@@ -262,10 +285,12 @@ var GameOver = cc.Layer.extend({
     onRankList:function (pSender) {
         //load resources
         // cc.LoaderScene.preload(g_maingame, function () {
-            var scene = cc.Scene.create();
-            scene.addChild(RankList.create());
-            cc.Director.getInstance().replaceScene(cc.TransitionFade.create(1.2, scene));
+            // var scene = cc.Scene.create();
+            // scene.addChild(RankList.create());
+            // cc.Director.getInstance().replaceScene(cc.TransitionFade.create(1.2, scene));
         // }, this);
+        cc.log('call rank layer!');
+        rankLayer.style.display = "block";
     },
 });
 
