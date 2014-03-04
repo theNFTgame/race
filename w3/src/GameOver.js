@@ -1,20 +1,3 @@
-function jsonpCallback(data){
-    
-    cc.log(data);
-    
-    MW.TOP10_t = data;
-    cc.log(MW.TOP10_t);
-    cc.log(MW.TOP10);
-    var a = listSortBy(MW.TOP10_t, 'value01', 'desc');
-    cc.log(a[0]);
-    var b = listSortBy(MW.GiftRecord , 'age',  'desc');
-    cc.log(b);
-}
-
-var script = document.createElement('script');
-script.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=get_global_ranking&game_name=RaceGame&limit=10&jsoncallback=jsonpCallback';
-document.getElementsByTagName('head')[0].appendChild(script);
-
 var shareLayer = document.getElementById('gameMask');
 
 var shareLayerCloseer = document.getElementsByClassName('js-shareclose')[0];//js-shareclose
@@ -22,6 +5,51 @@ shareLayerCloseer.addEventListener("click", function (event) {
     cc.log('close share layer!');
     shareLayer.style.display = "none";
 }, false);
+
+
+var rankLayerList = document.getElementById('toplist');
+var textRankList = '';
+
+
+
+function jsonpCallback(data){
+    // cc.log('jsonpCallback');
+    // cc.log(data);
+    MW.TOP10_t = data;
+    if(!MW.TOP10_t.game_name){
+        cc.log(rankLayerList);
+        rankLayerList.innerHTML = MW.TOP10_t ;
+    }else{
+         cc.log(MW.TOP10_t);
+    }
+    // cc.log(MW.TOP10_t);
+    // cc.log(MW.TOP10);
+    // var 
+    cc.log(MW.TOP10[9]);
+    MW.TOP10 = listSortBy(MW.TOP10_t, 'value01', 'desc');
+    cc.log(MW.TOP10[9]);
+    for (var i = MW.TOP10.length - 1; i >= 0; i--) {
+        
+    }
+    // cc.log(a[0]);
+    // var b = listSortBy(MW.GiftRecord , 'age',  'desc');
+    // // cc.log(b);
+}
+function jsonpPostback(data){
+    MW.TOP10_t = data;
+    cc.log(data);
+    cc.log(MW.TOP10_t.global_ranking);
+    cc.log(MW.TOP10_t.img-code);
+    MW.TOP10 = listSortBy(MW.TOP10_t.global_ranking, 'value01', 'desc');
+    cc.log(MW.TOP10[9]);
+}
+
+var script = document.createElement('script');
+script.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=get_global_ranking&game_name=RaceGame&limit=10&jsoncallback=jsonpCallback';
+document.getElementsByTagName('head')[0].appendChild(script);
+
+
+
 
 var rankLayer = document.getElementById('gameRank');
 
@@ -31,6 +59,10 @@ rankLayerCloseer.addEventListener("click", function (event) {
     rankLayer.style.display = "none";
 }, false);
 
+
+// // htmlRankList = MW.TOP10_t[0].value01;
+
+// rankLayerList.innerHTML = "<table><tr>";
 
 function listSortBy(arr, field, order){
     var refer = [],
@@ -69,8 +101,9 @@ var GameOver = cc.Layer.extend({
             // logo.setPosition(0,300);
             // this.addChild(logo,10,1);
 
+
             var gamePost = document.createElement('script');
-            gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player=axing2&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jspfuc';
+            gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player=axing2&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jsonpPostback';
             document.getElementsByTagName('head')[0].appendChild(gamePost);
 
 
