@@ -62,44 +62,13 @@ var GameOver = cc.Layer.extend({
 
             cc.log(MW.TOP10[9].value01);
             if (MW.TOP10[9].value01 >= MW.SCORE ){
-                // show btn ...
-                var playAgainNormal = cc.Sprite.createWithSpriteFrameName('btn_replay.png');
-                var playAgainSelected = cc.Sprite.createWithSpriteFrameName('btn_replay.png');
-                var playAgainDisabled = cc.Sprite.createWithSpriteFrameName('btn_replay.png');
-                playAgainNormal.setScale(0.5);
-                playAgainSelected.setScale(0.5);
-                playAgainDisabled.setScale(0.5);
-                
-
-                
-
-                var playAgain = cc.MenuItemSprite.create(playAgainNormal, playAgainSelected, playAgainDisabled, function(){
-                    flareEffect(flare,this,this.onPlayAgain);
-                }.bind(this) );
-                var menu = cc.Menu.create(playAgain);
-                this.addChild(menu, 1, 2);
-                menu.setPosition(winSize.width / 2 - 60 , 220);
-
-                // btn share
-                var b0 = cc.Sprite.createWithSpriteFrameName('btn_share.png');
-                b0.setScale(0.5);
-                var menu0 = cc.MenuItemLabel.create(b0,function(){
-                    window.location.href = "share.html";
-                });
-                var overMenu0 = cc.Menu.create(menu0);
-                overMenu0.setPosition(winSize.width / 2 + 40 ,220);
-                this.addChild(overMenu0);
 
 
-                // var b1 = cc.LabelTTF.create("open google","Arial",14);
-                // var b1 = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
-                // b1.setScale(0.5);
-                // var menu1 = cc.MenuItemLabel.create(b1,function(){
-                //     window.location.href = "rank.html";
-                // });
-                // var overMenu = cc.Menu.create(menu1);
-                // overMenu.setPosition(winSize.width / 2 + 140,220);
-                // this.addChild(overMenu);
+                var lbScore = cc.LabelTTF.create(""+MW.SCORE + " M","Arial Bold",36);
+                lbScore.setPosition(160,380);
+                lbScore.setColor(cc.c3b(0,0,0));
+                this.addChild(lbScore,10);
+
 
                 // 了解道具拿到最多的类型
                 var b = listSortBy(MW.GiftRecord , 'age',  'desc');
@@ -115,6 +84,38 @@ var GameOver = cc.Layer.extend({
                 this.titleScore.setScale(0.5);
                 this.addChild(this.titleScore, 1020);
 
+                // show btn ...
+                var playAgainNormal = cc.Sprite.createWithSpriteFrameName('btn_replay.png');
+                var playAgainSelected = cc.Sprite.createWithSpriteFrameName('btn_replay.png');
+                var playAgainDisabled = cc.Sprite.createWithSpriteFrameName('btn_replay.png');
+                playAgainNormal.setScale(0.5);
+                playAgainSelected.setScale(0.5);
+                playAgainDisabled.setScale(0.5);
+                
+                var playAgain = cc.MenuItemSprite.create(playAgainNormal, playAgainSelected, playAgainDisabled, function(){
+                    flareEffect(flare,this,this.onPlayAgain);
+                }.bind(this) );
+                var menu = cc.Menu.create(playAgain);
+                this.addChild(menu, 1, 2);
+                menu.setPosition(winSize.width / 2 - 80 , 220);
+
+                // btn share
+                var b0 = cc.Sprite.createWithSpriteFrameName('btn_share.png');
+                b0.setScale(0.5);
+                var menu0 = cc.MenuItemLabel.create(b0,function(){
+                    // window.location.href = "share.html";
+                    cc.log('call share layer!');
+                    var shareLayer = document.getElementById('gameMask');
+                    shareLayer.style.display = "block";
+                    var shareLayerCloseer = document.getElementsByClassName('js-shareclose')[0];//js-shareclose
+                    shareLayerCloseer.addEventListener("keydown", function (event) { 
+                        cc.log('close share layer!');
+                        shareLayer.style.display = "none";
+                    }, false); 
+                });
+                var overMenu0 = cc.Menu.create(menu0);
+                overMenu0.setPosition(winSize.width / 2 + 20 ,220);
+                this.addChild(overMenu0);
                 // menu3 
                 var goRankListNormal = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
                 var goRankListSelected = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
@@ -130,14 +131,18 @@ var GameOver = cc.Layer.extend({
                 var goRankmenu = cc.Menu.create(goRankList);
                 goRankmenu.alignItemsVerticallyWithPadding(10);
                 this.addChild(goRankmenu, 1, 2);
-                goRankmenu.setPosition(winSize.width / 2 + 140,220);
+                goRankmenu.setPosition(winSize.width / 2 + 120,220);
 
 
-                var lbScore = cc.LabelTTF.create(""+MW.SCORE + " M","Arial Bold",36);
-                lbScore.setPosition(160,380);
-                lbScore.setColor(cc.c3b(0,0,0));
-                this.addChild(lbScore,10);
-
+                // var b1 = cc.LabelTTF.create("open google","Arial",14);
+                // var b1 = cc.Sprite.createWithSpriteFrameName('btn_ranklist.png');
+                // b1.setScale(0.5);
+                // var menu1 = cc.MenuItemLabel.create(b1,function(){
+                //     window.location.href = "rank.html";
+                // });
+                // var overMenu = cc.Menu.create(menu1);
+                // overMenu.setPosition(winSize.width / 2 + 140,220);
+                // this.addChild(overMenu);
 
             }else{
                 
