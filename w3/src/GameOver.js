@@ -15,6 +15,15 @@ var script = document.createElement('script');
 script.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=get_global_ranking&game_name=RaceGame&limit=10&jsoncallback=jsonpCallback';
 document.getElementsByTagName('head')[0].appendChild(script);
 
+var shareLayer = document.getElementById('gameMask');
+
+var shareLayerCloseer = document.getElementsByClassName('js-shareclose')[0];//js-shareclose
+shareLayerCloseer.addEventListener("click", function (event) {
+    cc.log('close share layer!');
+    shareLayer.style.display = "none";
+}, false);
+
+
 function listSortBy(arr, field, order){
     var refer = [],
         result=[],
@@ -61,6 +70,23 @@ var GameOver = cc.Layer.extend({
             flare.setVisible(false);
 
             cc.log(MW.TOP10[9].value01);
+
+            var shareWord = 'http://service.weibo.com/share/share.php?title=';
+            shareWord = shareWord + '%e6%88%91%e5%9c%a8%40%e5%be%b7%e5%9b%bd%e9%a9%ac%e7%89%8c%e8%bd%ae%e8%83%8e+%23%e8%b5%9b%e8%bd%a6%e6%b8%b8%e6%88%8f%23%e4%b8%ad%e9%a9%b0%e9%aa%8b%e4%ba%86';
+            shareWord = shareWord + MW.SCORE ;
+            shareWord = shareWord + '%e7%b1%b3%ef%bc%8c%e5%b9%b6%e6%88%90%e5%8a%9f%e7%95%99%e5%90%8d%e8%8b%b1%e9%9b%84%e6%a6%9c%e3%80%82%e6%83%b3%e7%9f%a5%e9%81%93%e4%bd%a0%e7%9a%84%e9%a9%be%e9%a9%b6%e9%a3%8e%e6%a0%bc%e5%90%97%ef%bc%9f%e6%83%b3%e8%b6%85%e8%bf%87%e6%88%91%ef%bc%8c%e4%b8%8e%e6%88%91%e4%b8%80%e8%be%83%e9%ab%98%e4%b8%8b%e5%90%97%ef%bc%9f%e8%af%b7%e7%82%b9%e5%87%bb%e6%b8%b8%e6%88%8f%e9%93%be%e6%8e%a5%ef%bc%8c%e6%88%96%e6%89%ab%e6%8f%8f%e4%ba%8c%e7%bb%b4%e7%a0%81%ef%bc%8c%e5%bc%80%e5%90%af%e7%b4%a7%e5%bc%a0%e3%80%81%e5%88%ba%e6%bf%80%e7%9a%84%e6%8c%91%e6%88%98%e5%90%a7%ef%bc%81';
+            shareWord = shareWord + '&source=bookmark&appkey=&ralateUid=&pic=http%3a%2f%2fwegift.reconnectplatform.com%2fracegame%2foperator%3faction%3dget_score_by_img_code%26img-code%3d';
+            shareWord = shareWord + '15634-405b3886';
+            shareWord = shareWord + '&url=http%3a%2f%2fthenftgame.github.io%2frace%2fw3%2f';
+      
+
+                console.log(shareWord);
+                // $('.getmore').attr('href', shareWord);
+            var shareLink = document.getElementsByClassName('js-sharelink')[0];
+            shareLink.setAttribute('href', shareWord);
+
+
+
             if (MW.TOP10[9].value01 >= MW.SCORE ){
 
 
@@ -105,13 +131,7 @@ var GameOver = cc.Layer.extend({
                 var menu0 = cc.MenuItemLabel.create(b0,function(){
                     // window.location.href = "share.html";
                     cc.log('call share layer!');
-                    var shareLayer = document.getElementById('gameMask');
                     shareLayer.style.display = "block";
-                    var shareLayerCloseer = document.getElementsByClassName('js-shareclose')[0];//js-shareclose
-                    shareLayerCloseer.addEventListener("keydown", function (event) { 
-                        cc.log('close share layer!');
-                        shareLayer.style.display = "none";
-                    }, false); 
                 });
                 var overMenu0 = cc.Menu.create(menu0);
                 overMenu0.setPosition(winSize.width / 2 + 20 ,220);
