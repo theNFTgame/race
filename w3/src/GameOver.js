@@ -4,49 +4,78 @@ var shareLayerCloseer = document.getElementsByClassName('js-shareclose')[0];//js
 shareLayerCloseer.addEventListener("click", function (event) {
     cc.log('close share layer!');
     shareLayer.style.display = "none";
+    return false;
 }, false);
 
 
 var rankLayerList = document.getElementById('toplist');
 var textRankList = '';
 
+function generatRankList(data){
+    var htmlCode = '<table>';
+// index: 0
+// name: "axing2"
+// value01: 123456789
+    for (var i = 0; i < data.length ; i++) {
+        cc.log(data[i]);
+        htmlCode = htmlCode + '<tr class="top' + i+1 + '"><td class="number">' + (data[i].index + 1) + '</td>';
+        htmlCode = htmlCode + '<td class="name">' + data[i].name + '</td>';
+        htmlCode = htmlCode + '<td class="value">' + data[i].value01 + '</td>';
 
+    }
+    htmlCode = htmlCode + '</tr></table>';
+
+    return htmlCode;
+}
 
 function jsonpCallback(data){
     // cc.log('jsonpCallback');
     // cc.log(data);
     MW.TOP10_t = data;
-    if(!MW.TOP10_t.game_name){
-        cc.log(rankLayerList);
-        rankLayerList.innerHTML = MW.TOP10_t ;
-    }else{
-         cc.log(MW.TOP10_t);
-    }
+    // if(!MW.TOP10_t.game_name){
+    //     cc.log(rankLayerList);
+    //     rankLayerList.innerHTML = MW.TOP10_t ;
+    // }else{
+    //      cc.log(MW.TOP10_t);
+    // }
     // cc.log(MW.TOP10_t);
     // cc.log(MW.TOP10);
     // var 
-    cc.log(MW.TOP10[9]);
-    MW.TOP10 = listSortBy(MW.TOP10_t, 'value01', 'desc');
-    cc.log(MW.TOP10[9]);
-    for (var i = MW.TOP10.length - 1; i >= 0; i--) {
-        
-    }
+    cc.log(MW.TOP10);
+    MW.TOP10 = data;
+    // MW.TOP10 = listSortBy(MW.TOP10_t, 'value01', 'desc');
+    cc.log(MW.TOP10);
+    var newlist = generatRankList(MW.TOP10);
+    rankLayerList.innerHTML = newlist;
+    cc.log(newlist);
     // cc.log(a[0]);
     // var b = listSortBy(MW.GiftRecord , 'age',  'desc');
     // // cc.log(b);
 }
 function jsonpPostback(data){
     MW.TOP10_t = data;
-    cc.log(data);
-    cc.log(MW.TOP10_t.global_ranking);
-    cc.log(MW.TOP10_t.img-code);
-    MW.TOP10 = listSortBy(MW.TOP10_t.global_ranking, 'value01', 'desc');
-    cc.log(MW.TOP10[9]);
+    // cc.log(data);
+    // cc.log(MW.TOP10_t.global_ranking);
+    // cc.log(MW.TOP10_t.img-code);
+    // MW.TOP10 = listSortBy(MW.TOP10_t.global_ranking, 'value01', 'desc');
+    // cc.log(MW.TOP10[9]);
+    MW.TOP10 = MW.TOP10_t.global_ranking;
+
+    
+    if(!MW.TOP10_t.game_name){
+    //     cc.log(rankLayerList);
+    //     rankLayerList.innerHTML = MW.TOP10_t ;
+    }else{
+    //      cc.log(MW.TOP10_t);
+        var newlist = generatRankList(MW.TOP10);
+        rankLayerList.innerHTML = newlist;
+    }
     if(!MW.gameCode){
-        MW.gameCode = MW.TOP10_t.img-code;
+        MW.gameCode = MW.TOP10_t.img_code;
     }
     updateShareLink();
 }
+
 
 function updateShareLink(){
 
@@ -84,6 +113,7 @@ var rankLayerCloseer = document.getElementsByClassName('js-rankclose')[0];//js-s
 rankLayerCloseer.addEventListener("click", function (event) {
     cc.log('close rank layer!');
     rankLayer.style.display = "none";
+    return false;
 }, false);
 
 
