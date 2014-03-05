@@ -64,8 +64,7 @@
             z-index: 100;
             top: 0;
             display: none;
-            
-            line-height: 24px;
+            line-height: 30px;
             font-size: 12px;
         }
         .ranklist {
@@ -74,7 +73,7 @@
             background: url('res/bg_ranking.jpg') no-repeat top center;
             background-size: 320px 556px;
             margin: 0 auto;
-            padding-top: 108px;
+            padding-top: 100px;
         }
         .rankclose {
             width: 320px; 
@@ -87,8 +86,39 @@
             left: 50%;
             margin-left: -160px;
         }
+        .ranklist table {
+            width: 100%;
+            border-spacing: 0px;
+        }
         .ranklist td {
-            
+            border-bottom: 1px solid #e1b14b;
+            /*word-break: break-all;*/
+            word-wrap: break-word; 
+            overflow: hidden;
+        }
+        .ranklist .number {
+            width: 30px;
+            padding-left: 45px;
+        }
+        .ranklist .name {
+            width: 130px;
+            padding-left: 10px;
+        }
+        .ranklist .value {
+            width: 130px;
+            padding-left: 0px;
+        }
+        .top01 , .top01 td{
+            background-color: #fff7dc;
+            border-bottom:none;
+        }
+        .top11 , .top11 td{
+            background-color: #f4e3af;
+            border-bottom:none;
+        }
+        .top21 , .top21 td{
+            background-color: #f6d77a;
+            border-bottom:none;
         }
     </style>
 </head>
