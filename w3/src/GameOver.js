@@ -2,7 +2,7 @@ var shareLayer = document.getElementById('gameMask');
 
 var shareLayerCloseer = document.getElementsByClassName('js-shareclose')[0];//js-shareclose
 shareLayerCloseer.addEventListener("click", function (event) {
-    cc.log('close share layer!');
+    // cc.log('close share layer!');
     shareLayer.style.display = "none";
     return false;
 }, false);
@@ -17,7 +17,7 @@ function generatRankList(data){
 // name: "axing2"
 // value01: 123456789
     for (var i = 0; i < data.length ; i++) {
-        cc.log(data[i]);
+        // cc.log(data[i]);
         htmlCode = htmlCode + '<tr class="top' + i+1 + '"><td class="number">' + (data[i].index + 1) + '</td>';
         htmlCode = htmlCode + '<td class="name">' + data[i].name + '</td>';
         htmlCode = htmlCode + '<td class="value">' + data[i].value01 + '</td>';
@@ -41,13 +41,16 @@ function jsonpCallback(data){
     // cc.log(MW.TOP10_t);
     // cc.log(MW.TOP10);
     // var 
-    cc.log(MW.TOP10);
-    MW.TOP10 = data;
+    // cc.log(MW.TOP10);
+    if(data !== null){
+        MW.TOP10 = data;
+    }
+    
     // MW.TOP10 = listSortBy(MW.TOP10_t, 'value01', 'desc');
-    cc.log(MW.TOP10);
+    // cc.log(MW.TOP10);
     var newlist = generatRankList(MW.TOP10);
     rankLayerList.innerHTML = newlist;
-    cc.log(newlist);
+    // cc.log(newlist);
     // cc.log(a[0]);
     // var b = listSortBy(MW.GiftRecord , 'age',  'desc');
     // // cc.log(b);
@@ -79,7 +82,7 @@ function jsonpPostback(data){
 
 function updateShareLink(){
 
-    cc.log(MW.TOP10[9].value01);
+    // cc.log(MW.TOP10[9].value01);
 
     var shareWord = 'http://service.weibo.com/share/share.php?title=';
     shareWord = shareWord + '%e6%88%91%e5%9c%a8%40%e5%be%b7%e5%9b%bd%e9%a9%ac%e7%89%8c%e8%bd%ae%e8%83%8e+%23%e8%b5%9b%e8%bd%a6%e6%b8%b8%e6%88%8f%23%e4%b8%ad%e9%a9%b0%e9%aa%8b%e4%ba%86';
@@ -95,7 +98,7 @@ function updateShareLink(){
     var shareLink = document.getElementsByClassName('js-sharelink')[0];
     shareLink.setAttribute('href', shareWord);
     // 我在@德国马牌轮胎 #赛车游戏#中驰骋了aaa米
-    cc.log('title:' + document.title );
+    // cc.log('title:' + document.title );
     document.title = "我在@德国马牌轮胎 #赛车游戏#中驰骋了" + MW.SCORE +"米";
 
 }
@@ -111,8 +114,11 @@ var rankLayer = document.getElementById('gameRank');
 
 var rankLayerCloseer = document.getElementsByClassName('js-rankclose')[0];//js-shareclose
 rankLayerCloseer.addEventListener("click", function (event) {
-    cc.log('close rank layer!');
+    // cc.log('close rank layer!');
     rankLayer.style.display = "none";
+    var scene  = cc.Scene.create();
+    scene.addChild(GameOver.create());
+    cc.Director.getInstance().replaceScene(cc.TransitionFade.create(1.2, scene));
     return false;
 }, false);
 
@@ -184,11 +190,15 @@ var GameOver = cc.Layer.extend({
             // shareLink.setAttribute('href', shareWord);
 
 
-
-            if (MW.TOP10[9].value01 >= MW.SCORE ){
+            // cc.log(MW.TOP10);
+            if ( MW.TOP10[9].value01 >= MW.SCORE ||  MW.PLAYER_NAME !=='noname'){
 
                 var gamePost = document.createElement('script');
-                gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player=&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jsonpPostback';
+                var playerName = 'noname';
+                if(MW.PLAYER_NAME !== playerName){
+                    playerName = MW.PLAYER_NAME;
+                }
+                gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player='+ playerName +'&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jsonpPostback';
                 document.getElementsByTagName('head')[0].appendChild(gamePost);
 
                 var lbScore = cc.LabelTTF.create(""+MW.SCORE + " M","Arial Bold",36);
@@ -231,7 +241,7 @@ var GameOver = cc.Layer.extend({
                 b0.setScale(0.5);
                 var menu0 = cc.MenuItemLabel.create(b0,function(){
                     // window.location.href = "share.html";
-                    cc.log('call share layer!');
+                    // cc.log('call share layer!');
                     shareLayer.style.display = "block";
                 });
                 var overMenu0 = cc.Menu.create(menu0);
@@ -243,7 +253,7 @@ var GameOver = cc.Layer.extend({
                 b1.setScale(0.5);
                 var menu1 = cc.MenuItemLabel.create(b1,function(){
                     // window.location.href = "share.html";
-                    cc.log('call rank layer!');
+                    // cc.log('call rank layer!');
                     rankLayer.style.display = "block";
                 });
                 var overMenu1 = cc.Menu.create(menu1);
@@ -291,7 +301,7 @@ var GameOver = cc.Layer.extend({
                 box4.setFontColor(cc.c3b(200, 200, 200));
                 box4.setMaxLength(20);
                 this.addChild(box4);
-                cc.log(box4);
+                // cc.log(box4);
 
                 //res.RankTitle_png
 
@@ -309,10 +319,12 @@ var GameOver = cc.Layer.extend({
 
                 var goRankList = cc.MenuItemSprite.create(goRankListNormal, goRankListSelected, goRankListDisabled, function () {
                     // this.onButtonEffect();
-                    
-                    
+                    var playerName = 'noname';
+                    if(MW.PLAYER_NAME !== playerName){
+                        playerName = MW.PLAYER_NAME;
+                    }
                     var gamePost = document.createElement('script');
-                    gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player=&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jsonpPostback';
+                    gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player='+ playerName +'&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jsonpPostback';
                     document.getElementsByTagName('head')[0].appendChild(gamePost);
 
                     flareEffect(flare, this, this.onRankList);
@@ -324,13 +336,6 @@ var GameOver = cc.Layer.extend({
 
 
             }
-            
-
-
-            
-
-
-
 
             // var b1 = cc.LabelTTF.create("Download Cocos2d-html5","Arial",14);
             // var b2 = cc.LabelTTF.create("Download This Sample","Arial",14);
@@ -367,11 +372,12 @@ var GameOver = cc.Layer.extend({
         cc.Director.getInstance().replaceScene(cc.TransitionFade.create(1.2,scene));
     },
     editBoxTextChanged: function (editBox, text) {
-        cc.log("editBox " + this._getEditBoxName(editBox) + ", TextChanged, text: " + text);
+        // cc.log("editBox " + this._getEditBoxName(editBox) + ", TextChanged, text: " + text);
+        MW.PLAYER_NAME = text;
     },
 
     editBoxReturn: function (editBox) {
-        cc.log("editBox " + this._getEditBoxName(editBox) + " was returned !");
+        // cc.log("editBox " + this._getEditBoxName(editBox) + " was returned !");
     },
     _getEditBoxName :function(editBox){
         if (this._box4 == editBox) {
@@ -386,7 +392,8 @@ var GameOver = cc.Layer.extend({
             // scene.addChild(RankList.create());
             // cc.Director.getInstance().replaceScene(cc.TransitionFade.create(1.2, scene));
         // }, this);
-        cc.log('call rank layer!');
+
+        // cc.log('call rank layer!');
         rankLayer.style.display = "block";
     },
 });

@@ -34,7 +34,7 @@ MW.LEVEL = {
 
 //life
 MW.LIFE = 1;
-
+MW.PLAYER_NAME = 'noname';
 //score
 MW.SCORE = 0;
 

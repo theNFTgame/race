@@ -121,7 +121,7 @@ var GameLayer = cc.Layer.extend({
             this.lbScoreIcon_d.setAnchorPoint(1, 0);
             this.addChild(this.lbScoreIcon_d, 2110);
 
-            cc.log(this.lbScoreIcon_3);
+            // cc.log(this.lbScoreIcon_3);
 
             // this.lbScore = cc.LabelBMFont.create(" 0 ", res.arial_14_fnt);
 
@@ -318,11 +318,11 @@ var GameLayer = cc.Layer.extend({
             if (this.collide(selChild, locShip)) {
                 if (locShip.active) {
                     selChild.hurt();
-                    cc.log('check MW.GIFT_ActiveType:' + MW.GIFT_ActiveType);
+                    // cc.log('check MW.GIFT_ActiveType:' + MW.GIFT_ActiveType);
                     if( MW.GIFT_ActiveType !== null && MW.GIFT_ActiveType !== 0){
                         // MW.GIFT_ActiveType = null;
                     }else{
-                        cc.log('car life: ' + MW.LIFE );
+                        // cc.log('car hp: ' + MW.HP );
                         this.active = false;
                         locShip.hurt();
                     }
@@ -339,12 +339,12 @@ var GameLayer = cc.Layer.extend({
                     selChild.hurt();
                     // locShip.hurt();
                     MW.GIFT_ActiveType = selChild.giftType;
-                    cc.log('GIFT_ActiveType:'+ MW.GIFT_ActiveType);
+                    // cc.log('GIFT_ActiveType:'+ MW.GIFT_ActiveType);
                     // set up gift status
                     var thisGift = GiftType[selChild.giftType];
                     var NewTitleImage = thisGift.txtPng;
                     var NewBoardIcon = thisGift.sbOnPng;
-                    cc.log('gift title :' + NewTitleImage);
+                    // cc.log('gift title :' + NewTitleImage);
                     this.titleScore = cc.Sprite.createWithSpriteFrameName(NewTitleImage);
                     // this.titleScore = cc.Sprite.createWithSpriteFrameName('car_smooth_txt.png');
                     this.titleScore.setPosition(winSize.width /2 , winSize.height - 90);
@@ -406,7 +406,7 @@ var GameLayer = cc.Layer.extend({
 
 
 
-                    cc.log('get the gift! Type: ' + selChild.giftType );
+                    // cc.log('get the gift! Type: ' + selChild.giftType );
                     // cc.log('car life: ' + MW.LIFE);
                 }
             }
@@ -442,7 +442,7 @@ var GameLayer = cc.Layer.extend({
     },
     timeCallback:function(){
         var locShip = this._ship;
-        cc.log('timeCallback, clean gift.');
+        // cc.log('timeCallback, clean gift.');
         locShip.backNormal(1);
         this.titleScore.setVisible(false);
     },

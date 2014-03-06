@@ -120,6 +120,9 @@ var Ship = cc.Sprite.extend({
         var explosion = Explosion.getOrCreateExplosion();
         explosion.setPosition(this.getPosition());
 
+        if (this.HP == 1){
+            this.initWithSpriteFrameName("car_00.png");
+        }
         if (MW.SOUND) {
             cc.AudioEngine.getInstance().playEffect(res.shipDestroyEffect_mp3);
         }
@@ -129,6 +132,7 @@ var Ship = cc.Sprite.extend({
             this._hurtColorLife = 2;
             this.HP--;
         }
+        cc.log('hp:'+ this.HP + ',GiftType:' + MW.GIFT_ActiveType);
     },
     collideRect:function (p) {
         var a = this.getContentSize();
