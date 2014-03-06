@@ -360,8 +360,6 @@ var GameLayer = cc.Layer.extend({
                     this.addChild(this.titleScore, 1020);
                     // this.titleScore.setVisible(false);
 
-                    
-                    
                     MW.GiftRecord[selChild.giftType].age++;
 
 

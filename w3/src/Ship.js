@@ -103,12 +103,12 @@ var Ship = cc.Sprite.extend({
             var blinks = cc.Blink.create(6, 20);
             this.runAction(cc.Sequence.create(cc.DelayTime.create(0.5), blinks));
         }
-        if( dt > 2 ){
-            this.canBeAttack = true;
-        }else{
+        // if( dt > 2 ){
+        //     this.canBeAttack = true;
+        // }else{
 
-            this.canBeAttack = false;
-        }
+        //     this.canBeAttack = false;
+        // }
     },
     backNormal:function(){
         MW.GIFT_ActiveType = null;
@@ -122,9 +122,7 @@ var Ship = cc.Sprite.extend({
         var explosion = Explosion.getOrCreateExplosion();
         explosion.setPosition(this.getPosition());
 
-        if (this.HP == 1){
-            this.initWithSpriteFrameName("car_00.png");
-        }
+        
         if (MW.SOUND) {
             cc.AudioEngine.getInstance().playEffect(res.shipDestroyEffect_mp3);
         }
@@ -133,6 +131,9 @@ var Ship = cc.Sprite.extend({
         if (this.canBeAttack) {
             this._hurtColorLife = 2;
             this.HP--;
+        }
+        if (this.HP == 1){
+            this.initWithSpriteFrameName("car_00.png");
         }
         cc.log('hp:'+ this.HP + ',GiftType:' + MW.GIFT_ActiveType);
     },
