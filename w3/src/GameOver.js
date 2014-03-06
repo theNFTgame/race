@@ -191,20 +191,24 @@ var GameOver = cc.Layer.extend({
 
 
             // cc.log(MW.TOP10);
+            // if ( MW.TOP10[9].value01 >= MW.SCORE ||  MW.PLAYER_NAME !=='noname'){
+            var lbScore = cc.LabelTTF.create(""+MW.SCORE + " M","Arial Bold",36);
+            lbScore.setPosition(160,400);
+            lbScore.setColor(cc.c3b(0,0,0));
+            this.addChild(lbScore,10);
+
             if ( MW.TOP10[9].value01 >= MW.SCORE ||  MW.PLAYER_NAME !=='noname'){
+            // if ( 20 >= MW.SCORE ||  MW.PLAYER_NAME !=='noname'){
 
                 var gamePost = document.createElement('script');
                 var playerName = 'noname';
                 if(MW.PLAYER_NAME !== playerName){
                     playerName = MW.PLAYER_NAME;
                 }
-                gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player='+ playerName +'&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jsonpPostback';
+                gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player='+ playerName +'&score='+ MW.SCORE +'&type=a&refresh=0&jsoncallback=jsonpPostback';
                 document.getElementsByTagName('head')[0].appendChild(gamePost);
 
-                var lbScore = cc.LabelTTF.create(""+MW.SCORE + " M","Arial Bold",36);
-                lbScore.setPosition(160,380);
-                lbScore.setColor(cc.c3b(0,0,0));
-                this.addChild(lbScore,10);
+                
 
 
                 // 了解道具拿到最多的类型
@@ -290,50 +294,57 @@ var GameOver = cc.Layer.extend({
 
             }else{
                 
-                // show submint
-                var box4 = cc.EditBox.create(cc.size(200, 40), cc.Scale9Sprite.createWithSpriteFrameName('btn_replay.png'));
 
-                box4.setPlaceholderFontColor(cc.c3b(255, 0, 0));
-                box4.setPlaceHolder("名字:");
-                // box4.initWithBackgroundColor(cc.size(200, 40), cc.c3b(200, 20, 20));
-                box4.setPosition( winSize.width / 2 , winSize.height / 2 - 100 );
-                box4.setDelegate(this);
-                box4.setFontColor(cc.c3b(200, 200, 200));
-                box4.setMaxLength(20);
-                this.addChild(box4);
                 // cc.log(box4);
 
                 //res.RankTitle_png
 
                 var RankTitle = cc.Sprite.create(res.RankTitle_png );
                 RankTitle.setScale(0.5);
-                RankTitle.setPosition(winSize.width / 2 , winSize.height / 2 + 100);
+                RankTitle.setPosition(winSize.width / 2 , winSize.height / 2 + 30);
                 this.addChild(RankTitle, 1000);
 
-                var goRankListNormal = cc.Sprite.createWithSpriteFrameName('btn_start.png');
-                var goRankListSelected = cc.Sprite.createWithSpriteFrameName('btn_start.png');
-                var goRankListDisabled = cc.Sprite.createWithSpriteFrameName('btn_start.png');
+                var goRankListNormal = cc.Sprite.createWithSpriteFrameName('btn_submit_rank.png');
+                var goRankListSelected = cc.Sprite.createWithSpriteFrameName('btn_submit_rank.png');
+                var goRankListDisabled = cc.Sprite.createWithSpriteFrameName('btn_submit_rank.png');
                 goRankListNormal.setScale(0.5);
                 goRankListSelected.setScale(0.5);
                 goRankListDisabled.setScale(0.5);
 
                 var goRankList = cc.MenuItemSprite.create(goRankListNormal, goRankListSelected, goRankListDisabled, function () {
                     // this.onButtonEffect();
-                    var playerName = 'noname';
-                    if(MW.PLAYER_NAME !== playerName){
-                        playerName = MW.PLAYER_NAME;
-                    }
-                    var gamePost = document.createElement('script');
-                    gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player='+ playerName +'&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jsonpPostback';
-                    document.getElementsByTagName('head')[0].appendChild(gamePost);
+                    if (MW.PLAYER_NAME !== null && MW.PLAYER_NAME !== 'noname'){
+                        var playerName = 'noname';
+                        if(MW.PLAYER_NAME !== playerName){
+                            playerName = MW.PLAYER_NAME;
+                        }
+                        var gamePost = document.createElement('script');
+                        gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player='+ playerName +'&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jsonpPostback';
+                        document.getElementsByTagName('head')[0].appendChild(gamePost);
 
-                    flareEffect(flare, this, this.onRankList);
+                        flareEffect(flare, this, this.onRankList);
+                    }else{
+                        alert('请点击输入名字！');
+                    }
+
                 }.bind(this));
                 var goRankmenu = cc.Menu.create(goRankList);
                 goRankmenu.alignItemsVerticallyWithPadding(10);
                 this.addChild(goRankmenu, 1, 2);
-                goRankmenu.setPosition(winSize.width / 2 + 50, winSize.height / 2 - 100);
+                goRankmenu.setPosition(winSize.width / 2 + 120, winSize.height / 2 - 80 );
+                // show submint
 
+
+                var box4 = cc.EditBox.create(cc.size(160, 40), cc.Scale9Sprite.create(res.empty_png));
+
+                box4.setPlaceholderFontColor(cc.c3b(255, 255, 255));
+                box4.setPlaceHolder("点击输入名字");
+                // box4.initWithBackgroundColor(cc.size(200, 40), cc.c3b(200, 20, 20));
+                box4.setPosition( winSize.width / 2 - 20 , winSize.height / 2 - 140 );
+                box4.setDelegate(this);
+                box4.setFontColor(cc.c3b(250, 250, 250));
+                box4.setMaxLength(20);
+                this.addChild(box4);
 
             }
 
