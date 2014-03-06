@@ -159,9 +159,7 @@ var GameOver = cc.Layer.extend({
             // this.addChild(logo,10,1);
 
 
-            var gamePost = document.createElement('script');
-            gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player=axing2&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jsonpPostback';
-            document.getElementsByTagName('head')[0].appendChild(gamePost);
+
 
 
 
@@ -189,6 +187,9 @@ var GameOver = cc.Layer.extend({
 
             if (MW.TOP10[9].value01 >= MW.SCORE ){
 
+                var gamePost = document.createElement('script');
+                gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player=&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jsonpPostback';
+                document.getElementsByTagName('head')[0].appendChild(gamePost);
 
                 var lbScore = cc.LabelTTF.create(""+MW.SCORE + " M","Arial Bold",36);
                 lbScore.setPosition(160,380);
@@ -308,6 +309,12 @@ var GameOver = cc.Layer.extend({
 
                 var goRankList = cc.MenuItemSprite.create(goRankListNormal, goRankListSelected, goRankListDisabled, function () {
                     // this.onButtonEffect();
+                    
+                    
+                    var gamePost = document.createElement('script');
+                    gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player=&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jsonpPostback';
+                    document.getElementsByTagName('head')[0].appendChild(gamePost);
+
                     flareEffect(flare, this, this.onRankList);
                 }.bind(this));
                 var goRankmenu = cc.Menu.create(goRankList);

@@ -148,7 +148,7 @@ MW.TOP10 = [
 ];
 
 
-MW.Track = [3,3,3,3];
+MW.Track = [0,0,0,0];
 MW.Track_Position = [480,480,480,480];
 
 MW.GiftRecord = [
