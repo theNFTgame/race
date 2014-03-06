@@ -308,6 +308,11 @@ var GameLayer = cc.Layer.extend({
             if (!selChild.active)
                 continue;
 
+
+            // for type 
+            if (MW.GIFT_ActiveType === 1){
+                // selChild.hurt();
+            }
             // for (var j = 0; j < MW.CONTAINER.PLAYER_BULLETS.length; j++) {
             //     bulletChild = MW.CONTAINER.PLAYER_BULLETS[j];
             //     if (bulletChild.active && this.collide(selChild, bulletChild)) {

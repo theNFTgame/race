@@ -80,6 +80,10 @@ var Enemy = cc.Sprite.extend({
         this._hurtColorLife = 2;
         this.HP--;
     },
+    minSpeed:function (dt){
+        cc.log('minSpeed');
+        
+    },
     collideRect:function (p) {
         var a = this.getContentSize();
         return cc.rect(p.x - a.width / 2, p.y - a.height / 4, a.width, a.height / 2+20);

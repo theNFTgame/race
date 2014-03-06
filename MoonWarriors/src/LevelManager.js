@@ -95,6 +95,10 @@ var LevelManager = cc.Class.extend({
                 tmpAction = cc.Sequence.create(a0,a1);
                 break;
         }
+        if (MW.GIFT_ActiveType === 2){
+            offset = this._gameLayer._ship.getPosition();
+            tmpAction = cc.MoveTo.create(1, offset);
+        }
 
         addEnemy.runAction(tmpAction);
     }
