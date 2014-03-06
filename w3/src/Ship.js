@@ -99,13 +99,15 @@ var Ship = cc.Sprite.extend({
         var NewCarImage = thisGift.carPng;
         cc.log(NewCarImage);
         this.initWithSpriteFrameName(NewCarImage);
-        
+        if( type == 1) {
+            var blinks = cc.Blink.create(6, 20);
+            this.runAction(cc.Sequence.create(cc.DelayTime.create(0.5), blinks));
+        }
         if( dt > 2 ){
             this.canBeAttack = true;
         }else{
 
             this.canBeAttack = false;
-
         }
     },
     backNormal:function(){
