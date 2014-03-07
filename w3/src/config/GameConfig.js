@@ -77,7 +77,7 @@ MW.BULLET_TYPE = {
 
 //weapon type
 MW.WEAPON_TYPE = {
-    ONE:1
+    ONE:1 
 };
 
 //unit tag
