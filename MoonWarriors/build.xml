@@ -2,18 +2,18 @@
 <project name="Javascript compress project" basedir="." default="compile_test_advanced">
 
     <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask"
-             classpath="${basedir}/../../../tools/compiler/compiler.jar"/>
+             classpath="${basedir}/../tools/compiler/compiler.jar"/>
 
 
     <target name="compile_test_advanced">
         <jscomp compilationLevel="advanced" warning="quiet"
-                debug="false" output="MoonWarriors-compress.js">
+                debug="false" output="cocos2d-compress.js">
                 <!--sourceMapOutputFile="sourcemap"
                 sourceMapFormat="V3">-->
-            <externs dir="${basedir}/../../../cocos2d">
+            <externs dir="${basedir}/../cocos2d">
                 <file name="core/cocos2d_externs.js"/>
             </externs>
-            <sources dir="${basedir}/../../../cocos2d">
+            <sources dir="${basedir}/../cocos2d">
                 <file name="core/platform/CCClass.js"/>
                 <file name="core/cocoa/CCGeometry.js"/>
                 <file name="core/platform/Sys.js"/>
@@ -128,7 +128,7 @@
                 <!--<file name="CCUserDefault.js"/>
                 <file name="CCImage.js"/>-->
             </sources>
-            <sources dir="${basedir}">
+<!--             <sources dir="${basedir}">
                 <file name="src/Resource.js"/>
                 <file name="src/config/GameConfig.js"/>
                 <file name="src/config/EnemyType.js"/>
@@ -150,7 +150,7 @@
                 <file name="src/SparkEffect.js"/>
                 <file name="src/Background.js"/>
                 <file name="main.js"/>
-            </sources>
+            </sources> -->
         </jscomp>
     </target>
 </project>

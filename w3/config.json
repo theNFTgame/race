@@ -1,0 +1,7 @@
+{
+"input":["test/instrument.js","test/instrument2.js","test/core.js"],
+"output":"__output__.js",
+"comment":"comment.txt",
+"uglify_option":{
+}
+}

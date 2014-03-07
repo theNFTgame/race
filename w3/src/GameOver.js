@@ -406,7 +406,7 @@ var GameOver = cc.Layer.extend({
 
         // cc.log('call rank layer!');
         rankLayer.style.display = "block";
-    },
+    }
 });
 
 GameOver.create = function () {
