@@ -99,7 +99,7 @@ MW.CAR_STATE_TYPE = {
     B1:1,
     B2:2,
     B3:3,
-    B4:4,
+    B4:4
 };
 MW.CAR_STATE = 0;
 MW.GIFT_ATTACK_MODE = {
