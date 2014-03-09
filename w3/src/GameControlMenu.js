@@ -10,7 +10,7 @@ var GameControlMenu = cc.Layer.extend({
             menu.setPosition(0, 0);
             systemMenu.setAnchorPoint(0, 0);
             systemMenu.setPosition(winSize.width-95, 5);
-            this.addChild(menu, 1, 2);
+            // this.addChild(menu, 1, 2);
             bRet = true;
         }
 

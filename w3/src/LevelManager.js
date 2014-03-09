@@ -71,7 +71,8 @@ var LevelManager = cc.Class.extend({
             var newGiftType = fRandomBy( 0, 3) ;
             var selGift = locCurrentLevel.gifts[0];
             // cc.log(selGift);
-            if ( MW.GIFT_Countdown >= 5) {
+            if ( MW.GIFT_Countdown >= 5 && !MW.GIFT_ActiveType ) {
+            // if ( MW.GIFT_Countdown >= 1) {
                 this.addGiftToGameLayer(selGift.Types[newGiftType]);
                 MW.GIFT_Countdown = 0;
             } else {
@@ -163,6 +164,12 @@ var LevelManager = cc.Class.extend({
                 a1 = cc.MoveBy.create(4,cc.p(-newX,-320));
                 tmpAction = cc.Sequence.create(a0,a1);
                 break;
+        }
+
+        cc.log('i need check MW.GIFT_ActiveType:' + MW.GIFT_ActiveType );
+        if(MW.GIFT_ActiveType === 2 ){
+            offset = cc.p(0, - winSize.height - 300);
+            tmpAction = cc.MoveBy.create(6, offset);
         }
 
         addEnemy.runAction(tmpAction);

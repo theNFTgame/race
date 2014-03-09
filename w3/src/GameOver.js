@@ -99,7 +99,7 @@ function updateShareLink(){
     shareLink.setAttribute('href', shareWord);
     // 我在@德国马牌轮胎 #赛车游戏#中驰骋了aaa米
     // cc.log('title:' + document.title );
-    document.title = "我在@德国马牌轮胎 #赛车游戏#中驰骋了" + MW.SCORE +"米";
+    document.title = "我刚挑战了马牌轮胎Race Game，快来赛场一显车技！";
 
 }
 
