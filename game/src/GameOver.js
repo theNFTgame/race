@@ -45,9 +45,20 @@ function jsonpCallback(data){
     if(data !== null){
         MW.TOP10 = data;
     }
-    
+    cc.log(MW.TOP10);
+
+    var maxTopList =  MW.TOP10.length -1,
+
+    goleTop = 200;
+    cc.log('maxTopList:' + maxTopList);
+    cc.log( MW.TOP10[maxTopList] );
+            if (!MW.TOP10[maxTopList].value01){
+                goleTop = MW.TOP10[maxTopList].value01 = goleTop;
+
+            }else{
+                goleTop = MW.TOP10[maxTopList].value01;
+            }
     // MW.TOP10 = listSortBy(MW.TOP10_t, 'value01', 'desc');
-    // cc.log(MW.TOP10);
     var newlist = generatRankList(MW.TOP10);
     rankLayerList.innerHTML = newlist;
     // cc.log(newlist);
@@ -195,9 +206,15 @@ var GameOver = cc.Layer.extend({
             var lbScore = cc.LabelTTF.create(""+MW.SCORE + " M","Arial Bold",36);
             lbScore.setPosition(160,400);
             lbScore.setColor(cc.c3b(0,0,0));
-            this.addChild(lbScore,10); 
+            this.addChild(lbScore,10);
+            var maxTopList =  MW.TOP10.length -1,
+                goleTop = 200;
+            if (!MW.TOP10[maxTopList].value01){
 
-            if ( MW.TOP10[9].value01 >= MW.SCORE ||  MW.PLAYER_NAME !=='noname'){
+            }else{
+                goleTop = MW.TOP10[maxTopList].value01;
+            }
+            if ( goleTop >= MW.SCORE ||  MW.PLAYER_NAME !=='noname'){
             // if ( 20 >= MW.SCORE ||  MW.PLAYER_NAME !=='noname'){
 
                 var gamePost = document.createElement('script');
