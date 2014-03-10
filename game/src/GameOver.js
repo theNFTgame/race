@@ -195,7 +195,7 @@ var GameOver = cc.Layer.extend({
             var lbScore = cc.LabelTTF.create(""+MW.SCORE + " M","Arial Bold",36);
             lbScore.setPosition(160,400);
             lbScore.setColor(cc.c3b(0,0,0));
-            this.addChild(lbScore,10);
+            this.addChild(lbScore,10); 
 
             if ( MW.TOP10[9].value01 >= MW.SCORE ||  MW.PLAYER_NAME !=='noname'){
             // if ( 20 >= MW.SCORE ||  MW.PLAYER_NAME !=='noname'){
@@ -294,7 +294,7 @@ var GameOver = cc.Layer.extend({
 
             }else{
                 
-
+                // cc.log(cc.Scale9Sprite);
                 // cc.log(box4);
 
                 //res.RankTitle_png
