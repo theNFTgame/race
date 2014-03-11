@@ -323,7 +323,7 @@ var GameLayer = cc.Layer.extend({
             if (this.collide(selChild, locShip)) {
                 if (locShip.active) {
                     
-                    if (MW.GIFT_ActiveType !== 1){
+                    if (MW.GIFT_ActiveType !== 1 && MW.GIFT_ActiveType !== 2 ){
                         selChild.hurt();
                     }
                     // cc.log('check MW.GIFT_ActiveType:' + MW.GIFT_ActiveType);

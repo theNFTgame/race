@@ -80,7 +80,7 @@ var Ship = cc.Sprite.extend({
                 this._hurtColorLife--;
             }
         }
-        MW.SCORE ++;
+        MW.SCORE = MW.SCORE + 3 ;
     },
     shoot:function (dt) {
         //this.shootEffect();

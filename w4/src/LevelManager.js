@@ -119,6 +119,7 @@ var LevelManager = cc.Class.extend({
         var a1=0;
         // cc.log(fromX);
         var maxSpeed = MW.Track[fromX];
+        // MW.SCORE
         // cc.log(MW.Track );
         // cc.log('this track is :'+ fromX + '. old addEnemy.moveType:' + addEnemy.moveType + ', maxSpeed: ' + maxSpeed);
         // if( addEnemy.moveType >= maxSpeed ){
@@ -127,23 +128,26 @@ var LevelManager = cc.Class.extend({
         //     MW.Track[fromX] = addEnemy.moveType;
         // }
         // cc.log('new addEnemy.moveType:' + addEnemy.moveType);
+        var tempSpeed = 0;
+        tempSpeed = Math.max(-5.5 ,(-Math.log(MW.SCORE)/2).toFixed(2));
+        cc.log(tempSpeed);
         switch (addEnemy.moveType) {
             case MW.ENEMY_MOVE_TYPE.ATTACK:
                 // offset = this._gameLayer._ship.getPosition();
                 offset = cc.p(0, -winSize.height - 200);
-                tmpAction = cc.MoveBy.create(4, offset);
+                tmpAction = cc.MoveBy.create(9 + tempSpeed, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.VERTICAL:
                 offset = cc.p(0, -winSize.height - 200);
-                tmpAction = cc.MoveBy.create(3, offset);
+                tmpAction = cc.MoveBy.create(6.8  + tempSpeed, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.VERTICAL2:
                 offset = cc.p(0, -winSize.height - 200);
-                tmpAction = cc.MoveBy.create(2, offset);
+                tmpAction = cc.MoveBy.create(6.4  + tempSpeed, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.VERTICAL3:
                 offset = cc.p(0, -winSize.height - 200);
-                tmpAction = cc.MoveBy.create(1, offset);
+                tmpAction = cc.MoveBy.create(6  + tempSpeed, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.HORIZONTAL:
                 offset = cc.p(0, -100 - 200 * Math.random());
@@ -166,7 +170,7 @@ var LevelManager = cc.Class.extend({
                 break;
         }
 
-        cc.log('i need check MW.GIFT_ActiveType:' + MW.GIFT_ActiveType );
+        // cc.log('i need check MW.GIFT_ActiveType:' + MW.GIFT_ActiveType );
         if(MW.GIFT_ActiveType === 2 ){
             offset = cc.p(0, - winSize.height - 300);
             tmpAction = cc.MoveBy.create(6, offset);
