@@ -137,7 +137,7 @@
 <image class="wechatimg" src="image/wechat.jpg" />
     <canvas id="gameCanvas" width="320" height="480"></canvas>
     <div id="gameMask">
-        <a class="btn-share js-sharelink"  href="http://service.weibo.com/share/share.php?title=11111111&url=http%3a%2f%2fthenftgame.github.io%2frace%2fw3%2f&source=bookmark&appkey=&ralateUid=&pic=http%3a%2f%2fwww.quyeba.com%2fevent%2fexplorerchallenge3%2fimg%2fshear.jpg" target="_blank" title="分享成绩">分享至新浪微博</a>
+        <a class="btn-share js-sharelink"  href="#" target="_blank" title="分享成绩">分享至新浪微博</a>
         <a href="####" class="shareclose js-shareclose">close</a>
     </div>
     <div id="gameRank">
@@ -147,6 +147,12 @@
     </div>
 
 <script src="cocos2d.js"></script>
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa3050d056dfaf896679083354023dc4a' type='text/javascript'%3E%3C/script%3E"));
+</script>
         <script type="text/javascript">
         var ISWP = !!(navigator.userAgent.match(/Windows\sPhone/i));
         var sw = 0;
@@ -412,8 +418,8 @@
                         WeixinJSBridge.invoke('sendAppMessage',{
                                               "appid"      : appId,
                                               "img_url"    : imgUrl,
-                                              "img_width"  : "640",
-                                              "img_height" : "640",
+                                              "img_width"  : "300",
+                                              "img_height" : "300",
                                               "link"       : share_scene(link, 1),
                                               "desc"       : desc,
                                               "title"      : title
@@ -426,8 +432,8 @@
                         report(link, fakeid, 2);
                         WeixinJSBridge.invoke('shareTimeline',{
                                               "img_url"    : imgUrl,
-                                              "img_width"  : "640",
-                                              "img_height" : "640",
+                                              "img_width"  : "300",
+                                              "img_height" : "300",
                                               "link"       : share_scene(link, 2),
                                               "desc"       : desc,
                                               "title"      : title
@@ -452,8 +458,8 @@
                 report(link, fakeid, 4);
                 WeixinJSBridge.invoke('shareFB',{
                       "img_url"    : imgUrl,
-                      "img_width"  : "640",
-                      "img_height" : "640",
+                      "img_width"  : "300",
+                      "img_height" : "300",
                       "link"       : share_scene(link, 4),
                       "desc"       : desc,
                       "title"      : title
@@ -471,8 +477,8 @@
                     argv.generalShare({
                                         "appid"      : appId,
                                         "img_url"    : imgUrl,
-                                        "img_width"  : "640",
-                                        "img_height" : "640",
+                                        "img_width"  : "300",
+                                        "img_height" : "300",
                                         "link"       : share_scene(link,scene),
                                         "desc"       : desc,
                                         "title"      : title
@@ -496,113 +502,7 @@
         
         })();
 
-        // 记住阅读位置
-        (function(){
-            var timeout = null;
-            var val = 0;
-            var url = "http://mp.weixin.qq.com/s?__biz=MjM5NTE5NDM0MA==&mid=206795464&idx=4&sn=3675ff8b56070ed6d42fa7728911c8ad#rd".split('?').pop();
-            var key = hash(url);
-            /*
-            var params = parseParams( url );
-            var biz = params['__biz'].replace(/=/g, '#');
-            var key = biz + params['appmsgid'] + params['itemidx'];
-            */
-
-            if( window.addEventListener ){
-                window.addEventListener('load', function(){
-                    val = cookie.get(key);
-                    window.scrollTo(0, val);
-                }, false);
-
-                window.addEventListener('unload', function(){
-                    cookie.set(key,val);
-                    // 上报页面停留时间
-                    reportTimeOnPage();
-                }, false);
-
-                window.addEventListener('scroll', function(){
-                    clearTimeout(timeout);
-                    timeout = setTimeout(function(){
-                        val = window.pageYOffset;
-                    },500);
-                }, false);
-
-                document.addEventListener('touchmove', function(){
-                    clearTimeout(timeout);
-                    timeout = setTimeout(function(){
-                        val = window.pageYOffset;
-                    },500);
-                }, false);
-            }else if(window.attachEvent){
-                window.attachEvent('load', function(){
-                    val = cookie.get(key);
-                    window.scrollTo(0, val);
-                }, false);
-
-                window.attachEvent('unload', function(){
-                    cookie.set(key,val);
-                    // 上报页面停留时间
-                    reportTimeOnPage();
-                }, false);
-
-                window.attachEvent('scroll', function(){
-                    clearTimeout(timeout);
-                    timeout = setTimeout(function(){
-                        val = window.pageYOffset;
-                    },500);
-                }, false);
-
-                document.attachEvent('touchmove', function(){
-                    clearTimeout(timeout);
-                    timeout = setTimeout(function(){
-                        val = window.pageYOffset;
-                    },500);
-                }, false);
-            }
-        })();
-
-    
-        //弹出框中图片的切换
-        (function(){
-            var imgsSrc = [];
-            function reviewImage(src) {
-                if (typeof window.WeixinJSBridge != 'undefined') {
-                    WeixinJSBridge.invoke('imagePreview', {
-                        'current' : src,
-                        'urls' : imgsSrc
-                    });
-                }
-            }
-            function onImgLoad() {
-                var imgs = document.getElementById("img-content");
-                imgs = imgs ? imgs.getElementsByTagName("img") : [];
-                for( var i=0,l=imgs.length; i<l; i++ ){//忽略第一张图 是提前加载的loading图而已
-                    var img = imgs.item(i);
-                    var src = img.getAttribute('data-src') || img.getAttribute('src');
-                    if( src ){
-                        imgsSrc.push(src);
-                        (function(src){
-                            if (img.addEventListener){
-                                img.addEventListener('click', function(){
-                                    reviewImage(src);
-                                });
-                            }else if(img.attachEvent){
-                                img.attachEvent('click', function(){
-                                    reviewImage(src);
-                                });
-                            }
-                        })(src);
-                    }
-                }
-            }
-            if( window.addEventListener ){
-                window.addEventListener('load', onImgLoad, false);
-            }else if(window.attachEvent){
-                window.attachEvent('load', onImgLoad);
-                window.attachEvent('onload', onImgLoad);
-            }
-        })();
-
+        
         var has_click = {};
         function gdt_click(type, url, rl, apurl, traceid, group_id){
             if (has_click[traceid]){return;}
@@ -648,97 +548,6 @@
                 });
         }
 
-        // 图片延迟加载
-        (function(){
-            var timer  = null;
-            var innerHeight = (window.innerHeight||document.documentElement.clientHeight);
-            var height = innerHeight + 40;
-            var images = [];
-            function detect(){
-                var scrollTop = (window.pageYOffset||document.documentElement.scrollTop) - 20;
-                for( var i=0,l=images.length; i<l; i++ ){
-                    var img = images[i];
-                    var offsetTop = img.el.offsetTop;
-                    if( !img.show && scrollTop < offsetTop+img.height && scrollTop+height > offsetTop ){
-                        img.el.setAttribute('src', img.src);
-                        img.show = true;
-                    }
-                    if (ISWP && (img.el.width*1 > sw)){//兼容WP
-                        img.el.width = sw;
-                    }
-                }
-            }
-
-            var ping_apurl = false;
-            function onScroll(){
-                clearTimeout(timer);
-                timer = setTimeout(detect, 100);
-
-                //gdt
-                var gdt_area = document.getElementById("gdt_area");
-                if (!!gdt_area && !ping_apurl){
-                    var scrollTop = (window.pageYOffset||document.documentElement.scrollTop);
-                    var offsetTop = gdt_area.offsetTop;
-                    if( scrollTop+innerHeight > offsetTop ){
-                        //ping gdt apurl
-                        var gdt_a = document.querySelectorAll("#gdt_area a");
-                        if (gdt_a.length){
-                            gdt_a = gdt_a[0];
-                            if (gdt_a.dataset && gdt_a.dataset.apurl){
-                                ping_apurl = true;
-                                var gid = gdt_a.dataset.gid;
-                                var tid = gdt_a.dataset.tid;
-                                ajax({
-                                    url : "/mp/advertisement_report?report_type=1&tid=" + tid + "&adver_group_id=" + gid +  "&apurl=" + encodeURIComponent(gdt_a.dataset.apurl) + "&uin=" + uin + "&key=" + key + "&__biz=" + biz + "&r=" + Math.random(),
-                                    success : function(res){
-                                        try{ 
-                                            res = eval("(" + res + ")");
-                                        }catch (e){res = {};}
-
-                                        if (res && res.ret != 0){
-                                            ping_apurl = false;
-                                        }
-                                    },
-                                    async:true
-                                });
-                            }
-                        }
-                    }
-                }
-
-            }
-            function onLoad(){
-                var imageEls = document.getElementsByTagName('img');
-                var pcd = document.getElementById("page-content");
-                if (pcd.currentStyle){
-                    sw = pcd.currentStyle.width;
-                }else if (typeof getComputedStyle != "undefined"){
-                    sw = getComputedStyle(pcd).width;
-                }
-                sw = 1*(sw.replace("px", ""));
-                for( var i=0,l=imageEls.length; i<l; i++ ){
-                    var img = imageEls.item(i);
-                    if(!img.getAttribute('data-src') ) continue;
-                    images.push({
-                        el     : img,
-                        src    : img.getAttribute('data-src'),
-                        height : img.offsetHeight,
-                        show   : false
-                    });
-                }
-                detect();
-            }
-
-            if( window.addEventListener ){
-                window.addEventListener('scroll', onScroll, false);
-                window.addEventListener('load', onLoad, false);
-                document.addEventListener('touchmove', onScroll, false);
-            }
-            else {
-                window.attachEvent('onscroll', onScroll);
-                window.attachEvent('onload', onLoad);
-            }
-        })();
         (function(){
             //a
             var ext = [];
