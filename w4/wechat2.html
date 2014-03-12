@@ -134,7 +134,7 @@
 </head> 
 
 <body id="activity-detail">
-    <image class="wechatimg" src="image/wechat.jpg" />
+    <img class="wechatimg" src="image/wechat.jpg" />
     <canvas id="gameCanvas" width="320" height="480"></canvas>
     <div id="gameMask">
         <a class="btn-share js-sharelink"  href="#" target="_blank" title="分享成绩">分享至新浪微博</a>
@@ -153,117 +153,7 @@
 var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
 document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa3050d056dfaf896679083354023dc4a' type='text/javascript'%3E%3C/script%3E"));
 </script>
-<script type="text/javascript">
 
-      
-      
-    (function(){
-
-        function onBridgeReady() {
-
-            var appId  = '',
-                imgUrl = "http://wegift.reconnectplatform.com/race/image/wechat.jpg",
-                link   = "http://wegift.reconnectplatform.com/race",
-                title  = htmlDecode("我刚挑战了马牌轮胎Race Game，快来赛场一显车技！"),
-                desc   = htmlDecode("我刚挑战了马牌轮胎Race Game，快来赛场一显车技！"),
-                fakeid = "";
-                desc   = desc || link;  
-
-            if( "1" == "0" ){
-                WeixinJSBridge.call("hideOptionMenu");  
-            }
-
-            // 发送给好友; 
-            WeixinJSBridge.on('menu:share:appmessage', function(argv){
-            
-                        WeixinJSBridge.invoke('sendAppMessage',{
-                                              "appid"      : appId,
-                                              "img_url"    : imgUrl,
-                                              "img_width"  : "300",
-                                              "img_height" : "300",
-                                              "link"       : link,
-                                              "desc"       : desc,
-                                              "title"      : title
-                        }, function(res) {report(link, fakeid, 1);
-                        });
-            });
-
-                    // 分享到朋友圈;
-            WeixinJSBridge.on('menu:share:timeline', function(argv){
-                        report(link, fakeid, 2);
-                        WeixinJSBridge.invoke('shareTimeline',{
-                                              "img_url"    : imgUrl,
-                                              "img_width"  : "300",
-                                              "img_height" : "300",
-                                              "link"       : link,
-                                              "desc"       : desc,
-                                              "title"      : title
-                        }, function(res) {
-                        });
-            
-            });
-
-                    // 分享到微博;
-            var weiboContent = '';
-            WeixinJSBridge.on('menu:share:weibo', function(argv){
-            
-                        WeixinJSBridge.invoke('shareWeibo',{
-                                              "content" : title + link,
-                                              "url"     : link 
-                                              }, function(res) {report(link, fakeid, 3);
-                                              });
-            });
-
-                    // 分享到Facebook
-            WeixinJSBridge.on('menu:share:facebook', function(argv){
-                report(link, fakeid, 4);
-                WeixinJSBridge.invoke('shareFB',{
-                      "img_url"    : imgUrl,
-                      "img_width"  : "300",
-                      "img_height" : "300",
-                      "link"       : link,
-                      "desc"       : desc,
-                      "title"      : title
-                }, function(res) {} );
-            });
-
-                    // 新的接口
-            WeixinJSBridge.on('menu:general:share', function(argv){
-                var scene = 0;
-                switch(argv.shareTo){
-                    case 'friend'  : scene = 1; break;
-                    case 'timeline': scene = 2; break;
-                    case 'weibo'   : scene = 3; break;
-                }
-                    argv.generalShare({
-                                        "appid"      : appId,
-                                        "img_url"    : imgUrl,
-                                        "img_width"  : "300",
-                                        "img_height" : "300",
-                                        "link"       : link,
-                                        "desc"       : desc,
-                                        "title"      : title
-                    }, function(res){report(link, fakeid, scene);
-                    });
-            });
-
-                    
-        }
-
-        if (typeof WeixinJSBridge == "undefined"){
-            if( document.addEventListener ){
-                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-            }else if (document.attachEvent){
-                document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
-                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-            }
-        }else{
-            onBridgeReady();
-        }
-        
-    })();
-
-</script>
 
 </body>
 </html>
