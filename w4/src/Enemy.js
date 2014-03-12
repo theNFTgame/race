@@ -28,6 +28,7 @@ var Enemy = cc.Sprite.extend({
         
         // this.initWithFile(res.Cars, cc.rect(0, 0, 100, 200));
         this.initWithSpriteFrameName(arg.textureName);
+        this.setFlippedY = true;
         this.setScale(0.5);
         this.schedule(this.shoot, this.delayTime);
     },

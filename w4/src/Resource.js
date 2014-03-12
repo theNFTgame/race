@@ -32,8 +32,8 @@ var res = {
     // textureTransparentPack_png : 'res/textureTransparentPack.png',
     textureCars_plist : 'res/cars_texture_coordinates.plist',
     textureCars_png : 'res/cars_texture_coordinates.png',
-    textureTransparentPack_plist : 'res/cars_texture_coordinates.plist',
-    textureTransparentPack_png : 'res/cars_texture_coordinates.png',
+    textureTransparentPack_plist : 'res/cars_texture.plist',
+    textureTransparentPack_png : 'res/cars_texture.png',
     textureBTN_png : 'res/btn_texture.png',
     textureBTN_plist : 'res/btn_texture.plist',
 

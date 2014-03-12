@@ -239,82 +239,6 @@
 			<key>originalHeight</key>
 			<integer>117</integer>
 		</dict>
-		<key>car_e4.png</key>
-		<dict>
-			<key>x</key>
-			<integer>336</integer>
-			<key>y</key>
-			<integer>328</integer>
-			<key>width</key>
-			<integer>52</integer>
-			<key>height</key>
-			<integer>92</integer>
-			<key>offsetX</key>
-			<real>0</real>
-			<key>offsetY</key>
-			<real>0</real>
-			<key>originalWidth</key>
-			<integer>52</integer>
-			<key>originalHeight</key>
-			<integer>92</integer>
-		</dict>
-		<key>car_e3.png</key>
-		<dict>
-			<key>x</key>
-			<integer>290</integer>
-			<key>y</key>
-			<integer>329</integer>
-			<key>width</key>
-			<integer>43</integer>
-			<key>height</key>
-			<integer>88</integer>
-			<key>offsetX</key>
-			<real>0</real>
-			<key>offsetY</key>
-			<real>0</real>
-			<key>originalWidth</key>
-			<integer>43</integer>
-			<key>originalHeight</key>
-			<integer>88</integer>
-		</dict>
-		<key>car_e2.png</key>
-		<dict>
-			<key>x</key>
-			<integer>393</integer>
-			<key>y</key>
-			<integer>327</integer>
-			<key>width</key>
-			<integer>55</integer>
-			<key>height</key>
-			<integer>99</integer>
-			<key>offsetX</key>
-			<real>0</real>
-			<key>offsetY</key>
-			<real>0</real>
-			<key>originalWidth</key>
-			<integer>55</integer>
-			<key>originalHeight</key>
-			<integer>99</integer>
-		</dict>
-		<key>car_e1.png</key>
-		<dict>
-			<key>x</key>
-			<integer>451</integer>
-			<key>y</key>
-			<integer>328</integer>
-			<key>width</key>
-			<integer>58</integer>
-			<key>height</key>
-			<integer>107</integer>
-			<key>offsetX</key>
-			<real>0</real>
-			<key>offsetY</key>
-			<real>0</real>
-			<key>originalWidth</key>
-			<integer>58</integer>
-			<key>originalHeight</key>
-			<integer>107</integer>
-		</dict>
 		<key>car_adventure_s_on_icon.png</key>
 		<dict>
 			<key>x</key>
@@ -375,9 +299,9 @@
 		<key>car_smooth_s_icon.png</key>
 		<dict>
 			<key>x</key>
-			<integer>424</integer>
+			<integer>235</integer>
 			<key>y</key>
-			<integer>439</integer>
+			<integer>467</integer>
 			<key>width</key>
 			<integer>48</integer>
 			<key>height</key>
@@ -394,9 +318,9 @@
 		<key>car_adventure_s_icon.png</key>
 		<dict>
 			<key>x</key>
-			<integer>238</integer>
+			<integer>344</integer>
 			<key>y</key>
-			<integer>469</integer>
+			<integer>467</integer>
 			<key>width</key>
 			<integer>43</integer>
 			<key>height</key>
@@ -413,9 +337,9 @@
 		<key>car_smooth_s_on_icon.png</key>
 		<dict>
 			<key>x</key>
-			<integer>371</integer>
+			<integer>289</integer>
 			<key>y</key>
-			<integer>435</integer>
+			<integer>468</integer>
 			<key>width</key>
 			<integer>48</integer>
 			<key>height</key>
@@ -467,12 +391,88 @@
 			<key>originalHeight</key>
 			<integer>41</integer>
 		</dict>
+		<key>car_e1.png</key>
+		<dict>
+			<key>x</key>
+			<integer>452</integer>
+			<key>y</key>
+			<integer>325</integer>
+			<key>width</key>
+			<integer>58</integer>
+			<key>height</key>
+			<integer>107</integer>
+			<key>offsetX</key>
+			<real>0</real>
+			<key>offsetY</key>
+			<real>0</real>
+			<key>originalWidth</key>
+			<integer>58</integer>
+			<key>originalHeight</key>
+			<integer>107</integer>
+		</dict>
+		<key>car_e2.png</key>
+		<dict>
+			<key>x</key>
+			<integer>393</integer>
+			<key>y</key>
+			<integer>325</integer>
+			<key>width</key>
+			<integer>55</integer>
+			<key>height</key>
+			<integer>99</integer>
+			<key>offsetX</key>
+			<real>0</real>
+			<key>offsetY</key>
+			<real>0</real>
+			<key>originalWidth</key>
+			<integer>55</integer>
+			<key>originalHeight</key>
+			<integer>99</integer>
+		</dict>
+		<key>car_e3.png</key>
+		<dict>
+			<key>x</key>
+			<integer>348</integer>
+			<key>y</key>
+			<integer>326</integer>
+			<key>width</key>
+			<integer>43</integer>
+			<key>height</key>
+			<integer>88</integer>
+			<key>offsetX</key>
+			<real>0</real>
+			<key>offsetY</key>
+			<real>0</real>
+			<key>originalWidth</key>
+			<integer>43</integer>
+			<key>originalHeight</key>
+			<integer>88</integer>
+		</dict>
+		<key>car_e4.png</key>
+		<dict>
+			<key>x</key>
+			<integer>291</integer>
+			<key>y</key>
+			<integer>325</integer>
+			<key>width</key>
+			<integer>52</integer>
+			<key>height</key>
+			<integer>92</integer>
+			<key>offsetX</key>
+			<real>0</real>
+			<key>offsetY</key>
+			<real>0</real>
+			<key>originalWidth</key>
+			<integer>52</integer>
+			<key>originalHeight</key>
+			<integer>92</integer>
+		</dict>
 		<key>car_sporty.png</key>
 		<dict>
 			<key>x</key>
-			<integer>107</integer>
+			<integer>108</integer>
 			<key>y</key>
-			<integer>284</integer>
+			<integer>280</integer>
 			<key>width</key>
 			<integer>105</integer>
 			<key>height</key>
