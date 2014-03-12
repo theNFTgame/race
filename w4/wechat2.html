@@ -62,7 +62,7 @@
             background: url('image/close.png') no-repeat top center;
             background-size: 36px 36px;
         }
-        .wechatimg { display: none;}
+        .wechatimg { display: block; position: absolute; top: -999em; left: -999em;}
         #gameRank {
             width: 100%;
             height: 100%;
@@ -134,7 +134,7 @@
 </head> 
 
 <body id="activity-detail">
-    <img class="wechatimg" src="image/wechat.jpg" />
+    <img class="wechatimg" src="image/wechat.jpg" width="300" height="300" />
     <canvas id="gameCanvas" width="320" height="480"></canvas>
     <div id="gameMask">
         <a class="btn-share js-sharelink"  href="#" target="_blank" title="分享成绩">分享至新浪微博</a>
