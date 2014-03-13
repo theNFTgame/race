@@ -16,7 +16,7 @@ var Level1 = {
         },
         {
             ShowType:"Repeate",
-            ShowTime:"00:05",
+            ShowTime:"00:02",
             Types:[3,4,5]
         }
         /*{
