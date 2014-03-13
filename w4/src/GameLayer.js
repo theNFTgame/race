@@ -303,11 +303,24 @@ var GameLayer = cc.Layer.extend({
 
         // 检测碰撞
         var i, locShip =this._ship;
+
         for (i = 0; i < MW.CONTAINER.ENEMIES.length; i++) {
             selChild = MW.CONTAINER.ENEMIES[i];
             if (!selChild.active)
                 continue;
 
+            // check enemies collide:
+            var p = selChild.getPosition();
+            for ( j = i+1; j < MW.CONTAINER.ENEMIES.length; j++){
+                var subSelChild = MW.CONTAINER.ENEMIES[j];
+                var p2  = subSelChild.getPosition();
+
+                if ( Math.abs(p.x - p2.x) < 10 &&  Math.abs(p.y - p2.y) < 10 &&  p.y > 500) {
+                    cc.log('i:'+ i + ',j:' + j +',p.x:' + p.x + ',p.y:' + p.y + ',p2.x' + p2.x + ',p2.y:' + p2.y);
+
+                    subSelChild.goaway();
+                }
+            }
 
             // for type 
             if (MW.GIFT_ActiveType === 1){
