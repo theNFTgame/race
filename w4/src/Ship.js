@@ -110,8 +110,9 @@ var Ship = cc.Sprite.extend({
         //     this.canBeAttack = false;
         // }
     },
-    backNormal:function(){
-        MW.GIFT_ActiveType = null;
+    backNormal:function(num){
+        cc.log(num);
+        
         this.initWithSpriteFrameName("car_00.png");
         this.HP = 1;
         this.canBeAttack = true;

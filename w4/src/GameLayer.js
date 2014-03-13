@@ -373,41 +373,45 @@ var GameLayer = cc.Layer.extend({
                     switch (MW.GIFT_ActiveType) {
                         case 0:
                             // MW.LIFE = 2;
+                            this.lbScoreIcon_a.setVisible(false);
                             locShip.hpMax(2,MW.GIFT_ActiveType);
-                            this.lbScoreIcon_a = cc.Sprite.createWithSpriteFrameName(NewBoardIcon);
-                            this.lbScoreIcon_a.setPosition(winSize.width - 50, winSize.height - 200);
-                            this.lbScoreIcon_a.setScale(0.35);
-                            this.lbScoreIcon_a.setAnchorPoint(1, 0);
-                            this.addChild(this.lbScoreIcon_a, 1110);
+                            this.lbScoreIcon_a_on = cc.Sprite.createWithSpriteFrameName(NewBoardIcon);
+                            this.lbScoreIcon_a_on.setPosition(winSize.width - 50, winSize.height - 200);
+                            this.lbScoreIcon_a_on.setScale(0.35);
+                            this.lbScoreIcon_a_on.setAnchorPoint(1, 0);
+                            this.addChild(this.lbScoreIcon_a_on, 1110);
                         break;
                         case 1:
                             // MW.LIFE = 99999;
+                            this.lbScoreIcon_b.setVisible(false);
                             locShip.hpMax(99999,MW.GIFT_ActiveType);
-                            this.lbScoreIcon_b = cc.Sprite.createWithSpriteFrameName(NewBoardIcon);
-                            this.lbScoreIcon_b.setPosition(winSize.width - 10 , winSize.height - 200);
-                            this.lbScoreIcon_b.setScale(0.35);
-                            this.lbScoreIcon_b.setAnchorPoint(1, 0);
-                            this.addChild(this.lbScoreIcon_b, 1110);
+                            this.lbScoreIcon_b_on = cc.Sprite.createWithSpriteFrameName(NewBoardIcon);
+                            this.lbScoreIcon_b_on.setPosition(winSize.width - 10 , winSize.height - 200);
+                            this.lbScoreIcon_b_on.setScale(0.35);
+                            this.lbScoreIcon_b_on.setAnchorPoint(1, 0);
+                            this.addChild(this.lbScoreIcon_b_on, 1110);
 
 
                         break;
                         case 2:
+                            this.lbScoreIcon_c.setVisible(false);
                             locShip.hpMax(1,MW.GIFT_ActiveType);
-                            this.lbScoreIcon_c = cc.Sprite.createWithSpriteFrameName(NewBoardIcon);
-                            this.lbScoreIcon_c.setPosition(winSize.width - 50 , winSize.height - 240);
-                            this.lbScoreIcon_c.setScale(0.35);
-                            this.lbScoreIcon_c.setAnchorPoint(1, 0);
-                            this.addChild(this.lbScoreIcon_c, 1110);
+                            this.lbScoreIcon_c_on = cc.Sprite.createWithSpriteFrameName(NewBoardIcon);
+                            this.lbScoreIcon_c_on.setPosition(winSize.width - 50 , winSize.height - 240);
+                            this.lbScoreIcon_c_on.setScale(0.35);
+                            this.lbScoreIcon_c_on.setAnchorPoint(1, 0);
+                            this.addChild(this.lbScoreIcon_c_on, 1110);
 
 
                         break;
                         case 3:
+                            this.lbScoreIcon_d.setVisible(false);
                             locShip.hpMax(99999,MW.GIFT_ActiveType);
-                            this.lbScoreIcon_d = cc.Sprite.createWithSpriteFrameName(NewBoardIcon);
-                            this.lbScoreIcon_d.setPosition(winSize.width - 10 , winSize.height - 240);
-                            this.lbScoreIcon_d.setScale(0.35);
-                            this.lbScoreIcon_d.setAnchorPoint(1, 0);
-                            this.addChild(this.lbScoreIcon_d, 1110);
+                            this.lbScoreIcon_d_on = cc.Sprite.createWithSpriteFrameName(NewBoardIcon);
+                            this.lbScoreIcon_d_on.setPosition(winSize.width - 10 , winSize.height - 240);
+                            this.lbScoreIcon_d_on.setScale(0.35);
+                            this.lbScoreIcon_d_on.setAnchorPoint(1, 0);
+                            this.addChild(this.lbScoreIcon_d_on, 1110);
                         break;
                     }
                     this.scheduleOnce(this.removeGiftTitle,3);
@@ -452,9 +456,29 @@ var GameLayer = cc.Layer.extend({
     },
     timeCallback:function(){
         var locShip = this._ship;
-        // cc.log('timeCallback, clean gift.');
+        cc.log('timeCallback, clean gift.');
         locShip.backNormal(1);
         this.titleScore.setVisible(false);
+        switch (MW.GIFT_ActiveType) {
+            case 0:
+                this.lbScoreIcon_a.setVisible(true);
+                this.lbScoreIcon_a_on.setVisible(false);
+            break;
+            case 1:
+                this.lbScoreIcon_b.setVisible(true);
+                this.lbScoreIcon_b_on.setVisible(false);
+            break;
+            case 2:
+                this.lbScoreIcon_c.setVisible(true);
+                this.lbScoreIcon_c_on.setVisible(false);
+            break;
+            case 3:
+                this.lbScoreIcon_d.setVisible(true);
+                this.lbScoreIcon_d_on.setVisible(false);
+            break;
+        }
+
+        MW.GIFT_ActiveType = null;
     },
     checkIsReborn:function () {
         var locShip = this._ship;
