@@ -157,5 +157,5 @@ var VisibleRect = {
     }
 };
 
-var screenWidth = VisibleRect.rect().width;
-var screenHeight = VisibleRect.rect().height;
+// var screenWidth = VisibleRect.rect().width;
+// var screenHeight = VisibleRect.rect().height;
