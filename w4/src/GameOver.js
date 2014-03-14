@@ -85,8 +85,12 @@ function jsonpPostback(data){
         rankLayerList.innerHTML = newlist;
     }
     if(!MW.gameCode){
+
         MW.gameCode = MW.TOP10_t.img_code;
+    }else{
+
     }
+    
     updateShareLink();
 }
 
@@ -222,11 +226,14 @@ var GameOver = cc.Layer.extend({
                 if(MW.PLAYER_NAME !== playerName){
                     playerName = MW.PLAYER_NAME;
                 }
-                gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player='+ playerName +'&score='+ MW.SCORE +'&type=a&refresh=0&jsoncallback=jsonpPostback';
-                document.getElementsByTagName('head')[0].appendChild(gamePost);
 
-                
-
+                // check game id
+                //updateShareLink();
+                // updateShareLink();
+                if (!MW.gameCode){
+                    gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player='+ playerName +'&score='+ MW.SCORE +'&type=a&refresh=0&jsoncallback=jsonpPostback';
+                    document.getElementsByTagName('head')[0].appendChild(gamePost);
+                }
 
                 // 了解道具拿到最多的类型
                 var b = listSortBy(MW.GiftRecord , 'age',  'desc');
@@ -308,6 +315,10 @@ var GameOver = cc.Layer.extend({
                 // var overMenu = cc.Menu.create(menu1);
                 // overMenu.setPosition(winSize.width / 2 + 140,220);
                 // this.addChild(overMenu);
+                
+
+
+
 
             }else{
                 
@@ -389,6 +400,7 @@ var GameOver = cc.Layer.extend({
     },
     onPlayAgain:function (pSender) {
         var scene = cc.Scene.create();
+        MW.gameCode = null;
         scene.addChild(GameLayer.create());
         scene.addChild(GameControlMenu.create());
         cc.Director.getInstance().replaceScene(cc.TransitionFade.create(1.2,scene));

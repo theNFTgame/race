@@ -352,6 +352,10 @@ var GameLayer = cc.Layer.extend({
         }
         for (i = 0; i < MW.CONTAINER.GIFTS.length; i++) {
             selChild = MW.CONTAINER.GIFTS[i];
+
+            if(!MW.GIFT_ActiveType){}else{
+                selChild.goaway();
+            }
             if (!selChild.active)
                 continue;
 
@@ -472,24 +476,34 @@ var GameLayer = cc.Layer.extend({
         cc.log('timeCallback, clean gift.');
         locShip.backNormal(1);
         this.titleScore.setVisible(false);
-        if(!this.lbScoreIcon_a_on){
+        if(!this.lbScoreIcon_a_on){}else{
+            this.lbScoreIcon_a.setVisible(true);
             this.lbScoreIcon_a_on.setVisible(false);
         }
+        if(!this.lbScoreIcon_b_on){}else{
+            this.lbScoreIcon_b_on.setVisible(false);
+        }
+        if(!this.lbScoreIcon_c_on){}else{
+            this.lbScoreIcon_c_on.setVisible(false);
+        }
+        if(!this.lbScoreIcon_d_on){}else{
+            this.lbScoreIcon_d_on.setVisible(false);
+        }
+        this.lbScoreIcon_a.setVisible(true);
+        this.lbScoreIcon_b.setVisible(true);
+        this.lbScoreIcon_c.setVisible(true);
+        this.lbScoreIcon_d.setVisible(true);
         switch (MW.GIFT_ActiveType) {
             case 0:
-                this.lbScoreIcon_a.setVisible(true);
                 this.lbScoreIcon_a_on.setVisible(false);
             break;
             case 1:
-                this.lbScoreIcon_b.setVisible(true);
                 this.lbScoreIcon_b_on.setVisible(false);
             break;
             case 2:
-                this.lbScoreIcon_c.setVisible(true);
                 this.lbScoreIcon_c_on.setVisible(false);
             break;
             case 3:
-                this.lbScoreIcon_d.setVisible(true);
                 this.lbScoreIcon_d_on.setVisible(false);
             break;
         }
