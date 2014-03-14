@@ -472,6 +472,9 @@ var GameLayer = cc.Layer.extend({
         cc.log('timeCallback, clean gift.');
         locShip.backNormal(1);
         this.titleScore.setVisible(false);
+        if(!this.lbScoreIcon_a_on){
+            this.lbScoreIcon_a_on.setVisible(false);
+        }
         switch (MW.GIFT_ActiveType) {
             case 0:
                 this.lbScoreIcon_a.setVisible(true);
