@@ -62,6 +62,7 @@ var GameLayer = cc.Layer.extend({
             MW.SCORE = 0;
             MW.LIFE = 1;
             this._state = STATE_PLAYING;
+            MW.tempSpeed = -1;
 
             MW.Track = [3,3,3,3];
             MW.Track_Position = [winSize.height,winSize.height,winSize.height,winSize.height];
@@ -561,15 +562,16 @@ var GameLayer = cc.Layer.extend({
     _movingBackground:function(dt){
 
         // 这里改速度。
-
-        var movingDist = 360 * dt;       // background's moving rate is 16 pixel per second
+        // MW.tempSpeed -1 ~ -5.5
+        // cc.log(MW.tempSpeed);
+        var movingDist = 80 * (-MW.tempSpeed ) * dt;       // background's moving rate is 16 pixel per second
 
         var locSkyHeight = this._backSkyHeight, locBackSky = this._backSky;
         var currPosY = locBackSky.getPositionY() - movingDist;
         var locBackSkyRe = this._backSkyRe;
 
         if(locSkyHeight + currPosY <= winSize.height){
-             if(locBackSkyRe != null)
+             if(locBackSkyRe !== null)
                 throw "The memory is leaking at moving background";
             locBackSkyRe = this._backSky;
             this._backSkyRe = this._backSky;
