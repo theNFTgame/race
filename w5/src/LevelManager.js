@@ -128,26 +128,26 @@ var LevelManager = cc.Class.extend({
         //     MW.Track[fromX] = addEnemy.moveType;
         // }
         // cc.log('new addEnemy.moveType:' + addEnemy.moveType);
-        var tempSpeed = 0;
-        tempSpeed = Math.max(-5.5 ,(-Math.log(MW.SCORE)/2).toFixed(2));
-        cc.log(tempSpeed);
+        // MW.tempSpeed = 0;
+        MW.tempSpeed = Math.max(-6.5 ,(-Math.log(MW.SCORE)/3).toFixed(2));
+        // cc.log(MW.tempSpeed);
         switch (addEnemy.moveType) {
             case MW.ENEMY_MOVE_TYPE.ATTACK:
                 // offset = this._gameLayer._ship.getPosition();
                 offset = cc.p(0, -winSize.height - 200);
-                tmpAction = cc.MoveBy.create(9 + tempSpeed, offset);
+                tmpAction = cc.MoveBy.create(9 + MW.tempSpeed, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.VERTICAL:
                 offset = cc.p(0, -winSize.height - 200);
-                tmpAction = cc.MoveBy.create(7.8  + tempSpeed, offset);
+                tmpAction = cc.MoveBy.create(7.8  + MW.tempSpeed, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.VERTICAL2:
                 offset = cc.p(0, -winSize.height - 200);
-                tmpAction = cc.MoveBy.create(7  + tempSpeed, offset);
+                tmpAction = cc.MoveBy.create(7  + MW.tempSpeed, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.VERTICAL3:
                 offset = cc.p(0, -winSize.height - 200);
-                tmpAction = cc.MoveBy.create(6  + tempSpeed, offset);
+                tmpAction = cc.MoveBy.create(6  + MW.tempSpeed, offset);
                 break;
             case MW.ENEMY_MOVE_TYPE.HORIZONTAL:
                 offset = cc.p(0, -100 - 200 * Math.random());

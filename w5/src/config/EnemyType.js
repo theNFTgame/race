@@ -63,6 +63,7 @@ var EnemyType = [
 var GiftType = [
     {
         type:0,
+        postType:"a",
         textureName:"car_adventure_icon.png",
         txtPng:"car_adventure_txt.png",
         carPng:"car_adventure.png",
@@ -80,6 +81,7 @@ var GiftType = [
     },
     {
         type:1,
+        postType:"c",
         textureName:"car_comfort_icon.png",
         txtPng:"car_comfort_txt.png",
         carPng:"car_comfort.png",
@@ -97,6 +99,7 @@ var GiftType = [
     },
     {
         type:2,
+        postType:"s",
         textureName:"car_smooth_icon.png",
         txtPng:"car_smooth_txt.png",
         carPng:"car_smooth.png",
@@ -114,6 +117,7 @@ var GiftType = [
     },
     {
         type:3,
+        postType:"s-2",
         textureName:"car_sporty_icon.png",
         txtPng:"car_sporty_txt.png",
         carPng:"car_sporty.png",
