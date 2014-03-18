@@ -96,7 +96,7 @@ var LevelManager = cc.Class.extend({
 
         // Math.max(80, 180 * Math.random())
         var fromX = fRandomBy( 0, 3) ,
-            fromY = winSize.height + Math.max(120, Math.min(50,13 * fRandomBy( 1, 9)));
+            fromY = winSize.height + Math.max(120, Math.min(40 * fromX ));
 
         
 
