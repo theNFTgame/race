@@ -341,7 +341,7 @@ var GameOver = cc.Layer.extend({
 
                 var goRankList = cc.MenuItemSprite.create(goRankListNormal, goRankListSelected, goRankListDisabled, function () {
                     // this.onButtonEffect();
-                    if (MW.PLAYER_NAME !== null && MW.PLAYER_NAME !== 'noname'){
+                    if (MW.PLAYER_NAME !== null  ){
                         var playerName = 'noname';
                         if(MW.PLAYER_NAME !== playerName){
                             playerName = MW.PLAYER_NAME;
@@ -366,7 +366,14 @@ var GameOver = cc.Layer.extend({
                 var box4 = cc.EditBox.create(cc.size(160, 40), cc.Scale9Sprite.create(res.empty_png));
 
                 box4.setPlaceholderFontColor(cc.c3b(255, 255, 255));
-                box4.setPlaceHolder("点击输入名字");
+
+                if ( MW.PLAYER_NAME !== 'noname' ) {
+                    box4.setPlaceHolder(MW.PLAYER_NAME);
+                } else {
+                    box4.setPlaceHolder("点击输入名字");
+                }
+
+                
                 // box4.initWithBackgroundColor(cc.size(200, 40), cc.c3b(200, 20, 20));
                 box4.setPosition( winSize.width / 2 - 20 , 144 );
                 box4.setDelegate(this);
