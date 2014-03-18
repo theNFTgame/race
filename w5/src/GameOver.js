@@ -230,19 +230,24 @@ var GameOver = cc.Layer.extend({
                 // check game id
                 //updateShareLink();
                 // updateShareLink();
-                if (!MW.gameCode){
-                    gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player='+ playerName +'&score='+ MW.SCORE +'&type=a&refresh=0&jsoncallback=jsonpPostback';
-                    document.getElementsByTagName('head')[0].appendChild(gamePost);
-                }
+
 
                 // 了解道具拿到最多的类型
                 var b = listSortBy(MW.GiftRecord , 'age',  'desc');
                 // cc.log(b);
                 var mostGiftType = b[0].type;
+
                 // cc.log('mostGiftType:' + mostGiftType);
 
                 var thisGift = GiftType[mostGiftType];
                 var NewTitleImage = thisGift.btnPng;
+                var postGiftType = thisGift.postType;
+
+                if (!MW.gameCode){
+                    gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player='+ playerName +'&score='+ MW.SCORE +'&type='+ postGiftType +'&refresh=0&jsoncallback=jsonpPostback';
+                    document.getElementsByTagName('head')[0].appendChild(gamePost);
+                }
+
                 this.titleScore = cc.Sprite.createWithSpriteFrameName(NewTitleImage);
                 // this.titleScore = cc.Sprite.createWithSpriteFrameName('car_smooth_txt.png');
                 this.titleScore.setPosition(winSize.width /2 , winSize.height - 190);
@@ -347,7 +352,12 @@ var GameOver = cc.Layer.extend({
                             playerName = MW.PLAYER_NAME;
                         }
                         var gamePost = document.createElement('script');
-                        gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player='+ playerName +'&score='+ MW.SCORE +'&type=a&refresh=1&jsoncallback=jsonpPostback';
+
+                        var b = listSortBy(MW.GiftRecord , 'age',  'desc');
+                        var mostGiftType = b[0].type;
+                        var thisGift = GiftType[mostGiftType];
+                        var postGiftType = thisGift.postType;
+                        gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player='+ playerName +'&score='+ MW.SCORE +'&type='+ postGiftType +'&refresh=1&jsoncallback=jsonpPostback';
                         document.getElementsByTagName('head')[0].appendChild(gamePost);
 
                         flareEffect(flare, this, this.onRankList);
