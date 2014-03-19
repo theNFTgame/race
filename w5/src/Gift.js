@@ -28,6 +28,11 @@ var Gift = cc.Sprite.extend({
     _timeTick:0,
     update:function (dt) {
         // cc.log(this.getPosition());
+        if(MW.GIFT_ActiveType !== null){
+            this.goaway();
+            return;
+        }
+
         var p = this.getPosition();
         if ((p.x < 0 || p.x > 320) && (p.y < 0 || p.y > 480)) {
             this.active = false;
