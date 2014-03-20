@@ -119,6 +119,18 @@ var Helloworld = cc.Layer.extend({
         
         this.addChild(this.myCar);
 
+                var b0 = cc.Sprite.create('res/democar.png');
+                b0.setScale(0.5);
+                var menu0 = cc.MenuItemLabel.create(b0,function(){
+                    // window.location.href = "share.html";
+                    cc.log('menu0 touch!');
+
+                });
+                var overMenu0 = cc.Menu.create(menu0);
+                overMenu0.setPosition(size.width / 2 + 20 ,220);
+                this.addChild(overMenu0);
+
+
 
         // 测试 车子跟随设备位置移动
         var iSpeed = 5;
@@ -170,6 +182,7 @@ var Helloworld = cc.Layer.extend({
     },
     onTouchesEnded:function (touches, event) {
         this.isMouseDown = false;
+        cc.log('onTouchesEnded');
     },
     onTouchesCancelled:function (touches, event) {
         console.log("onTouchesCancelled");
