@@ -42,10 +42,10 @@ var SysMenu = cc.Layer.extend({
             sp.setAnchorPoint(0,0);
             this.addChild(sp, 0, 1);
 
-            var logo = cc.Sprite.create(res.logo_png);
-            logo.setAnchorPoint(0, 0);
-            logo.setPosition(0, 250);
-            this.addChild(logo, 10, 1);
+            // var logo = cc.Sprite.create(res.logo_png);
+            // logo.setAnchorPoint(0, 0);
+            // logo.setPosition(0, 250);
+            // this.addChild(logo, 10, 1);
 
             var newGameNormal = cc.Sprite.createWithSpriteFrameName('btn_start.png');
             var newGameSelected = cc.Sprite.createWithSpriteFrameName('btn_start.png');
@@ -72,7 +72,9 @@ var SysMenu = cc.Layer.extend({
             var newGame = cc.MenuItemSprite.create(newGameNormal, newGameSelected, newGameDisabled, function () {
                 this.onButtonEffect();
                 //this.onNewGame();
-                flareEffect(flare, this, this.onNewGame);
+                // flareEffect(flare, this, this.onNewGame);
+                // add new about
+                flareEffect(flare, this, this.onAbout);
             }.bind(this));
             // var gameSettings = cc.MenuItemSprite.create(gameSettingsNormal, gameSettingsSelected, gameSettingsDisabled, this.onSettings, this);
             // var about = cc.MenuItemSprite.create(aboutNormal, aboutSelected, aboutDisabled, this.onAbout, this);
@@ -119,7 +121,7 @@ var SysMenu = cc.Layer.extend({
         this.onButtonEffect();
         var scene = cc.Scene.create();
         scene.addChild(AboutLayer.create());
-        cc.Director.getInstance().replaceScene(cc.TransitionFade.create(1.2, scene));
+        cc.Director.getInstance().replaceScene(cc.TransitionFade.create(0.2, scene));
     },
     update:function () {
         // if (this._ship.getPosition().y > 480) {
