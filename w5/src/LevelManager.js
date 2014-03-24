@@ -129,7 +129,7 @@ var LevelManager = cc.Class.extend({
         // }
         // cc.log('new addEnemy.moveType:' + addEnemy.moveType);
         // MW.tempSpeed = 0;
-        MW.tempSpeed = Math.max(-6.5 ,(-Math.log(MW.SCORE)/3).toFixed(2));
+        
         // cc.log(MW.tempSpeed);
         switch (addEnemy.moveType) {
             case MW.ENEMY_MOVE_TYPE.ATTACK:

@@ -564,6 +564,7 @@ var GameLayer = cc.Layer.extend({
         // 这里改速度。
         // MW.tempSpeed -1 ~ -5.5
         // cc.log(MW.tempSpeed);
+        MW.tempSpeed = Math.max(-6.5 ,(-Math.log(MW.SCORE)/3).toFixed(2));
         var movingDist = 80 * (-MW.tempSpeed ) * dt;       // background's moving rate is 16 pixel per second
 
         var locSkyHeight = this._backSkyHeight, locBackSky = this._backSky;
