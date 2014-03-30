@@ -46,7 +46,8 @@ var res = {
     RankTitle_png : 'res/rank_title.png',
     ScoreBoard_png : 'res/bg_gamelayer.png',
     empty_png : 'res/emp.png',
-    about_jpg : 'res/about.jpg'
+    about_jpg : 'res/about.jpg',
+    btn_start_jpg : 'res/btn_start.png'
 };
 
 var g_mainmenu = [
@@ -71,6 +72,7 @@ var g_mainmenu = [
     {src:res.RankTitle_png},
     {src:res.empty_png},
     {src:res.about_jpg},
+    {src:res.btn_start_jpg},
     // {src:res.textureCars_plist},
     // {src:res.textureCars_png},
 

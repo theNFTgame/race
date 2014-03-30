@@ -47,9 +47,12 @@ var SysMenu = cc.Layer.extend({
             // logo.setPosition(0, 250);
             // this.addChild(logo, 10, 1);
 
-            var newGameNormal = cc.Sprite.createWithSpriteFrameName('btn_start.png');
-            var newGameSelected = cc.Sprite.createWithSpriteFrameName('btn_start.png');
-            var newGameDisabled = cc.Sprite.createWithSpriteFrameName('btn_start.png');
+            // var newGameNormal = cc.Sprite.createWithSpriteFrameName('btn_start.png');
+            // var newGameSelected = cc.Sprite.createWithSpriteFrameName('btn_start.png');
+            // var newGameDisabled = cc.Sprite.createWithSpriteFrameName('btn_start.png');
+            var newGameNormal = cc.Sprite.create(res.btn_start_jpg);
+            var newGameSelected = cc.Sprite.create(res.btn_start_jpg);
+            var newGameDisabled = cc.Sprite.create(res.btn_start_jpg);
 
             newGameNormal.setScale(0.5);
             newGameSelected.setScale(0.5);
@@ -82,7 +85,7 @@ var SysMenu = cc.Layer.extend({
             var menu = cc.Menu.create(newGame);
             menu.alignItemsVerticallyWithPadding(10);
             this.addChild(menu, 1, 2);
-            menu.setPosition(winSize.width / 2 + 50, winSize.height / 2 + 0);
+            menu.setPosition(winSize.width , 196 );
             this.schedule(this.update, 0.1);
 
             // this._ship = cc.Sprite.createWithSpriteFrameName("car_00.png");
