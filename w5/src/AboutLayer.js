@@ -5,7 +5,7 @@ var AboutLayer = cc.Layer.extend({
             var sp = cc.Sprite.create(res.about_jpg);
             sp.setAnchorPoint(0,0);
             sp.setScale(0.5);
-            this.addChild(sp, 0, 1);
+            // this.addChild(sp, 0, 1);
 
             // var cacheImage = cc.TextureCache.getInstance().addImage(res.menuTitle_png);
             // var title = cc.Sprite.createWithTexture(cacheImage, cc.rect(0, 36, 100, 34));
@@ -18,10 +18,10 @@ var AboutLayer = cc.Layer.extend({
             // about.setAnchorPoint(0.5, 0.5 );
             // this.addChild(about);
 
-            var label = cc.LabelTTF.create("   ", "Arial", 14);
-            var back = cc.MenuItemLabel.create(label, this.onBackCallback);
+            // var label = cc.LabelTTF.create("   ", "Arial", 14);
+            var back = cc.MenuItemLabel.create(sp, this.onBackCallback);
             var menu = cc.Menu.create(back);
-            menu.setPosition( winSize.width / 2, 40);
+            menu.setPosition( winSize.width , winSize.height );
             this.addChild(menu);
             bRet = true;
         }
@@ -35,7 +35,7 @@ var AboutLayer = cc.Layer.extend({
         var scene = cc.Scene.create();
         scene.addChild(GameLayer.create());
         scene.addChild(GameControlMenu.create());
-        cc.Director.getInstance().replaceScene(cc.TransitionFade.create(1.2, scene));
+        cc.Director.getInstance().replaceScene(cc.TransitionFade.create(0.6, scene));
 
 
     }
