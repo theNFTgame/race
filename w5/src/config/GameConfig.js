@@ -35,6 +35,8 @@ MW.LEVEL = {
 //life
 MW.LIFE = 1;
 MW.PLAYER_NAME = 'noname';
+MW.needRacordName = false;
+MW.recordPosted = false;
 //score
 MW.SCORE = 0;
 

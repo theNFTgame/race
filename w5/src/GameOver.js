@@ -213,14 +213,22 @@ var GameOver = cc.Layer.extend({
             this.addChild(lbScore,10);
             var maxTopList =  MW.TOP10.length -1,
                 goleTop = 200;
+
             if (!MW.TOP10[maxTopList].value01){
 
             }else{
                 goleTop = MW.TOP10[maxTopList].value01;
             }
+            
+            if ( goleTop >= MW.SCORE ){
+            // if ( 30 >= MW.SCORE ){
+                MW.needRacordName = true;
+            }
 
-            if ( goleTop >= MW.SCORE ||  MW.PLAYER_NAME !=='noname'){
-            // if ( 20 >= MW.SCORE ||  MW.PLAYER_NAME !=='noname'){
+            cc.log("MW.PLAYER_NAME:" + MW.PLAYER_NAME + ",MW.recordPosted:" + MW.recordPosted + ",MW.needRacordName:" + MW.needRacordName);
+
+
+            if ( MW.needRacordName || MW.recordPosted ) {
 
                 var gamePost = document.createElement('script');
                 var playerName = 'noname';
@@ -371,6 +379,7 @@ var GameOver = cc.Layer.extend({
                         var postGiftType = thisGift.postType;
                         gamePost.src = 'http://wegift.reconnectplatform.com/racegame/operator?action=submit_game_score&game_name=RaceGame&player='+ playerName +'&score='+ MW.SCORE +'&type='+ postGiftType +'&refresh=1&jsoncallback=jsonpPostback';
                         document.getElementsByTagName('head')[0].appendChild(gamePost);
+                        MW.recordPosted = true;
 
                         flareEffect(flare, this, this.onRankList);
                     }else{
@@ -389,7 +398,7 @@ var GameOver = cc.Layer.extend({
 
                 box4.setPlaceholderFontColor(cc.c3b(255, 255, 255));
 
-                if ( MW.PLAYER_NAME !== 'noname' ) {
+                if ( MW.PLAYER_NAME !== "noname" ) {
                     box4.setPlaceHolder(MW.PLAYER_NAME);
                 } else {
                     box4.setPlaceHolder("点击输入名字");

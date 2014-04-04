@@ -63,6 +63,8 @@ var GameLayer = cc.Layer.extend({
             MW.LIFE = 1;
             this._state = STATE_PLAYING;
             MW.tempSpeed = -1;
+            MW.recordPosted = false;
+            MW.needRacordName = false;
 
             MW.Track = [3,3,3,3];
             MW.Track_Position = [winSize.height,winSize.height,winSize.height,winSize.height];
@@ -529,7 +531,7 @@ var GameLayer = cc.Layer.extend({
             this._tmpScore += 1;
         }
         // this._lbLife.setString(MW.LIFE + '');
-        this.lbScore.setString( this._tmpScore + " M");
+        this.lbScore.setString( MW.SCORE + " M");
     },
     collide:function (a, b) {
         var pos1 = a.getPosition();
