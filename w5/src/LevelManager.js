@@ -69,15 +69,17 @@ var LevelManager = cc.Class.extend({
         if(MW.ACTIVE_GIFTS < this._currentLevel.giftMax){
             // cc.log(MW.GIFT_Countdown);
             var newGiftType = fRandomBy( 0, 100) ;
-            var newGiftType = 0 ;
+            var newGiftType ;
             var selGift = locCurrentLevel.gifts[0];
             if (newGiftType > 95){
                 newGiftType = 2 ;
             }else if( newGiftType > 50 && newGiftType <=95 ){
                 newGiftType = 0 ;
-            }else if( newGiftType > 25 && newGiftType <=25 ){
+            }else if( newGiftType > 25 && newGiftType <=50 ){
                 newGiftType = 1 ;
             }else if( newGiftType >= 0 && newGiftType <= 25 ){
+                newGiftType = 3 ;
+            }else {
                 newGiftType = 3 ;
             }
             // cc.log(selGift);

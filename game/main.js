@@ -39,8 +39,8 @@ var cocos2dApp = cc.Application.extend({
         var director = cc.Director.getInstance();
 
         cc.EGLView.getInstance().adjustViewPort(true);
-        cc.EGLView.getInstance().setDesignResolutionSize(320,480,cc.RESOLUTION_POLICY.SHOW_ALL);
-        cc.EGLView.getInstance().resizeWithBrowserSize(false);
+        // cc.EGLView.getInstance().setDesignResolutionSize(320,480,cc.RESOLUTION_POLICY.SHOW_ALL);
+        // cc.EGLView.getInstance().resizeWithBrowserSize(false);
 
         // turn on display FPS
         director.setDisplayStats(this.config['showFPS']);
@@ -157,5 +157,5 @@ var VisibleRect = {
     }
 };
 
-var screenWidth = VisibleRect.rect().width;
-var screenHeight = VisibleRect.rect().height;
+// var screenWidth = VisibleRect.rect().width;
+// var screenHeight = VisibleRect.rect().height;

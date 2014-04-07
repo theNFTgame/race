@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html> 
-<head> 
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <title>挑战马牌轮胎Race Game，快来赛场一显车技！</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Race Game</title>
+    <meta name="viewport" content="user-scalable=no"/>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/GIF" href="res/favicon.ico"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <style>
         * {
           margin: 0;
@@ -26,7 +26,7 @@
         }
         #gameCanvas {
             background: url('res/sysmenu.jpg') top center no-repeat;
-            background-size: 320px 480px;
+            background-size: 320px 568px;
         }
         #gameMask {
             width: 100%;
@@ -55,8 +55,7 @@
             background: url('image/close.png') no-repeat top center;
             background-size: 36px 36px;
         }
-        img {display: none;}
-        .wechatimg { display: block; position: absolute; top: -999em; left: -999em;}
+        .wechatimg { display: none;}
         #gameRank {
             width: 100%;
             height: 100%;
@@ -124,24 +123,13 @@
         .top01 .number , .top11 .number , .top21 .number {
             color: #1fcb2f;
         }
-        #gameload {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            background-color: #000;
-            background: url(data:image/gif;base64,R0lGODlhEAAQALMNAD8/P7+/vyoqKlVVVX9/fxUVFUBAQGBgYMDAwC8vL5CQkP///wAAAP///wAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFAAANACwAAAAAEAAQAAAEO5DJSau9OOvNex0IMnDIsiCkiW6g6BmKYlBFkhSUEgQKlQCARG6nEBwOgl+QApMdCIRD7YZ5RjlGpCUCACH5BAUAAA0ALAAAAgAOAA4AAAQ6kLGB0JA4M7QW0hrngRllkYyhKAYqKUGguAws0ypLS8JxCLQDgXAIDg+FRKIA6v0SAECCBpXSkstMBAAh+QQFAAANACwAAAAACgAQAAAEOJDJORAac6K1kDSKYmydpASBUl0mqmRfaGTCcQgwcxDEke+9XO2WkxQSiUIuAQAkls0n7JgsWq8RACH5BAUAAA0ALAAAAAAOAA4AAAQ6kMlplDIzTxWC0oxwHALnDQgySAdBHNWFLAvCukc215JIZihVIZEogDIJACBxnCSXTcmwGK1ar1hrBAAh+QQFAAANACwAAAAAEAAKAAAEN5DJKc4RM+tDyNFTkSQF5xmKYmQJACTVpQSBwrpJNteZSGYoFWjIGCAQA2IGsVgglBOmEyoxIiMAIfkEBQAADQAsAgAAAA4ADgAABDmQSVZSKjPPBEDSGucJxyGA1XUQxAFma/tOpDlnhqIYN6MEAUXvF+zldrMBAjHoIRYLhBMqvSmZkggAIfkEBQAADQAsBgAAAAoAEAAABDeQyUmrnSWlYhMASfeFVbZdjHAcgnUQxOHCcqWylKEohqUEAYVkgEAMfkEJYrFA6HhKJsJCNFoiACH5BAUAAA0ALAIAAgAOAA4AAAQ3kMlJq704611SKloCAEk4lln3DQgyUMJxCBKyLAh1EMRR3wiDQmHY9SQslyIQUMRmlmVTIyRaIgA7) center center no-repeat;
-            z-index: 100;
-            top: 0;
-            display: block;
-        }
     </style>
-</head> 
-
-<body id="activity-detail">
-    <img class="wechatimg" src="image/wechat.jpg" width="300" height="300" />
+</head>
+<body>
+    <image class="wechatimg" src="image/wechat.jpg" />
     <canvas id="gameCanvas" width="320" height="480"></canvas>
     <div id="gameMask">
-        <a class="btn-share js-sharelink"  href="#" target="_blank" title="分享成绩">分享至新浪微博</a>
+        <a class="btn-share js-sharelink"  href="http://service.weibo.com/share/share.php?title=11111111&url=http%3a%2f%2fthenftgame.github.io%2frace%2fw3%2f&source=bookmark&appkey=&ralateUid=&pic=http%3a%2f%2fwww.quyeba.com%2fevent%2fexplorerchallenge3%2fimg%2fshear.jpg" target="_blank" title="分享成绩">分享至新浪微博</a>
         <a href="####" class="shareclose js-shareclose">close</a>
     </div>
     <div id="gameRank">
@@ -149,17 +137,7 @@
         <div class="ranklist js-ranklist" id="toplist">
         </div>
     </div>
-    <div id="gameload"></div>
 
 <script src="cocos2d.js"></script>
-
-
-<script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa3050d056dfaf896679083354023dc4a' type='text/javascript'%3E%3C/script%3E"));
-</script>
-
-
 </body>
 </html>
-
