@@ -335,8 +335,9 @@ var GameLayer = cc.Layer.extend({
             }
 
             // for type 
-            // if (MW.GIFT_ActiveType === 1){
+            // if (MW.GIFT_ActiveType === 0){
             //     // selChild.hurt();
+            //     this.timeCallback();
             // }
             // for (var j = 0; j < MW.CONTAINER.PLAYER_BULLETS.length; j++) {
             //     bulletChild = MW.CONTAINER.PLAYER_BULLETS[j];
