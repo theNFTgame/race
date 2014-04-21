@@ -82,11 +82,11 @@ var LevelManager = cc.Class.extend({
             }else {
                 newGiftType = 3;
             }
-            // if (MW.SCORE < 3000 && newGiftType == 2 ){
-            //     newGiftType = 3;
-            // }
+            if (MW.SCORE < 3000 && newGiftType == 2 ){
+                newGiftType = 3;
+            }
             // todo: need remove
-            newGiftType = 2;
+            // newGiftType = 2;
 
             // cc.log(selGift);
             if ( MW.GIFT_Countdown >= 4 &&  MW.GIFT_ActiveType  == null) {

@@ -353,13 +353,14 @@ var GameLayer = cc.Layer.extend({
                         selChild.hurt();
                     }
                     // cc.log('check MW.GIFT_ActiveType:' + MW.GIFT_ActiveType);
-                    if( MW.GIFT_ActiveType !== null && MW.GIFT_ActiveType !== 0){
-                        // MW.GIFT_ActiveType = null;
-                    }else{
-                        // cc.log('car hp: ' + MW.HP );
-                        this.active = false;
-                        locShip.hurt();
-                    }
+                    // if( MW.GIFT_ActiveType !== null && MW.GIFT_ActiveType !== 0){
+                    //     // MW.GIFT_ActiveType = null;
+                    // }else{
+                    //     // cc.log('car hp: ' + MW.HP );
+                    //     this.active = false;
+                    //     locShip.hurt();
+                    // }
+                    locShip.hurt();
                 }
             }
         }
@@ -487,7 +488,10 @@ var GameLayer = cc.Layer.extend({
     timeCallback:function(){
         var locShip = this._ship;
         // cc.log('timeCallback, clean gift.');
-        locShip.backNormal(1);
+        if (locShip){
+           locShip.backNormal(1);
+        }
+        
         this.titleScore.setVisible(false);
         if(!this.lbScoreIcon_a_on){}else{
             this.lbScoreIcon_a.setVisible(true);

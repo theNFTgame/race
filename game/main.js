@@ -156,6 +156,10 @@ var VisibleRect = {
         return s_ptTopLeft;
     }
 };
+    var gameLoad = document.getElementById("gameload");
 
+    if (gameLoad) {
+        gameLoad.parentNode.removeChild(gameLoad);
+    }
 // var screenWidth = VisibleRect.rect().width;
 // var screenHeight = VisibleRect.rect().height;
