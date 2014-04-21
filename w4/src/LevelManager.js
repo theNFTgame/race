@@ -71,7 +71,7 @@ var LevelManager = cc.Class.extend({
             var newGiftType = fRandomBy( 0, 3) ;
             var selGift = locCurrentLevel.gifts[0];
             // cc.log(selGift);
-            if ( MW.GIFT_Countdown >= 3 && !MW.GIFT_ActiveType ) {
+            if ( MW.GIFT_Countdown >= 6 && !MW.GIFT_ActiveType ) {
             // if ( MW.GIFT_Countdown >= 1) {
                 this.addGiftToGameLayer(selGift.Types[newGiftType]);
                 MW.GIFT_Countdown = 0;

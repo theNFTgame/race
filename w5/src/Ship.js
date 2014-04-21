@@ -103,6 +103,7 @@ var Ship = cc.Sprite.extend({
             var blinks = cc.Blink.create(6, 20);
             this.runAction(cc.Sequence.create(cc.DelayTime.create(0.5), blinks));
         }
+        cc.log('Call hpMax() back info: hp = ' + this.HP + ', type = ' + type + ', this.canBeAttack = ' + this.canBeAttack);
         // if( dt > 2 ){
         //     this.canBeAttack = true;
         // }else{

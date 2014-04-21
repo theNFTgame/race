@@ -196,9 +196,9 @@ var GameLayer = cc.Layer.extend({
             this.scheduleUpdate();
             this.schedule(this.scoreCounter, 1);
 
-            if (MW.SOUND) {
-                cc.AudioEngine.getInstance().playMusic(res.bgMusic_mp3, true);
-            }
+            // if (MW.SOUND) {
+            //     cc.AudioEngine.getInstance().playMusic(res.bgMusic_mp3, true);
+            // }
 
             bRet = true;
 
@@ -314,21 +314,30 @@ var GameLayer = cc.Layer.extend({
 
             // check enemies collide:
             var p = selChild.getPosition();
+            //todo check 4 in same y
+            var sameLine = 0;
+
             for ( j = i+1; j < MW.CONTAINER.ENEMIES.length; j++){
                 var subSelChild = MW.CONTAINER.ENEMIES[j];
                 var p2  = subSelChild.getPosition();
 
-                if ( Math.abs(p.x - p2.x) < 10 &&  Math.abs(p.y - p2.y) < 10 &&  p.y > 500) {
-                    cc.log('i:'+ i + ',j:' + j +',p.x:' + p.x + ',p.y:' + p.y + ',p2.x' + p2.x + ',p2.y:' + p2.y);
-
+                if ( p.y > 500 && Math.abs(p.x - p2.x) < 10 &&  Math.abs(p.y - p2.y) < 10  ) {
+                    // cc.log('i:'+ i + ',j:' + j +',p.x:' + p.x + ',p.y:' + p.y + ',p2.x' + p2.x + ',p2.y:' + p2.y);
                     subSelChild.goaway();
+                }
+                if ( p.y > 500 && Math.abs(p.y - p2.y) < 15 ) {
+                    // cc.log('i:'+ i + ',j:' + j + ',p.y:' + p.y + ',p2.y:' + p2.y);
+                    sameLine++;
+                    if (sameLine >2 ){
+                        subSelChild.goaway();
+                    }
                 }
             }
 
             // for type 
-            if (MW.GIFT_ActiveType === 1){
-                // selChild.hurt();
-            }
+            // if (MW.GIFT_ActiveType === 1){
+            //     // selChild.hurt();
+            // }
             // for (var j = 0; j < MW.CONTAINER.PLAYER_BULLETS.length; j++) {
             //     bulletChild = MW.CONTAINER.PLAYER_BULLETS[j];
             //     if (bulletChild.active && this.collide(selChild, bulletChild)) {
@@ -338,6 +347,7 @@ var GameLayer = cc.Layer.extend({
             // }
             if (this.collide(selChild, locShip)) {
                 if (locShip.active) {
+                    cc.log(MW.GIFT_ActiveType);
                     if (MW.GIFT_ActiveType !== 1 ){
                     // if (MW.GIFT_ActiveType !== 1 && MW.GIFT_ActiveType !== 2 ){
                         selChild.hurt();
@@ -356,7 +366,7 @@ var GameLayer = cc.Layer.extend({
         for (i = 0; i < MW.CONTAINER.GIFTS.length; i++) {
             selChild = MW.CONTAINER.GIFTS[i];
 
-            if(!MW.GIFT_ActiveType){}else{
+            if(MW.GIFT_ActiveType !== null ){
                 selChild.goaway();
             }
             if (!selChild.active)
@@ -364,8 +374,8 @@ var GameLayer = cc.Layer.extend({
 
             if (this.collide(selChild, locShip)) {
                 if (locShip.active) {
-                    // hurt only type 3
-                    if( selChild.giftType == 3 ){
+                    // hurt only type 3 
+                    if( selChild.giftType == 3){
                         selChild.hurt();
                     }else{
                         selChild.goaway();
@@ -476,7 +486,7 @@ var GameLayer = cc.Layer.extend({
     },
     timeCallback:function(){
         var locShip = this._ship;
-        cc.log('timeCallback, clean gift.');
+        // cc.log('timeCallback, clean gift.');
         locShip.backNormal(1);
         this.titleScore.setVisible(false);
         if(!this.lbScoreIcon_a_on){}else{

@@ -305,6 +305,7 @@ var GameLayer = cc.Layer.extend({
         var i, locShip =this._ship;
 
         for (i = 0; i < MW.CONTAINER.ENEMIES.length; i++) {
+            cc.log(MW.CONTAINER.ENEMIES[i].getPosition());
             selChild = MW.CONTAINER.ENEMIES[i];
             if (!selChild.active)
                 continue;
@@ -315,7 +316,7 @@ var GameLayer = cc.Layer.extend({
                 var subSelChild = MW.CONTAINER.ENEMIES[j];
                 var p2  = subSelChild.getPosition();
 
-                if ( Math.abs(p.x - p2.x) < 10 &&  Math.abs(p.y - p2.y) < 10 &&  p.y > 500) {
+                if ( Math.abs(p.x - p2.x) < 10 && ( p.y == p2.y ) &&  p.y > 500) {
                     cc.log('i:'+ i + ',j:' + j +',p.x:' + p.x + ',p.y:' + p.y + ',p2.x' + p2.x + ',p2.y:' + p2.y);
 
                     subSelChild.goaway();

@@ -68,22 +68,28 @@ var LevelManager = cc.Class.extend({
         // cc.log('MW.ACTIVE_GIFTS:' + MW.ACTIVE_GIFTS + ', this._currentLevel.giftMax:' + this._currentLevel.giftMax);
         if(MW.ACTIVE_GIFTS < this._currentLevel.giftMax){
             // cc.log(MW.GIFT_Countdown);
-            var newGiftType = fRandomBy( 0, 100) ;
-            var newGiftType ;
+            var newGiftType = fRandomBy( 0, 100);
+            // var newGiftType;
             var selGift = locCurrentLevel.gifts[0];
-            if (newGiftType > 95){
-                newGiftType = 2 ;
-            }else if( newGiftType > 50 && newGiftType <=95 ){
-                newGiftType = 0 ;
+            if (newGiftType > 85){
+                newGiftType = 2;
+            }else if( newGiftType > 50 && newGiftType <=85 ){
+                newGiftType = 0;
             }else if( newGiftType > 25 && newGiftType <=50 ){
-                newGiftType = 1 ;
+                newGiftType = 1;
             }else if( newGiftType >= 0 && newGiftType <= 25 ){
-                newGiftType = 3 ;
+                newGiftType = 3;
             }else {
-                newGiftType = 3 ;
+                newGiftType = 3;
             }
+            // if (MW.SCORE < 3000 && newGiftType == 2 ){
+            //     newGiftType = 3;
+            // }
+            // todo: need remove
+            newGiftType = 2;
+
             // cc.log(selGift);
-            if ( MW.GIFT_Countdown >= 5 &&  MW.GIFT_ActiveType  == null) {
+            if ( MW.GIFT_Countdown >= 4 &&  MW.GIFT_ActiveType  == null) {
             // if ( MW.GIFT_Countdown >= 1) {
                 this.addGiftToGameLayer(selGift.Types[newGiftType]);
                 MW.GIFT_Countdown = 0;

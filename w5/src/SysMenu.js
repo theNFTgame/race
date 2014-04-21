@@ -96,10 +96,10 @@ var SysMenu = cc.Layer.extend({
             // this._ship.setPosition( pos );
             // this._ship.runAction(cc.MoveTo.create(2, cc.p(80 + (winSize.width - 160) * Math.random(), pos.y + winSize.height + 100)));
 
-            if (MW.SOUND) {
-                cc.AudioEngine.getInstance().setMusicVolume(0.7);
-                cc.AudioEngine.getInstance().playMusic(res.mainMainMusic_mp3, true);
-            }
+            // if (MW.SOUND) {
+            //     cc.AudioEngine.getInstance().setMusicVolume(0.7);
+            //     cc.AudioEngine.getInstance().playMusic(res.mainMainMusic_mp3, true);
+            // }
 
             bRet = true;
         }
