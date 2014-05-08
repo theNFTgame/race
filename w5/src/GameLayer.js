@@ -196,9 +196,9 @@ var GameLayer = cc.Layer.extend({
             this.scheduleUpdate();
             this.schedule(this.scoreCounter, 1);
 
-            // if (MW.SOUND) {
-            //     cc.AudioEngine.getInstance().playMusic(res.bgMusic_mp3, true);
-            // }
+            if (MW.SOUND) {
+                cc.AudioEngine.getInstance().playMusic(res.bgMusic_mp3, true);
+            }
 
             bRet = true;
 

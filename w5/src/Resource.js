@@ -1,6 +1,6 @@
 var res = {
-    // bgMusic_mp3 : 'res/Music/bgMusic.mp3',
-    // bgMusic_ogg : 'res/Music/bgMusic.ogg',
+    bgMusic_mp3 : 'res/Music/mainMainMusic.mp3',
+    bgMusic_ogg : 'res/Music/mainMainMusic.ogg',
     buttonEffet_mp3 : 'res/Music/buttonEffet.mp3',
     buttonEffet_ogg : 'res/Music/buttonEffet.ogg',
     explodeEffect_mp3 : 'res/Music/explodeEffect.mp3',
@@ -92,8 +92,8 @@ var g_mainmenu = [
     {src:res.textureOpaquePack_plist},
 
     //music
-    // {src:res.bgMusic_mp3},
-    // {src:res.bgMusic_ogg},
+    {src:res.bgMusic_mp3},
+    {src:res.bgMusic_ogg},
 
     //effect
     // {src:res.buttonEffet_mp3},
