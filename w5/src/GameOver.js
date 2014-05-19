@@ -53,7 +53,7 @@ function jsonpCallback(data){
     cc.log('maxTopList:' + maxTopList);
     cc.log( MW.TOP10[maxTopList] );
             if (!MW.TOP10[maxTopList].value01){
-                goleTop = MW.TOP10[maxTopList].value01 = goleTop;
+                // goleTop = MW.TOP10[maxTopList].value01;
 
             }else{
                 goleTop = MW.TOP10[maxTopList].value01;
