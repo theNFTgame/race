@@ -70,8 +70,20 @@ var SysMenu = cc.Layer.extend({
             newGameDisabled.setScale(0.5);
 
             var playerName = getCookie('nickname');
-            if( playerName != undefined ){
-              
+            // playerName ='欢迎回来';
+            if( playerName !== undefined ){
+                var yourName = cc.LabelTTF.create( playerName +  ", 欢迎回来","Arial Bold",13);
+                yourName.setPosition(240,344);
+                yourName.setColor(cc.c3b(250,250,250));
+                this.addChild(yourName,10);
+            }
+            var playerTop = getCookie('playerTop');
+            // playerTop = 11;
+            if( playerTop !== undefined ){
+                var yourTop = cc.LabelTTF.create(   "最佳战绩，第" + playerTop + "名","Arial Bold",13);
+                yourTop.setPosition(240,323);
+                yourTop.setColor(cc.c3b(250,250,250));
+                this.addChild(yourTop,11);
             }
             // var newGameNormal = cc.Sprite.create(res.menu_png, cc.rect(0, 0, 126, 33));
             // var newGameSelected = cc.Sprite.create(res.menu_png, cc.rect(0, 33, 126, 33));

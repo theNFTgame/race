@@ -393,24 +393,29 @@ var GameOver = cc.Layer.extend({
                 goRankmenu.setPosition(winSize.width / 2 + 120, winSize.height / 2 - 80 );
                 // show submint
 
+                var yourScore = cc.LabelTTF.create( "恭喜您本次成绩已打入排行榜 ","Arial Bold",12);
+                yourScore.setPosition(160,360);
+                yourScore.setColor(cc.c3b(0,0,0));
+                this.addChild(yourScore,10);
 
-                var box4 = cc.EditBox.create(cc.size(160, 40), cc.Scale9Sprite.create(res.empty_png));
 
-                box4.setPlaceholderFontColor(cc.c3b(255, 255, 255));
+                // var box4 = cc.EditBox.create(cc.size(160, 40), cc.Scale9Sprite.create(res.empty_png));
 
-                if ( MW.PLAYER_NAME !== "noname" ) {
-                    box4.setPlaceHolder(MW.PLAYER_NAME);
-                } else {
-                    box4.setPlaceHolder("点击输入名字");
-                }
+                // box4.setPlaceholderFontColor(cc.c3b(255, 255, 255));
+
+                // if ( MW.PLAYER_NAME !== "noname" ) {
+                //     box4.setPlaceHolder(MW.PLAYER_NAME);
+                // } else {
+                //     box4.setPlaceHolder("点击输入名字");
+                // }
 
                 
-                // box4.initWithBackgroundColor(cc.size(200, 40), cc.c3b(200, 20, 20));
-                box4.setPosition( winSize.width / 2 - 20 , 144 );
-                box4.setDelegate(this);
-                box4.setFontColor(cc.c3b(250, 250, 250));
-                box4.setMaxLength(20);
-                this.addChild(box4);
+                // // box4.initWithBackgroundColor(cc.size(200, 40), cc.c3b(200, 20, 20));
+                // box4.setPosition( winSize.width / 2 - 20 , 144 );
+                // box4.setDelegate(this);
+                // box4.setFontColor(cc.c3b(250, 250, 250));
+                // box4.setMaxLength(20);
+                // this.addChild(box4);
 
             }
 
