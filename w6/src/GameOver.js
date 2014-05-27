@@ -354,7 +354,7 @@ var GameOver = cc.Layer.extend({
 
                 var RankTitle = cc.Sprite.create(res.RankTitle_png );
                 RankTitle.setScale(0.5);
-                RankTitle.setPosition(winSize.width / 2 , winSize.height / 2 + 30);
+                RankTitle.setPosition(winSize.width / 2 , winSize.height / 2 );
                 this.addChild(RankTitle, 1000);
 
                 var goRankListNormal = cc.Sprite.createWithSpriteFrameName('btn_submit_rank.png');
@@ -366,6 +366,7 @@ var GameOver = cc.Layer.extend({
 
                 var goRankList = cc.MenuItemSprite.create(goRankListNormal, goRankListSelected, goRankListDisabled, function () {
                     // this.onButtonEffect();
+                    MW.recordPosted = true;
                     if (MW.PLAYER_NAME !== null  ){
                         var playerName = 'noname';
                         if(MW.PLAYER_NAME !== playerName){
