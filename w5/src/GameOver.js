@@ -68,13 +68,13 @@ function jsonpCallback(data){
 }
 function jsonpPostback(data){
     MW.TOP10_t = data;
-    // cc.log(data);
+    cc.log(data);
     // cc.log(MW.TOP10_t.global_ranking);
     // cc.log(MW.TOP10_t.img-code);
     // MW.TOP10 = listSortBy(MW.TOP10_t.global_ranking, 'value01', 'desc');
     // cc.log(MW.TOP10[9]);
     MW.TOP10 = MW.TOP10_t.global_ranking;
-
+    MW.rankCurrent = MW.TOP10_t.rankCurrent;
     
     if(!MW.TOP10_t.game_name){
     //     cc.log(rankLayerList);
@@ -265,11 +265,11 @@ var GameOver = cc.Layer.extend({
 
             // ??%
 
-                var newPx = Math.log( MW.SCORE/4)*10;
-                    newPx = newPx.toFixed(2);
-                    newPx = Math.floor(Math.max(5,Math.min(newPx,99)));
-                cc.log(newPx + '%');
-                var yourScore = cc.LabelTTF.create( "你超过了全国" + newPx + '%' + "的游戏者！ ","Arial Bold",12);
+                // var newPx = Math.log( MW.SCORE/4)*10;
+                //     newPx = newPx.toFixed(2);
+                //     newPx = Math.floor(Math.max(5,Math.min(newPx,99)));
+                // cc.log(newPx + '%');
+                var yourScore = cc.LabelTTF.create( "你的成绩是第" + MW.rankCurrent + "名！ ","Arial Bold",12);
                 yourScore.setPosition(160,360);
                 yourScore.setColor(cc.c3b(0,0,0));
                 this.addChild(yourScore,10);
