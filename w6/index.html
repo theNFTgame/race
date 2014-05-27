@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>挑战马牌轮胎Race Game，快来赛场一显车技！</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+        }
+        body, canvas, div {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        body{
+            position: relative;
+            background-color: black;
+        }
+        #gameCanvas {
+            background: url('res/sysmenu.jpg') top center no-repeat;
+            background-size: 320px 480px;
+        }
+        #gameMask {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: url('image/bg_mask.png');
+            z-index: 100;
+            top: 0;
+            display: none;
+        }
+        .btn-share {
+            width: 100%;
+            height: 120px ;
+            background: url('image/btn_mask.png') no-repeat top center;
+            padding-top: 173px;
+            text-indent: -9999em;
+            display: block;
+            background-size: 230px 300px;
+        }
+        .shareclose{
+            display: block;
+            width: 55px;
+            height: 47px;
+            text-indent: -9999em;
+            margin: 20px auto;
+            background: url('image/close.png') no-repeat top center;
+            background-size: 36px 36px;
+        }
+        img {display: none;}
+        .wechatimg { display: block; position: absolute; top: -999em; left: -999em;}
+        #gameRank {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: url('image/bg_mask.png');
+            z-index: 100;
+            top: 0;
+            display: none;
+            line-height: 36px;
+            font-size: 12px;
+        }
+        .ranklist {
+            width: 320px;
+            height: 100%;
+            background: url('res/bg_ranking.jpg') no-repeat top center;
+            background-size: 320px 480px;
+            margin: 0 auto;
+            padding-top: 100px;
+        }
+        .rankclose {
+            width: 320px; 
+            height: 80px;
+            position: absolute;
+            display: block;
+            text-indent: -9999em;
+            z-index: 110;
+            top: 0px;
+            left: 50%;
+            margin-left: -160px;
+        }
+        .ranklist table {
+            width: 100%;
+            border-spacing: 0px;
+        }
+        .ranklist td {
+            border-bottom: 1px solid #e1b14b;
+            /*word-break: break-all;*/
+            word-wrap: break-word; 
+            overflow: hidden;
+        }
+        .ranklist .number {
+            width: 30px;
+            padding-left: 45px;
+        }
+        .ranklist .name {
+            width: 130px;
+            padding-left: 10px;
+        }
+        .ranklist .value {
+            width: 130px;
+            padding-left: 0px;
+        }
+        .top01 , .top01 td{
+            background-color: #fff7dc;
+            border-bottom:none;
+        }
+        .top11 , .top11 td{
+            background-color: #f4e3af;
+            border-bottom:none;
+        }
+        .top21 , .top21 td{
+            background-color: #f6d77a;
+            border-bottom:none;
+        }
+        .top01 .number , .top11 .number , .top21 .number {
+            color: #1fcb2f;
+        }
+        #gameload {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: #000;
+            background: url(data:image/gif;base64,R0lGODlhEAAQALMNAD8/P7+/vyoqKlVVVX9/fxUVFUBAQGBgYMDAwC8vL5CQkP///wAAAP///wAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFAAANACwAAAAAEAAQAAAEO5DJSau9OOvNex0IMnDIsiCkiW6g6BmKYlBFkhSUEgQKlQCARG6nEBwOgl+QApMdCIRD7YZ5RjlGpCUCACH5BAUAAA0ALAAAAgAOAA4AAAQ6kLGB0JA4M7QW0hrngRllkYyhKAYqKUGguAws0ypLS8JxCLQDgXAIDg+FRKIA6v0SAECCBpXSkstMBAAh+QQFAAANACwAAAAACgAQAAAEOJDJORAac6K1kDSKYmydpASBUl0mqmRfaGTCcQgwcxDEke+9XO2WkxQSiUIuAQAkls0n7JgsWq8RACH5BAUAAA0ALAAAAAAOAA4AAAQ6kMlplDIzTxWC0oxwHALnDQgySAdBHNWFLAvCukc215JIZihVIZEogDIJACBxnCSXTcmwGK1ar1hrBAAh+QQFAAANACwAAAAAEAAKAAAEN5DJKc4RM+tDyNFTkSQF5xmKYmQJACTVpQSBwrpJNteZSGYoFWjIGCAQA2IGsVgglBOmEyoxIiMAIfkEBQAADQAsAgAAAA4ADgAABDmQSVZSKjPPBEDSGucJxyGA1XUQxAFma/tOpDlnhqIYN6MEAUXvF+zldrMBAjHoIRYLhBMqvSmZkggAIfkEBQAADQAsBgAAAAoAEAAABDeQyUmrnSWlYhMASfeFVbZdjHAcgnUQxOHCcqWylKEohqUEAYVkgEAMfkEJYrFA6HhKJsJCNFoiACH5BAUAAA0ALAIAAgAOAA4AAAQ3kMlJq704611SKloCAEk4lln3DQgyUMJxCBKyLAh1EMRR3wiDQmHY9SQslyIQUMRmlmVTIyRaIgA7) center center no-repeat;
+            z-index: 100;
+            top: 0;
+            display: block;
+        }
+    </style>
+</head> 
+
+<body id="activity-detail">
+    <img class="wechatimg" src="image/wechat.jpg" width="300" height="300" />
+    <canvas id="gameCanvas" width="320" height="480"></canvas>
+    <div id="gameMask">
+        <a class="btn-share js-sharelink"  href="#" target="_blank" title="分享成绩">分享至新浪微博</a>
+        <a href="####" class="shareclose js-shareclose">close</a>
+    </div>
+    <div id="gameRank">
+        <a href="####" class="rankclose js-rankclose">close</a>
+        <div class="ranklist js-ranklist" id="toplist">
+        </div>
+    </div>
+    <div id="gameload"></div>
+
+<script src="cocos2d.js"></script>
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa3050d056dfaf896679083354023dc4a' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+</body>
+</html>
+
