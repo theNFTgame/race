@@ -14,7 +14,10 @@
  *  http://bbs.html5china.com
  *
  */
-
+//base URL
+MW.baseURL = "http://www.styleonedigital.com/racegame/";
+MW.playerRecoreName = null;
+MW.playerRecoreTop = null;
 //game state
 MW.GAME_STATE = {
     HOME:0,

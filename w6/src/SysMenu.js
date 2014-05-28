@@ -11,6 +11,20 @@ function getCookie(c_name){
     }
   return "";
 }
+function jsonpPlayerback(data){
+    console.log(data);
+    console.log('jsonpPlayerback');
+    // if(data.nickname !== undefined){
+        MW.playerRecoreName = data.nickname;
+    // }
+    if(data.rankHighest !== null){
+        MW.playerRecoreTop = data.rankHighest[0].rankDefeat;
+
+    }
+}
+var playerGet = document.createElement('script');
+    playerGet.src = MW.baseURL + 'operator.php?action=get_user_info&jsoncallback=jsonpPlayerback';
+    document.getElementsByTagName('head')[0].appendChild(playerGet);
 // function handleOrientationEvent(event) {
         
 //     var x = event.beta ? event.beta : event.y * 90;
@@ -43,6 +57,9 @@ var SysMenu = cc.Layer.extend({
     init:function () {
         var bRet = false;
         if (this._super()) {
+
+
+
             cc.SpriteFrameCache.getInstance().addSpriteFrames(res.textureTransparentPack_plist);
 
             cc.SpriteFrameCache.getInstance().addSpriteFrames(res.textureBTN_plist);
@@ -69,7 +86,12 @@ var SysMenu = cc.Layer.extend({
             newGameSelected.setScale(0.5);
             newGameDisabled.setScale(0.5);
 
-            var playerName = getCookie('nickname');
+
+
+
+
+            // var playerName = getCookie('nickname');
+            var playerName = MW.playerRecoreName;
             // playerName ='欢迎回来';
             if( playerName !== undefined ){
                 var yourName = cc.LabelTTF.create( playerName +  ", 欢迎回来","Arial Bold",13);
@@ -77,9 +99,10 @@ var SysMenu = cc.Layer.extend({
                 yourName.setColor(cc.c3b(250,250,250));
                 this.addChild(yourName,10);
             }
-            var playerTop = getCookie('playerTop');
+            var playerTop = MW.playerRecoreTop;
+            // var playerTop = getCookie('playerTop');
             // playerTop = 11;
-            if( playerTop !== undefined ){
+            if( playerTop !== null ){
                 var yourTop = cc.LabelTTF.create(   "最佳战绩，第" + playerTop + "名","Arial Bold",13);
                 yourTop.setPosition(240,323);
                 yourTop.setColor(cc.c3b(250,250,250));
