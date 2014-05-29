@@ -95,7 +95,8 @@ var SysMenu = cc.Layer.extend({
             // playerName ='欢迎回来';
             if( playerName !== undefined ){
                 var yourName = cc.LabelTTF.create( playerName +  ", 欢迎回来","Arial Bold",13);
-                yourName.setPosition(240,344);
+                yourName.setAnchorPoint(cc.p(1,1));  
+                yourName.setPosition(300,344);
                 yourName.setColor(cc.c3b(250,250,250));
                 this.addChild(yourName,10);
             }
@@ -104,7 +105,8 @@ var SysMenu = cc.Layer.extend({
             // playerTop = 11;
             if( playerTop !== null ){
                 var yourTop = cc.LabelTTF.create(   "最佳战绩，第" + playerTop + "名","Arial Bold",13);
-                yourTop.setPosition(240,323);
+                yourTop.setAnchorPoint(cc.p(1,1));  
+                yourTop.setPosition(300,323);
                 yourTop.setColor(cc.c3b(250,250,250));
                 this.addChild(yourTop,11);
             }

@@ -103,9 +103,9 @@ function updateShareLink(){
     shareWord = shareWord + '%e6%88%91%e5%9c%a8%40%e5%be%b7%e5%9b%bd%e9%a9%ac%e7%89%8c%e8%bd%ae%e8%83%8e+%23%e8%b5%9b%e8%bd%a6%e6%b8%b8%e6%88%8f%23%e4%b8%ad%e9%a9%b0%e9%aa%8b%e4%ba%86';
     shareWord = shareWord + MW.SCORE ;
     shareWord = shareWord + '%e7%b1%b3%ef%bc%8c%e5%b9%b6%e6%88%90%e5%8a%9f%e7%95%99%e5%90%8d%e8%8b%b1%e9%9b%84%e6%a6%9c%e3%80%82%e6%83%b3%e7%9f%a5%e9%81%93%e4%bd%a0%e7%9a%84%e9%a9%be%e9%a9%b6%e9%a3%8e%e6%a0%bc%e5%90%97%ef%bc%9f%e6%83%b3%e8%b6%85%e8%bf%87%e6%88%91%ef%bc%8c%e4%b8%8e%e6%88%91%e4%b8%80%e8%be%83%e9%ab%98%e4%b8%8b%e5%90%97%ef%bc%9f%e8%af%b7%e7%82%b9%e5%87%bb%e6%b8%b8%e6%88%8f%e9%93%be%e6%8e%a5%ef%bc%8c%e6%88%96%e6%89%ab%e6%8f%8f%e4%ba%8c%e7%bb%b4%e7%a0%81%ef%bc%8c%e5%bc%80%e5%90%af%e7%b4%a7%e5%bc%a0%e3%80%81%e5%88%ba%e6%bf%80%e7%9a%84%e6%8c%91%e6%88%98%e5%90%a7%ef%bc%81';
-    shareWord = shareWord + '&source=bookmark&appkey=&ralateUid=&pic=http%3a%2f%2fwww.styleonedigital.com%2fracegame%2foperator%3faction%3dget_score_by_img_code%26img-code%3d';
+    shareWord = shareWord + '&source=bookmark&appkey=&ralateUid=&pic=http%3a%2f%2fwww.styleonedigital.com%2fracegame%2foperator.php%3faction%3dget_score_by_img_code%26img-code%3d';
     shareWord = shareWord + MW.gameCode;
-    shareWord = shareWord + '&url=http%3a%2f%2fwww.styleonedigital.com%2fracegame';
+    shareWord = shareWord + '&url=http%3a%2f%2fwww.styleonedigital.com%2frace';
 
 
         console.log(shareWord);
@@ -228,7 +228,7 @@ var GameOver = cc.Layer.extend({
             cc.log("MW.PLAYER_NAME:" + MW.PLAYER_NAME + ",MW.recordPosted:" + MW.recordPosted + ",MW.needRacordName:" + MW.needRacordName);
 
 
-            if ( MW.needRacordName || MW.recordPosted ) {
+            if ( MW.recordPosted || MW.needRacordName ) {
 
                 var gamePost = document.createElement('script');
                 var playerName = 'noname';
