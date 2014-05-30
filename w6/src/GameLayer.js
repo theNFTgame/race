@@ -332,6 +332,17 @@ var GameLayer = cc.Layer.extend({
                         subSelChild.goaway();
                     }
                 }
+                if ( p.x == p2.x && Math.abs(p.y - p2.y) <= 50 ){
+                    if (p.y - p2.y >0 ) {
+
+                        subSelChild.setPosition(p.x , p.y -2);
+                    }else{
+
+                        selChild.setPosition(p2.x , p2.y-2);
+                    }
+
+                    cc.log('ENEMIES checkIsCollide!!! p.x:' + p.x + ',y1:' + p.y + ',y2:' + p2.y);
+                }
             }
 
             // for type 
