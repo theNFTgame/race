@@ -41,7 +41,8 @@ function jsonpCallback(data){
     // cc.log(MW.TOP10_t);
     // cc.log(MW.TOP10);
     // var 
-    // cc.log(MW.TOP10);
+    cc.log(MW.TOP10);
+    cc.log(data);
     if(data !== null){
         MW.TOP10 = data;
     }
@@ -52,12 +53,10 @@ function jsonpCallback(data){
     goleTop = 200;
     cc.log('maxTopList:' + maxTopList);
     cc.log( MW.TOP10[maxTopList] );
-            if (!MW.TOP10[maxTopList].value01){
-                // goleTop = MW.TOP10[maxTopList].value01;
+    if (MW.TOP10[maxTopList].value01 !== undefined ){
 
-            }else{
-                goleTop = MW.TOP10[maxTopList].value01;
-            }
+        goleTop = MW.TOP10[maxTopList].value01;
+    }
     // MW.TOP10 = listSortBy(MW.TOP10_t, 'value01', 'desc');
     var newlist = generatRankList(MW.TOP10);
     rankLayerList.innerHTML = newlist;
@@ -73,7 +72,10 @@ function jsonpPostback(data){
     // cc.log(MW.TOP10_t.img-code);
     // MW.TOP10 = listSortBy(MW.TOP10_t.global_ranking, 'value01', 'desc');
     // cc.log(MW.TOP10[9]);
-    MW.TOP10 = MW.TOP10_t.global_ranking;
+    if(MW.TOP10_t.game_name !== undefined){
+        MW.TOP10 = MW.TOP10_t.global_ranking;
+    }
+    
     MW.rankCurrent = MW.TOP10_t.rankCurrent;
     
     if(!MW.TOP10_t.game_name){
@@ -213,10 +215,10 @@ var GameOver = cc.Layer.extend({
             this.addChild(lbScore,10);
             var maxTopList =  MW.TOP10.length -1,
                 goleTop = 200;
+            cc.log(MW.TOP10);
+            if (MW.TOP10[0] != null){
 
-            if (!MW.TOP10[maxTopList].value01){
 
-            }else{
                 goleTop = MW.TOP10[maxTopList].value01;
             }
             
@@ -272,7 +274,10 @@ var GameOver = cc.Layer.extend({
                 var yourScore = cc.LabelTTF.create( "你的成绩是第" + MW.rankCurrent + "名！ ","Arial Bold",12);
                 yourScore.setPosition(160,360);
                 yourScore.setColor(cc.c3b(0,0,0));
-                this.addChild(yourScore,10);
+                if (MW.rankCurrent !== undefined){
+                    this.addChild(yourScore,10);
+                }
+                
 
                 // show btn ...
                 var playAgainNormal = cc.Sprite.createWithSpriteFrameName('btn_replay.png');

@@ -321,7 +321,7 @@ var GameLayer = cc.Layer.extend({
                 var subSelChild = MW.CONTAINER.ENEMIES[j];
                 var p2  = subSelChild.getPosition();
 
-                if ( p.y > 500 && Math.abs(p.x - p2.x) < 10 &&  Math.abs(p.y - p2.y) < 10  ) {
+                if ( p.y > 500 && Math.abs(p.x - p2.x) < 10 &&  Math.abs(p.y - p2.y) < 20  ) {
                     // cc.log('i:'+ i + ',j:' + j +',p.x:' + p.x + ',p.y:' + p.y + ',p2.x' + p2.x + ',p2.y:' + p2.y);
                     subSelChild.goaway();
                 }
@@ -332,13 +332,13 @@ var GameLayer = cc.Layer.extend({
                         subSelChild.goaway();
                     }
                 }
-                if ( p.x == p2.x && Math.abs(p.y - p2.y) <= 50 ){
+                if ( p.x == p2.x && Math.abs(p.y - p2.y) <= 70 ){
                     if (p.y - p2.y >0 ) {
 
-                        subSelChild.setPosition(p.x , p.y -2);
+                        subSelChild.setPosition(p.x , p.y - 70);
                     }else{
 
-                        selChild.setPosition(p2.x , p2.y-2);
+                        selChild.setPosition(p2.x , p2.y-70);
                     }
 
                     cc.log('ENEMIES checkIsCollide!!! p.x:' + p.x + ',y1:' + p.y + ',y2:' + p2.y);
