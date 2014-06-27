@@ -225,7 +225,13 @@ var GameLayer = cc.Layer.extend({
             this._levelManager.loadLevelResource(this._time);
         }
     },
-
+    onKeyUp:function (key) {  
+        window.alert(key);  
+    },  
+  
+    onKeyDown:function (key) {  
+        window.alert(key);  
+    }, 
     onTouchesMoved:function (touches, event) {
         // cc.log(touches[0]);
         this.processEvent(touches[0]);
